@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hit Your Mark Travel — Brand Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --navy-900:#080f1a; --navy-800:#0d1b2a; --navy-700:#132234;
+  --navy-600:#1a2d45; --navy-500:#243d5c; --navy-400:#2f5077;
+  --navy-200:#5e84ae; --navy-100:#92afc9; --navy-50:#c8d9e8;
+  --gold-500:#C9A84C; --gold-400:#d4b86a; --gold-300:#dfc989;
+  --gold-200:#ecdba8; --gold-100:#f7f0de; --gold-700:#a8862e;
+  --silver-400:#8a9bb0; --silver-300:#a8b8c8; --silver-200:#c4d0db;
+  --cream-100:#f5f0e8; --cream-50:#faf8f4;
+  --accent-subtle:rgba(201,168,76,.12);
+  --border-subtle:rgba(138,155,176,.18);
+  --border-gold:rgba(201,168,76,.3);
+  --font-d:'Raleway',sans-serif;
+  --font-b:'DM Sans',sans-serif;
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{display:flex;min-height:100vh;background:var(--navy-900);color:var(--cream-100);font-family:var(--font-b)}
+a{color:var(--gold-400);text-decoration:none}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  position:fixed;top:0;left:0;width:220px;height:100vh;
+  background:var(--navy-900);border-right:1px solid var(--border-subtle);
+  display:flex;flex-direction:column;z-index:100;overflow-y:auto;
+}
+.sidebar-brand{
+  padding:28px 24px 20px;border-bottom:1px solid var(--border-subtle);
+}
+.sidebar-logo{width:80px;height:80px;object-fit:contain;display:block;margin:0 auto 12px}
+.sidebar-name{
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream-100);text-align:center;line-height:1.4;
+}
+.sidebar-sub{
+  font-family:var(--font-d);font-size:9px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold-500);text-align:center;margin-top:4px;
+}
+.sidebar-nav{list-style:none;padding:16px 0;flex:1}
+.sidebar-nav a{
+  display:block;padding:9px 24px;
+  font-family:var(--font-d);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--silver-400);transition:all .15s;
+  border-left:2px solid transparent;
+}
+.sidebar-nav a:hover,.sidebar-nav a.active{
+  color:var(--gold-400);border-left-color:var(--gold-500);
+  background:var(--accent-subtle);
+}
+.sidebar-nav .section-group{
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--navy-200);padding:16px 24px 6px;
+}
+.sidebar-footer{
+  padding:20px 24px;border-top:1px solid var(--border-subtle);
+  font-family:var(--font-b);font-size:11px;color:var(--silver-400);
+  line-height:1.6;
+}
+
+/* ── MAIN CONTENT ── */
+.main{margin-left:220px;flex:1;padding:0}
+
+/* ── SECTION LAYOUT ── */
+.section{padding:72px 64px;border-bottom:1px solid var(--border-subtle)}
+.section:last-child{border-bottom:none}
+.section-eyebrow{
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);
+  margin-bottom:12px;
+}
+.section-title{
+  font-family:var(--font-d);font-size:clamp(28px,3vw,40px);font-weight:600;
+  letter-spacing:-.02em;color:var(--cream-100);line-height:1.1;
+  margin-bottom:16px;
+}
+.section-desc{
+  font-family:var(--font-b);font-size:16px;color:var(--silver-300);
+  line-height:1.7;max-width:64ch;margin-bottom:48px;
+}
+
+/* ── OVERVIEW ── */
+.hero{
+  padding:80px 64px 72px;
+  background:var(--navy-800);
+  border-bottom:1px solid var(--border-subtle);
+  display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;
+}
+.hero-logo{width:160px;height:160px;object-fit:contain;filter:drop-shadow(0 8px 32px rgba(201,168,76,.25))}
+.hero-tagline{
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);
+  margin-bottom:10px;
+}
+.hero-name{
+  font-family:var(--font-d);font-size:clamp(36px,4vw,56px);font-weight:700;
+  letter-spacing:-.02em;line-height:1.0;color:var(--cream-100);
+  margin-bottom:6px;
+}
+.hero-sub{
+  font-family:var(--font-d);font-size:clamp(18px,2vw,24px);font-weight:300;
+  letter-spacing:.05em;color:var(--gold-400);margin-bottom:20px;
+}
+.hero-desc{font-family:var(--font-b);font-size:16px;color:var(--silver-300);line-height:1.7;max-width:56ch}
+.hero-meta{
+  display:flex;gap:40px;margin-top:32px;padding-top:32px;
+  border-top:1px solid var(--border-subtle);
+}
+.hero-meta-item label{
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);
+  display:block;margin-bottom:4px;
+}
+.hero-meta-item span{font-family:var(--font-b);font-size:14px;color:var(--cream-100)}
+
+/* ── COLORS ── */
+.color-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px;margin-bottom:40px}
+.swatch{
+  cursor:pointer;transition:transform .15s;
+  position:relative;
+}
+.swatch:hover{transform:scale(1.03);z-index:2}
+.swatch-chip{height:80px;width:100%}
+.swatch-info{
+  padding:10px 12px;background:var(--navy-700);
+  border:1px solid var(--border-subtle);border-top:none;
+}
+.swatch-name{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-100);display:block}
+.swatch-hex{font-family:var(--font-b);font-size:11px;color:var(--silver-400);margin-top:2px;display:block}
+.swatch-var{font-family:var(--font-b);font-size:9px;color:var(--navy-200);margin-top:1px;display:block}
+.copied-toast{
+  position:fixed;bottom:32px;left:50%;transform:translateX(-50%);
+  background:var(--gold-500);color:var(--navy-900);
+  font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:12px 28px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:999;
+}
+.copied-toast.show{opacity:1}
+
+/* ── TYPOGRAPHY ── */
+.type-scale{display:flex;flex-direction:column;gap:0}
+.type-row{
+  display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:baseline;
+  padding:20px 0;border-bottom:1px solid var(--border-subtle);
+}
+.type-meta{flex-shrink:0}
+.type-label{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-500);display:block}
+.type-spec{font-family:var(--font-b);font-size:11px;color:var(--silver-400);margin-top:3px;display:block;line-height:1.5}
+.font-pair{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+.font-card{background:var(--navy-700);border:1px solid var(--border-subtle);padding:32px}
+.font-card-name{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:16px}
+.font-card-alpha{font-size:32px;line-height:1.3;color:var(--cream-100);margin-bottom:12px}
+.font-card-sentence{font-size:14px;color:var(--silver-300);line-height:1.6}
+
+/* ── LOGO ── */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:40px}
+.logo-bg{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;gap:20px}
+.logo-bg img{width:100px;height:100px;object-fit:contain}
+.logo-bg-label{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:inherit;opacity:.6}
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:3px}
+.do-block,.dont-block{padding:24px 28px;background:var(--navy-700);border:1px solid var(--border-subtle)}
+.do-block{border-top:2px solid #2e8b57}
+.dont-block{border-top:2px solid #8b2e2e}
+.rule-head{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+.do-block .rule-head{color:#4ade80}
+.dont-block .rule-head{color:#f87171}
+.rule-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.rule-list li{font-family:var(--font-b);font-size:13px;color:var(--silver-300);padding-left:16px;position:relative;line-height:1.5}
+.rule-list li::before{position:absolute;left:0;top:0}
+.do-block .rule-list li::before{content:'✓';color:#4ade80}
+.dont-block .rule-list li::before{content:'✕';color:#f87171}
+
+/* ── VOICE ── */
+.voice-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-bottom:48px}
+.pillar{background:var(--navy-700);border:1px solid var(--border-subtle);padding:28px 24px}
+.pillar-name{font-family:var(--font-d);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:10px}
+.pillar-def{font-family:var(--font-b);font-size:13px;color:var(--silver-300);line-height:1.6}
+.voice-compare{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:24px}
+.voice-ex{padding:28px 32px}
+.voice-ex--bad{background:rgba(139,46,46,.12);border:1px solid rgba(248,113,113,.2)}
+.voice-ex--good{background:rgba(46,139,87,.08);border:1px solid rgba(74,222,128,.2)}
+.voice-ex-label{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px}
+.voice-ex--bad .voice-ex-label{color:#f87171}
+.voice-ex--good .voice-ex-label{color:#4ade80}
+.voice-ex-text{font-family:var(--font-b);font-size:14px;color:var(--cream-100);line-height:1.7;font-style:italic}
+.avoid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:3px}
+.avoid-tag{
+  background:var(--navy-700);border:1px solid var(--border-subtle);padding:14px 18px;
+  font-family:var(--font-b);font-size:13px;color:var(--silver-300);
+  display:flex;align-items:center;gap:10px;
+}
+.avoid-tag::before{content:'✕';color:#f87171;font-size:11px;font-weight:700;flex-shrink:0}
+
+/* ── COMPONENTS ── */
+.comp-group{margin-bottom:48px}
+.comp-group-label{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:20px;display:block}
+.btn-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+  padding:14px 32px;transition:all .15s;border:none;
+  text-decoration:none;white-space:nowrap;
+}
+.btn-primary{background:var(--gold-500);color:var(--navy-900)}
+.btn-primary:hover{background:var(--gold-400);box-shadow:0 0 24px rgba(201,168,76,.25)}
+.btn-outline{background:transparent;color:var(--gold-500);border:1px solid var(--gold-500)}
+.btn-outline:hover{background:var(--accent-subtle)}
+.btn-ghost{background:transparent;color:var(--cream-100);border:1px solid var(--border-subtle);padding:13px 24px}
+.btn-ghost:hover{border-color:var(--silver-300)}
+.badge{
+  display:inline-block;font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;
+  border:1px solid var(--border-gold);color:var(--gold-400);background:var(--accent-subtle);
+}
+.badge-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:3px}
+.dest-card{background:var(--navy-700);border:1px solid var(--border-subtle);overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.dest-card:hover{border-color:var(--border-gold);box-shadow:0 0 24px rgba(201,168,76,.12)}
+.dest-card-img{width:100%;height:180px;background:var(--navy-600);display:flex;align-items:center;justify-content:center}
+.dest-card-img-placeholder{font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-400)}
+.dest-card-body{padding:24px}
+.dest-card-cat{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);margin-bottom:8px}
+.dest-card-title{font-family:var(--font-d);font-size:20px;font-weight:600;color:var(--cream-100);margin-bottom:10px;line-height:1.2}
+.dest-card-desc{font-family:var(--font-b);font-size:13px;color:var(--silver-300);line-height:1.6;margin-bottom:20px}
+.dest-card-cta{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-500);display:flex;align-items:center;gap:8px}
+.dest-card-cta::after{content:'→'}
+
+/* ── BUSINESS CARD ── */
+.card-preview{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;max-width:800px}
+.bc-wrap{perspective:1000px}
+.bc-label{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:12px}
+.bc{width:350px;height:200px;position:relative;border:1px solid var(--border-gold);box-shadow:0 16px 48px rgba(0,0,0,.5),0 0 32px rgba(201,168,76,.1)}
+.bc-front{
+  background:var(--navy-800);width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+  position:relative;overflow:hidden;padding:24px;
+}
+.bc-front::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-500),transparent);
+}
+.bc-front::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-500),transparent);
+}
+.bc-logo{width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(201,168,76,.3))}
+.bc-name{font-family:var(--font-d);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-100);margin-top:10px}
+.bc-title{font-family:var(--font-d);font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-400);margin-top:3px}
+.bc-back{
+  background:var(--navy-800);width:100%;height:100%;
+  display:flex;flex-direction:column;justify-content:center;padding:28px 32px;
+  position:relative;overflow:hidden;
+}
+.bc-back::before{content:'';position:absolute;top:0;left:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--gold-500),transparent)}
+.bc-back-logo{font-family:var(--font-d);font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-100);margin-bottom:16px;opacity:.5}
+.bc-contact{display:flex;flex-direction:column;gap:7px}
+.bc-contact-item{display:flex;align-items:center;gap:10px}
+.bc-contact-label{font-family:var(--font-d);font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);width:36px;flex-shrink:0}
+.bc-contact-val{font-family:var(--font-b);font-size:11px;color:var(--silver-300)}
+.bc-tagline-bottom{
+  position:absolute;bottom:20px;right:24px;
+  font-family:var(--font-d);font-size:7px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-700)
+}
+
+/* ── EMAIL SIGNATURE ── */
+.sig-preview{background:var(--cream-50);padding:32px;max-width:580px;margin-bottom:24px}
+.sig{display:flex;gap:24px;align-items:flex-start}
+.sig-logo-wrap{flex-shrink:0}
+.sig-logo-img{width:56px;height:56px;object-fit:contain}
+.sig-divider-v{width:1px;background:var(--border-gold);align-self:stretch;flex-shrink:0}
+.sig-info{}
+.sig-name{font-family:var(--font-d);font-size:16px;font-weight:700;letter-spacing:.04em;color:var(--navy-800)}
+.sig-title{font-family:var(--font-d);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-700);margin-top:2px}
+.sig-company{font-family:var(--font-d);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-500);margin-top:1px}
+.sig-contacts{margin-top:12px;display:flex;flex-direction:column;gap:3px}
+.sig-contact-row{font-family:var(--font-b);font-size:12px;color:var(--navy-500);display:flex;gap:6px}
+.sig-contact-row span:first-child{font-weight:500;color:var(--navy-400)}
+.sig-cta-wrap{margin-top:14px;padding-top:14px;border-top:1px solid rgba(201,168,76,.3)}
+.sig-cta{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-700);text-decoration:none}
+.sig-code{
+  background:var(--navy-700);border:1px solid var(--border-subtle);
+  padding:20px 24px;font-family:monospace;font-size:12px;color:var(--silver-300);
+  white-space:pre-wrap;word-break:break-all;max-width:100%;position:relative;overflow-x:auto;
+}
+.copy-btn{
+  background:var(--gold-500);color:var(--navy-900);border:none;
+  font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 20px;cursor:pointer;transition:background .15s;display:block;margin-top:12px;
+}
+.copy-btn:hover{background:var(--gold-400)}
+
+/* ── SOCIAL ── */
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+.social-card{aspect-ratio:1;background:var(--navy-800);border:1px solid var(--border-subtle);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden}
+.social-card-cat{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);margin-bottom:8px}
+.social-card-title{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--cream-100);line-height:1.15;margin-bottom:10px}
+.social-card-body{font-family:var(--font-b);font-size:12px;color:var(--silver-300);line-height:1.6;margin-bottom:16px}
+.social-card-handle{font-family:var(--font-d);font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-700)}
+.social-card-img{position:absolute;top:0;left:0;right:0;height:55%;background:var(--navy-600);display:flex;align-items:center;justify-content:center}
+.social-card-img-placeholder{font-family:var(--font-d);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-400)}
+.social-card-overlay{position:absolute;top:45%;left:0;right:0;bottom:0;background:linear-gradient(0deg,var(--navy-800) 0%,transparent 100%)}
+.social-card-quote{aspect-ratio:1;background:var(--navy-800);border:1px solid var(--border-gold);display:flex;flex-direction:column;justify-content:center;padding:36px;position:relative}
+.social-card-quote::before{content:'"';font-family:var(--font-d);font-size:96px;font-weight:700;color:var(--gold-500);opacity:.15;position:absolute;top:-10px;left:24px;line-height:1}
+.social-quote-text{font-family:var(--font-d);font-size:17px;font-weight:400;font-style:italic;color:var(--cream-100);line-height:1.55;margin-bottom:20px;position:relative;z-index:1}
+.social-quote-attr{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500)}
+.social-story{aspect-ratio:9/16;background:var(--navy-800);border:1px solid var(--border-subtle);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;max-height:360px}
+.social-story-img{position:absolute;top:0;left:0;right:0;height:70%;background:var(--navy-600);display:flex;align-items:center;justify-content:center}
+.social-story-overlay{position:absolute;top:50%;left:0;right:0;bottom:0;background:linear-gradient(0deg,var(--navy-900) 0%,transparent 100%)}
+.social-story-logo{width:40px;height:40px;object-fit:contain;margin-bottom:12px;position:relative;z-index:1}
+.social-story-title{font-family:var(--font-d);font-size:20px;font-weight:700;color:var(--cream-100);line-height:1.2;margin-bottom:8px;position:relative;z-index:1}
+.social-story-cta{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);position:relative;z-index:1}
+</style>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <img src="assets/logo.png" class="sidebar-logo" alt="Hit Your Mark Travel">
+    <div class="sidebar-name">Hit Your Mark<br>Travel</div>
+    <div class="sidebar-sub">Brand Toolkit v1.0</div>
+  </div>
+  <nav>
+    <ul class="sidebar-nav">
+      <li class="section-group">Foundation</li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#colors">Colors</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li class="section-group">Identity</li>
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#voice">Voice &amp; Tone</a></li>
+      <li class="section-group">Components</li>
+      <li><a href="#components">UI Components</a></li>
+      <li class="section-group">Templates</li>
+      <li><a href="#bizcard">Business Card</a></li>
+      <li><a href="#email">Email Signature</a></li>
+      <li><a href="#social">Social Templates</a></li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    Mark Sole<br>Founder &amp; Travel Director<br>
+    <a href="mailto:mark@hymtravel.com" style="color:var(--gold-500)">mark@hymtravel.com</a>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero" id="overview">
+    <img src="assets/logo.png" class="hero-logo" alt="Hit Your Mark Travel logo">
+    <div>
+      <div class="hero-tagline">Brand Toolkit — May 2026</div>
+      <h1 class="hero-name">Hit Your Mark<br>Travel</h1>
+      <div class="hero-sub">Dream It. Aim It. Book It.</div>
+      <p class="hero-desc">A single-agent luxury travel firm designing journeys for the time-poor, taste-rich traveler. Every asset in this toolkit is calibrated to one promise: precise, considered, world-class travel — delivered without the B.S.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><label>Agent</label><span>Mark Sole</span></div>
+        <div class="hero-meta-item"><label>Title</label><span>Founder &amp; Travel Director</span></div>
+        <div class="hero-meta-item"><label>Web</label><span>hymtravel.com</span></div>
+        <div class="hero-meta-item"><label>Phone</label><span>(408) 568-1404</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <section class="section" id="colors">
+    <div class="section-eyebrow">Foundation 01</div>
+    <h2 class="section-title">Color System</h2>
+    <p class="section-desc">Three signature colors drawn directly from the logo — navy for authority, gold for excellence, silver for precision. Click any swatch to copy the hex value.</p>
+
+    <div style="margin-bottom:12px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500)">Brand Primaries</div>
+    <div class="color-grid">
+      <div class="swatch" onclick="copyColor('#0d1b2a','Navy 800')"><div class="swatch-chip" style="background:#0d1b2a;border:1px solid var(--border-subtle)"></div><div class="swatch-info"><span class="swatch-name">Navy</span><span class="swatch-hex">#0d1b2a</span><span class="swatch-var">--navy-800</span></div></div>
+      <div class="swatch" onclick="copyColor('#080f1a','Navy 900')"><div class="swatch-chip" style="background:#080f1a;border:1px solid var(--border-subtle)"></div><div class="swatch-info"><span class="swatch-name">Navy Deep</span><span class="swatch-hex">#080f1a</span><span class="swatch-var">--navy-900</span></div></div>
+      <div class="swatch" onclick="copyColor('#1a2d45','Navy 600')"><div class="swatch-chip" style="background:#1a2d45"></div><div class="swatch-info"><span class="swatch-name">Navy Elevated</span><span class="swatch-hex">#1a2d45</span><span class="swatch-var">--navy-600</span></div></div>
+      <div class="swatch" onclick="copyColor('#243d5c','Navy 500')"><div class="swatch-chip" style="background:#243d5c"></div><div class="swatch-info"><span class="swatch-name">Navy Mid</span><span class="swatch-hex">#243d5c</span><span class="swatch-var">--navy-500</span></div></div>
+      <div class="swatch" onclick="copyColor('#C9A84C','Gold 500')"><div class="swatch-chip" style="background:#C9A84C"></div><div class="swatch-info"><span class="swatch-name">Gold — Primary</span><span class="swatch-hex">#C9A84C</span><span class="swatch-var">--gold-500</span></div></div>
+      <div class="swatch" onclick="copyColor('#d4b86a','Gold 400')"><div class="swatch-chip" style="background:#d4b86a"></div><div class="swatch-info"><span class="swatch-name">Gold Light</span><span class="swatch-hex">#d4b86a</span><span class="swatch-var">--gold-400</span></div></div>
+      <div class="swatch" onclick="copyColor('#a8862e','Gold 700')"><div class="swatch-chip" style="background:#a8862e"></div><div class="swatch-info"><span class="swatch-name">Gold Deep</span><span class="swatch-hex">#a8862e</span><span class="swatch-var">--gold-700</span></div></div>
+      <div class="swatch" onclick="copyColor('#8a9bb0','Silver 400')"><div class="swatch-chip" style="background:#8a9bb0"></div><div class="swatch-info"><span class="swatch-name">Silver — Primary</span><span class="swatch-hex">#8a9bb0</span><span class="swatch-var">--silver-400</span></div></div>
+      <div class="swatch" onclick="copyColor('#a8b8c8','Silver 300')"><div class="swatch-chip" style="background:#a8b8c8"></div><div class="swatch-info"><span class="swatch-name">Silver Light</span><span class="swatch-hex">#a8b8c8</span><span class="swatch-var">--silver-300</span></div></div>
+      <div class="swatch" onclick="copyColor('#c4d0db','Silver 200')"><div class="swatch-chip" style="background:#c4d0db"></div><div class="swatch-info"><span class="swatch-name">Silver Pale</span><span class="swatch-hex">#c4d0db</span><span class="swatch-var">--silver-200</span></div></div>
+      <div class="swatch" onclick="copyColor('#f5f0e8','Cream 100')"><div class="swatch-chip" style="background:#f5f0e8"></div><div class="swatch-info" style="background:var(--navy-800)"><span class="swatch-name">Cream</span><span class="swatch-hex">#f5f0e8</span><span class="swatch-var">--cream-100</span></div></div>
+      <div class="swatch" onclick="copyColor('#faf8f4','Cream 50')"><div class="swatch-chip" style="background:#faf8f4;border:1px solid var(--border-subtle)"></div><div class="swatch-info" style="background:var(--navy-800)"><span class="swatch-name">Cream Off-White</span><span class="swatch-hex">#faf8f4</span><span class="swatch-var">--cream-50</span></div></div>
+    </div>
+
+    <div style="margin-bottom:12px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-top:40px">Usage on Dark</div>
+    <div style="background:var(--navy-800);border:1px solid var(--border-subtle);padding:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div><div style="font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-bottom:8px">Primary Text</div><div style="font-family:var(--font-d);font-size:28px;font-weight:600;color:#f5f0e8">Cream #f5f0e8</div></div>
+      <div><div style="font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-bottom:8px">Secondary Text</div><div style="font-family:var(--font-b);font-size:16px;color:#a8b8c8;line-height:1.6">Silver #a8b8c8 — for body copy, captions, supporting info.</div></div>
+      <div><div style="font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-bottom:8px">Accent / CTA</div><div style="font-family:var(--font-d);font-size:18px;font-weight:700;color:#C9A84C">Gold #C9A84C — links, CTAs, highlights.</div></div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="section" id="typography">
+    <div class="section-eyebrow">Foundation 02</div>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Two typefaces. Raleway for all display, headings, and brand voice — geometric, precise, distinctive. DM Sans for body, captions, and UI — clean, readable, efficient. No exceptions.</p>
+
+    <div class="font-pair">
+      <div class="font-card">
+        <div class="font-card-name">Raleway — Display &amp; Headings</div>
+        <div class="font-card-alpha" style="font-family:var(--font-d);font-weight:700">AaBbCcDdEeFfGg<br><span style="font-weight:300">HhIiJjKkLlMmNn</span></div>
+        <div class="font-card-sentence" style="font-family:var(--font-d);font-weight:500;letter-spacing:.04em">The villa sits on a coral cliff above Petit Cul-de-Sac.</div>
+        <div style="margin-top:12px;font-family:var(--font-d);font-size:10px;color:var(--silver-400)">Weights used: 300 Light · 400 Regular · 500 Medium · 600 SemiBold · 700 Bold · 800 ExtraBold</div>
+      </div>
+      <div class="font-card">
+        <div class="font-card-name">DM Sans — Body &amp; UI</div>
+        <div class="font-card-alpha" style="font-family:var(--font-b);font-weight:400">AaBbCcDdEeFfGg<br><span style="font-weight:300">HhIiJjKkLlMmNn</span></div>
+        <div class="font-card-sentence" style="font-family:var(--font-b)">Booking engines sell inventory. We design journeys. A global network that gets clients access no algorithm can replicate.</div>
+        <div style="margin-top:12px;font-family:var(--font-b);font-size:10px;color:var(--silver-400)">Weights used: 300 Light · 400 Regular · 500 Medium · 600 SemiBold</div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-top:40px">
+      <div class="type-row"><div class="type-meta"><span class="type-label">Display</span><span class="type-spec">Raleway 700<br>88px / −0.02em</span></div><div style="font-family:var(--font-d);font-size:clamp(40px,5vw,72px);font-weight:700;letter-spacing:-.02em;line-height:1;color:var(--cream-100)">Destinations</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">H1</span><span class="type-spec">Raleway 700<br>64px / −0.02em</span></div><div style="font-family:var(--font-d);font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-.02em;color:var(--cream-100)">Design Your Journey</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">H2</span><span class="type-spec">Raleway 600<br>48px / −0.02em</span></div><div style="font-family:var(--font-d);font-size:clamp(26px,3vw,38px);font-weight:600;letter-spacing:-.02em;color:var(--cream-100)">The Aegean in Private Charter</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">H3</span><span class="type-spec">Raleway 600<br>36px / −0.02em</span></div><div style="font-family:var(--font-d);font-size:clamp(22px,2.5vw,30px);font-weight:600;letter-spacing:-.01em;color:var(--cream-100)">Bhutan in Shoulder Season</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">Label</span><span class="type-spec">Raleway 700<br>11px / 0.22em caps</span></div><div style="font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500)">Honeymoons &amp; Romance</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">Body Lg</span><span class="type-spec">DM Sans 400<br>18px / 1.7</span></div><div style="font-family:var(--font-b);font-size:18px;color:var(--silver-300);line-height:1.7;max-width:60ch">The villa sits on a coral cliff above Petit Cul-de-Sac, with a private path down to the reef. Your chef arrives at six, the wine is already chilled, and the only decision left is which direction to swim.</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">Body</span><span class="type-spec">DM Sans 400<br>16px / 1.7</span></div><div style="font-family:var(--font-b);font-size:16px;color:var(--silver-300);line-height:1.7;max-width:60ch">We don't pitch, we don't oversell, and we don't use exclamation points to manufacture excitement. We state things plainly because we know what we're talking about.</div></div>
+      <div class="type-row"><div class="type-meta"><span class="type-label">Caption</span><span class="type-spec">DM Sans 400<br>13px / 1.6</span></div><div style="font-family:var(--font-b);font-size:13px;color:var(--silver-400);line-height:1.6">Villa rental includes daily housekeeping, private chef service, and airport transfer. Rates available upon inquiry.</div></div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section class="section" id="logo">
+    <div class="section-eyebrow">Identity 01</div>
+    <h2 class="section-title">Logo Usage</h2>
+    <p class="section-desc">The shield and compass rose is the brand mark. Use it with confidence and precision — it has presence. Don't crowd it, invert it, or decorate around it.</p>
+
+    <div class="logo-grid">
+      <div class="logo-bg" style="background:var(--navy-800);border:1px solid var(--border-subtle)"><img src="assets/logo.png" alt="logo"><span class="logo-bg-label" style="color:var(--silver-400)">On Navy — Primary use</span></div>
+      <div class="logo-bg" style="background:#f5f0e8;border:1px solid #ddd"><img src="assets/logo.png" alt="logo"><span class="logo-bg-label" style="color:#8a9bb0">On Cream</span></div>
+      <div class="logo-bg" style="background:#fff;border:1px solid #ddd"><img src="assets/logo.png" alt="logo"><span class="logo-bg-label" style="color:#8a9bb0">On White</span></div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-block">
+        <div class="rule-head">Do</div>
+        <ul class="rule-list">
+          <li>Use on deep navy — this is the home environment</li>
+          <li>Maintain clear space equal to the logo's width on all sides</li>
+          <li>Use full mark on dark or light neutral backgrounds only</li>
+          <li>Scale proportionally, never distort</li>
+          <li>Use the gold drop shadow on dark backgrounds at small sizes</li>
+        </ul>
+      </div>
+      <div class="dont-block">
+        <div class="rule-head">Don't</div>
+        <ul class="rule-list">
+          <li>Place on busy photography without a dark overlay</li>
+          <li>Add outlines, drop shadows, or effects not in this guide</li>
+          <li>Recreate or redraw any element of the shield or compass</li>
+          <li>Use on colored backgrounds — only navy, white, or cream</li>
+          <li>Rotate, skew, or stretch in any direction</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICE & TONE -->
+  <section class="section" id="voice">
+    <div class="section-eyebrow">Identity 02</div>
+    <h2 class="section-title">Voice &amp; Tone</h2>
+    <p class="section-desc">Four pillars govern every word we publish. The test: would this appear in Condé Nast Traveller or Departures? If not, rewrite it.</p>
+
+    <div class="voice-pillars">
+      <div class="pillar"><div class="pillar-name">Warm</div><div class="pillar-def">A friend who's been everywhere. Genuine, conversational, never scripted. You love this work and it shows in specific, human detail.</div></div>
+      <div class="pillar"><div class="pillar-name">Confident</div><div class="pillar-def">World traveler with a lifetime of experience. You state things plainly. No pitching, no overselling, no exclamation points.</div></div>
+      <div class="pillar"><div class="pillar-name">Editorial</div><div class="pillar-def">Long, considered sentences. Specific sensory detail over generic adjectives. Name the reef, the wine, the view — not the "stunning ocean vistas."</div></div>
+      <div class="pillar"><div class="pillar-name">Never Salesy</div><div class="pillar-def">No "Book now." No "Don't miss out." No urgency theater. The only CTA is "Plan My Trip" — an invitation, not a transaction.</div></div>
+    </div>
+
+    <div style="margin-bottom:12px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500)">Before &amp; After</div>
+    <div class="voice-compare">
+      <div class="voice-ex voice-ex--bad"><div class="voice-ex-label">✕ Never write this</div><div class="voice-ex-text">"Stunning luxury villa with amazing ocean views! Book now before it's gone — this incredible deal won't last. Limited availability for your dream vacation in paradise!"</div></div>
+      <div class="voice-ex voice-ex--good"><div class="voice-ex-label">✓ Write this instead</div><div class="voice-ex-text">"The villa sits on a coral cliff above Petit Cul-de-Sac, with a private path down to the reef. Your chef arrives at six, the wine is already chilled, and the only decision left is which direction to swim."</div></div>
+    </div>
+    <div class="voice-compare" style="margin-top:3px">
+      <div class="voice-ex voice-ex--bad"><div class="voice-ex-label">✕ Never write this</div><div class="voice-ex-text">"We offer amazing travel deals for the whole family! Our incredible team is ready to book your trip of a lifetime at unbeatable rates. Contact us today!"</div></div>
+      <div class="voice-ex voice-ex--good"><div class="voice-ex-label">✓ Write this instead</div><div class="voice-ex-text">"Booking engines sell inventory. We design journeys. A lifetime of traveling and a global network that gets our clients perks and access simply not available any other way."</div></div>
+    </div>
+
+    <div style="margin-top:40px;margin-bottom:16px;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500)">Words &amp; Phrases to Avoid</div>
+    <div class="avoid-grid">
+      <div class="avoid-tag">Amazing / Incredible / Stunning</div>
+      <div class="avoid-tag">Dream vacation</div>
+      <div class="avoid-tag">Trip of a lifetime</div>
+      <div class="avoid-tag">Paradise</div>
+      <div class="avoid-tag">Book now!</div>
+      <div class="avoid-tag">Don't miss out</div>
+      <div class="avoid-tag">Limited time offer</div>
+      <div class="avoid-tag">Rates from…</div>
+      <div class="avoid-tag">Save up to…</div>
+      <div class="avoid-tag">Unbeatable deals</div>
+      <div class="avoid-tag">Exclamation points (ever)</div>
+      <div class="avoid-tag">We offer… / We provide…</div>
+    </div>
+
+    <div style="margin-top:40px;background:var(--navy-700);border:1px solid var(--border-gold);padding:32px;max-width:640px">
+      <div style="font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-bottom:12px">The One CTA Rule</div>
+      <div style="font-family:var(--font-d);font-size:28px;font-weight:600;color:var(--cream-100);margin-bottom:10px">Plan My Trip</div>
+      <div style="font-family:var(--font-b);font-size:14px;color:var(--silver-300);line-height:1.7">This is the only call-to-action. It's an invitation, not a transaction. It implies collaboration, expertise, and trust — not urgency or scarcity. Do not write "Book Now," "Contact Us," or "Get a Quote."</div>
+    </div>
+  </section>
+
+  <!-- COMPONENTS -->
+  <section class="section" id="components">
+    <div class="section-eyebrow">Components 01</div>
+    <h2 class="section-title">UI Components</h2>
+    <p class="section-desc">A precise, minimal component system built on the brand tokens. Dark surfaces, gold accents, tracked uppercase labels.</p>
+
+    <div class="comp-group">
+      <span class="comp-group-label">Buttons</span>
+      <div class="btn-row">
+        <a href="#" class="btn btn-primary">Plan My Trip</a>
+        <a href="#" class="btn btn-outline">View Destinations</a>
+        <a href="#" class="btn btn-ghost">Learn More</a>
+        <a href="#" class="btn btn-primary" style="padding:10px 20px;font-size:10px">Plan My Trip</a>
+      </div>
+      <div style="margin-top:16px;font-family:var(--font-b);font-size:12px;color:var(--silver-400);line-height:1.6">Primary: gold fill on navy · Outline: gold stroke, transparent · Ghost: silver stroke · All: Raleway 700 uppercase tracked · CTA always "Plan My Trip"</div>
+    </div>
+
+    <div class="comp-group">
+      <span class="comp-group-label">Category Badges</span>
+      <div class="badge-row">
+        <span class="badge">Honeymoons</span>
+        <span class="badge">Safari &amp; Wildlife</span>
+        <span class="badge">River &amp; Ocean Cruises</span>
+        <span class="badge">Family Luxury</span>
+        <span class="badge">Food &amp; Wine</span>
+        <span class="badge">Hidden Gems</span>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <span class="comp-group-label">Destination Cards</span>
+      <div class="card-grid">
+        <div class="dest-card">
+          <div class="dest-card-img"><span class="dest-card-img-placeholder">Destination Photography</span></div>
+          <div class="dest-card-body">
+            <div class="dest-card-cat">Cruises &amp; Yachts</div>
+            <div class="dest-card-title">Private Charter, Aegean Sea</div>
+            <div class="dest-card-desc">Seven days, eight islands, one crew who knows every hidden cove between Santorini and Patmos. Meals are aboard by a Michelin-trained chef.</div>
+            <div class="dest-card-cta">Plan My Trip</div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-card-img"><span class="dest-card-img-placeholder">Destination Photography</span></div>
+          <div class="dest-card-body">
+            <div class="dest-card-cat">Safari &amp; Wildlife</div>
+            <div class="dest-card-title">Botswana, Before the Crowd</div>
+            <div class="dest-card-desc">Moremi Game Reserve in shoulder season — when the herds are still there and the camps are running at half capacity. That's the version worth booking.</div>
+            <div class="dest-card-cta">Plan My Trip</div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-card-img"><span class="dest-card-img-placeholder">Destination Photography</span></div>
+          <div class="dest-card-body">
+            <div class="dest-card-cat">Hidden Gems</div>
+            <div class="dest-card-title">Bhutan, The Interior</div>
+            <div class="dest-card-desc">Not the Tiger's Nest, every tour company does that. A monastery road trip through Bumthang Valley, hosted by a local family who've guided quietly for twenty years.</div>
+            <div class="dest-card-cta">Plan My Trip</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <span class="comp-group-label">Navigation</span>
+      <div style="background:var(--navy-800);border:1px solid var(--border-subtle);padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:32px">
+        <img src="assets/logo.png" style="height:52px;width:52px;object-fit:contain;flex-shrink:0" alt="logo">
+        <div style="display:flex;gap:32px;list-style:none;align-items:center">
+          <a style="font-family:var(--font-d);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-300);text-decoration:none;padding:20px 0;border-bottom:2px solid transparent;transition:all .15s">Destinations</a>
+          <a style="font-family:var(--font-d);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-400);text-decoration:none;padding:20px 0;border-bottom:2px solid var(--gold-500)">Honeymoons</a>
+          <a style="font-family:var(--font-d);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-300);text-decoration:none;padding:20px 0;border-bottom:2px solid transparent">About</a>
+          <a style="font-family:var(--font-d);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-300);text-decoration:none;padding:20px 0;border-bottom:2px solid transparent">Journal</a>
+        </div>
+        <a class="btn btn-outline" style="font-size:10px;padding:10px 20px;flex-shrink:0;text-decoration:none">Plan My Trip</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS CARD -->
+  <section class="section" id="bizcard">
+    <div class="section-eyebrow">Templates 01</div>
+    <h2 class="section-title">Business Card</h2>
+    <p class="section-desc">3.5 × 2 inches. Printed on heavyweight stock with a matte navy finish and soft-touch laminate. The gold may be specified as metallic foil on press.</p>
+
+    <div class="card-preview">
+      <div>
+        <div class="bc-label">Front</div>
+        <div class="bc">
+          <div class="bc-front">
+            <img src="assets/logo.png" class="bc-logo" alt="logo">
+            <div class="bc-name">Mark Sole</div>
+            <div class="bc-title">Founder &amp; Travel Director</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="bc-label">Back</div>
+        <div class="bc">
+          <div class="bc-back">
+            <div class="bc-back-logo">Hit Your Mark Travel</div>
+            <div class="bc-contact">
+              <div class="bc-contact-item"><span class="bc-contact-label">Web</span><span class="bc-contact-val">hymtravel.com</span></div>
+              <div class="bc-contact-item"><span class="bc-contact-label">Email</span><span class="bc-contact-val">mark@hymtravel.com</span></div>
+              <div class="bc-contact-item"><span class="bc-contact-label">Phone</span><span class="bc-contact-val">(408) 568-1404</span></div>
+            </div>
+            <div class="bc-tagline-bottom">Dream It. Aim It. Book It.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SIGNATURE -->
+  <section class="section" id="email">
+    <div class="section-eyebrow">Templates 02</div>
+    <h2 class="section-title">Email Signature</h2>
+    <p class="section-desc">Light background version for email clients. Copy the HTML below directly into your email settings.</p>
+
+    <div class="sig-preview">
+      <div class="sig">
+        <div class="sig-logo-wrap"><img src="assets/logo.png" class="sig-logo-img" alt="Hit Your Mark Travel"></div>
+        <div class="sig-divider-v"></div>
+        <div class="sig-info">
+          <div class="sig-name">Mark Sole</div>
+          <div class="sig-title">Founder &amp; Travel Director</div>
+          <div class="sig-company">Hit Your Mark Travel</div>
+          <div class="sig-contacts">
+            <div class="sig-contact-row"><span>P</span><span>(408) 568-1404</span></div>
+            <div class="sig-contact-row"><span>E</span><span>mark@hymtravel.com</span></div>
+            <div class="sig-contact-row"><span>W</span><span>hymtravel.com</span></div>
+          </div>
+          <div class="sig-cta-wrap">
+            <a href="https://www.hymtravel.com" class="sig-cta">Plan Your Next Journey →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sig-code" class="sig-code">&lt;table cellpadding="0" cellspacing="0" border="0" style="font-family:'DM Sans',Arial,sans-serif;"&gt;
+  &lt;tr&gt;
+    &lt;td style="padding-right:20px;vertical-align:top"&gt;
+      &lt;img src="https://www.hymtravel.com/logo.png" width="56" height="56" alt="Hit Your Mark Travel"&gt;
+    &lt;/td&gt;
+    &lt;td style="padding-left:20px;border-left:1px solid rgba(201,168,76,0.4);vertical-align:top"&gt;
+      &lt;p style="margin:0;font-family:'Raleway',Arial,sans-serif;font-size:16px;font-weight:700;color:#0d1b2a"&gt;Mark Sole&lt;/p&gt;
+      &lt;p style="margin:2px 0 0;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#a8862e"&gt;Founder &amp;amp; Travel Director&lt;/p&gt;
+      &lt;p style="margin:2px 0 0;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#243d5c"&gt;Hit Your Mark Travel&lt;/p&gt;
+      &lt;p style="margin:12px 0 2px;font-size:12px;color:#5e84ae"&gt;P: (408) 568-1404&lt;/p&gt;
+      &lt;p style="margin:0 0 2px;font-size:12px;color:#5e84ae"&gt;E: mark@hymtravel.com&lt;/p&gt;
+      &lt;p style="margin:0 0 12px;font-size:12px;color:#5e84ae"&gt;W: hymtravel.com&lt;/p&gt;
+      &lt;p style="margin:0;padding-top:12px;border-top:1px solid rgba(201,168,76,0.3)"&gt;
+        &lt;a href="https://www.hymtravel.com" style="font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#a8862e;text-decoration:none"&gt;Plan Your Next Journey →&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</div>
+    <button class="copy-btn" onclick="copySignature()">Copy Signature HTML</button>
+  </section>
+
+  <!-- SOCIAL TEMPLATES -->
+  <section class="section" id="social">
+    <div class="section-eyebrow">Templates 03</div>
+    <h2 class="section-title">Social Templates</h2>
+    <p class="section-desc">Instagram-first. Every post follows the brand voice — editorial, specific, never salesy. Photography carries the emotion; copy anchors it in place.</p>
+
+    <div class="social-grid">
+      <div class="social-card">
+        <div class="social-card-img"><span class="social-card-img-placeholder">Destination Photo</span></div>
+        <div class="social-card-overlay"></div>
+        <div style="position:relative;z-index:1">
+          <div class="social-card-cat">Safari &amp; Wildlife</div>
+          <div class="social-card-title">Botswana Before the Crowd</div>
+          <div class="social-card-body">Moremi in shoulder season. When the herds are still there and the camps are half-empty.</div>
+          <div class="social-card-handle">@hymtravel</div>
+        </div>
+      </div>
+
+      <div class="social-card-quote">
+        <div class="social-quote-text">"Booking engines sell inventory. We design journeys."</div>
+        <div class="social-quote-attr">Hit Your Mark Travel</div>
+        <div style="position:absolute;bottom:28px;right:28px"><img src="assets/logo.png" style="width:36px;height:36px;object-fit:contain;opacity:.6" alt=""></div>
+      </div>
+
+      <div class="social-story">
+        <div class="social-story-img"><span style="font-family:var(--font-d);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-400)">Full-Bleed Photo</span></div>
+        <div class="social-story-overlay"></div>
+        <img src="assets/logo.png" class="social-story-logo" alt="">
+        <div class="social-story-title">A Private Chef.<br>A Coral Cliff.<br>St. Barth's.</div>
+        <div class="social-story-cta">Plan My Trip — hymtravel.com</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;font-family:var(--font-b);font-size:13px;color:var(--silver-400);line-height:1.7;max-width:60ch">Caption style: Lead with place and detail. No hashtag spam — max 5 targeted hashtags, lowercase, end of caption. Handle: @hymtravel. Always end with "Plan My Trip" link in bio reference or direct link.</div>
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div class="copied-toast" id="toast">Copied</div>
+
+<script>
+// Active nav on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.sidebar-nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.25 });
+sections.forEach(s => observer.observe(s));
+
+// Smooth scroll
+navLinks.forEach(l => {
+  l.addEventListener('click', e => {
+    e.preventDefault();
+    const id = l.getAttribute('href').slice(1);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Copy color
+function copyColor(hex, name) {
+  navigator.clipboard.writeText(hex).catch(() => {});
+  const t = document.getElementById('toast');
+  t.textContent = hex + ' copied';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// Copy signature
+function copySignature() {
+  const raw = document.getElementById('sig-code').innerText;
+  const decoded = raw.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+  navigator.clipboard.writeText(decoded).catch(() => {});
+  const t = document.getElementById('toast');
+  t.textContent = 'Signature HTML copied';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+</script>
+</body>
+</html>

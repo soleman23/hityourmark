@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Case for Shoulder Season — Hit Your Mark Travel Journal</title>
+<meta name="description" content="Peak season is the most crowded, most expensive version of most destinations. Here's why the months on either side almost always produce the better trip — and the specific windows worth knowing.">
+<link rel="stylesheet" href="../homepage/style.css">
+<style>
+.post-hero {
+  position:relative;min-height:70vh;margin-top:76px;
+  background:var(--navy-800);display:flex;align-items:flex-end;overflow:hidden;
+}
+.post-hero__bg {
+  position:absolute;inset:0;background:var(--navy-800);
+  display:flex;align-items:center;justify-content:center;
+}
+.post-hero__bg-ph {
+  font-family:var(--font-d);font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:rgba(138,155,176,.25);
+  text-align:center;padding:24px;
+}
+.post-hero__watermark {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(440px,55vw);height:min(440px,55vw);object-fit:contain;opacity:.04;pointer-events:none;
+}
+.post-hero__overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,15,26,.1) 0%,rgba(8,15,26,.5) 45%,rgba(8,15,26,.95) 100%);
+}
+.post-hero__content { position:relative;z-index:1;width:100%;padding:0 52px 72px;max-width:900px }
+.post-hero__meta { display:flex;align-items:center;gap:20px;margin-bottom:20px;flex-wrap:wrap }
+.post-hero__cat {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);
+}
+.post-hero__dot { width:3px;height:3px;background:var(--silver-400);border-radius:50% }
+.post-hero__date { font-family:var(--font-b);font-size:12px;color:var(--silver-400) }
+.post-hero__read { font-family:var(--font-b);font-size:12px;color:var(--silver-400) }
+.post-hero__headline {
+  font-family:var(--font-d);font-size:clamp(28px,5vw,58px);font-weight:700;
+  letter-spacing:-.03em;line-height:1.05;color:var(--cream-100);margin-bottom:20px;
+}
+.post-hero__deck {
+  font-family:var(--font-b);font-size:18px;color:var(--silver-300);line-height:1.65;max-width:56ch;
+}
+.breadcrumb {
+  padding:18px 52px;background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);
+  display:flex;align-items:center;gap:10px;
+}
+.breadcrumb a, .breadcrumb span {
+  font-family:var(--font-d);font-size:10px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);transition:color .15s;text-decoration:none;
+}
+.breadcrumb a:hover { color:var(--gold-400) }
+.breadcrumb__sep { color:var(--text-muted);font-size:12px;opacity:.5 }
+.breadcrumb__current { color:var(--text-secondary) }
+.post-layout {
+  display:grid;grid-template-columns:1fr min(720px,100%) 1fr;
+  background:var(--bg-page);padding:80px 0;
+}
+.post-layout > * { grid-column:2 }
+.post-byline {
+  display:flex;align-items:center;gap:18px;
+  padding-bottom:36px;margin-bottom:40px;border-bottom:1px solid var(--border-subtle);
+}
+.post-byline__avatar {
+  width:48px;height:48px;border-radius:50%;background:var(--bg-card);
+  border:1px solid var(--border-gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;
+}
+.post-byline__avatar-ph {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold-700);
+}
+.post-byline__info { display:flex;flex-direction:column;gap:3px }
+.post-byline__name {
+  font-family:var(--font-d);font-size:12px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary);
+}
+.post-byline__role { font-family:var(--font-b);font-size:12px;color:var(--text-muted) }
+.post-byline__share { margin-left:auto;display:flex;align-items:center;gap:12px }
+.post-byline__share-label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);
+}
+.share-btn {
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border-subtle);background:transparent;cursor:pointer;
+  color:var(--silver-400);transition:all .15s;
+}
+.share-btn:hover { border-color:var(--border-gold);color:var(--gold-400) }
+.share-btn svg { width:14px;height:14px }
+.post-body {
+  font-family:var(--font-b);font-size:17px;color:var(--text-secondary);line-height:1.8;
+}
+.post-body p { margin-bottom:24px }
+.post-body p:last-child { margin-bottom:0 }
+.post-body h2 {
+  font-family:var(--font-d);font-size:clamp(20px,2.5vw,28px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin:52px 0 18px;line-height:1.15;
+}
+.post-body strong { color:var(--text-primary);font-weight:600 }
+.post-body ul {
+  padding-left:0;list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px;
+}
+.post-body ul li {
+  font-size:16px;color:var(--text-secondary);line-height:1.7;padding-left:20px;position:relative;
+}
+.post-body ul li::before {
+  content:'';position:absolute;left:0;top:11px;width:5px;height:1px;background:var(--gold-500);
+}
+.post-pullquote {
+  border-left:2px solid var(--gold-500);padding:8px 0 8px 32px;margin:44px 0;
+}
+.post-pullquote p {
+  font-family:var(--font-d);font-size:clamp(18px,2vw,24px);font-weight:600;
+  font-style:italic;letter-spacing:-.01em;line-height:1.4;color:var(--text-primary);margin-bottom:0;
+}
+
+/* Shoulder reference table */
+.shoulder-table { margin:36px 0;border:1px solid var(--border-subtle) }
+.shoulder-row {
+  display:grid;grid-template-columns:160px 1fr 1fr;
+  border-bottom:1px solid var(--border-subtle);
+}
+.shoulder-row:first-child { background:var(--bg-surface) }
+.shoulder-row:last-child { border-bottom:none }
+.shoulder-cell {
+  padding:16px 20px;
+  font-family:var(--font-b);font-size:13px;color:var(--text-secondary);line-height:1.5;
+  border-right:1px solid var(--border-subtle);
+}
+.shoulder-cell:last-child { border-right:none }
+.shoulder-cell--header {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);
+}
+.shoulder-cell--dest {
+  font-family:var(--font-d);font-size:13px;font-weight:700;color:var(--cream-100);
+}
+
+.post-callout {
+  background:var(--bg-elevated);border:1px solid var(--border-gold);padding:32px 36px;margin:40px 0;
+}
+.post-callout__label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);margin-bottom:14px;display:block;
+}
+.post-callout p {
+  font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:0;
+}
+.post-divider { border:none;border-top:1px solid var(--border-subtle);margin:56px 0 }
+.post-footer {
+  padding-top:40px;border-top:1px solid var(--border-subtle);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;
+}
+.post-footer__tags { display:flex;gap:8px;flex-wrap:wrap;align-items:center }
+.post-footer__tags-label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);margin-right:4px;
+}
+.post-tag {
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--border-subtle);color:var(--text-muted);padding:6px 14px;
+}
+.post-footer__share { display:flex;align-items:center;gap:10px }
+.post-footer__share-label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-muted);
+}
+.author-card {
+  background:var(--bg-surface);border-top:1px solid var(--border-subtle);
+  border-bottom:1px solid var(--border-subtle);padding:64px 52px;
+}
+.author-card__inner {
+  max-width:720px;margin:0 auto;display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start;
+}
+.author-card__photo {
+  width:80px;height:80px;border-radius:50%;background:var(--bg-card);
+  border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;
+}
+.author-card__photo-ph {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold-700);text-align:center;padding:8px;
+}
+.author-card__label { margin-bottom:6px }
+.author-card__name {
+  font-family:var(--font-d);font-size:22px;font-weight:700;
+  letter-spacing:-.01em;color:var(--text-primary);margin-bottom:4px;
+}
+.author-card__title {
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-bottom:16px;
+}
+.author-card__bio {
+  font-family:var(--font-b);font-size:14px;color:var(--text-secondary);
+  line-height:1.75;margin-bottom:20px;max-width:52ch;
+}
+.author-card__cta {
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold-500);text-decoration:none;transition:gap .15s;
+}
+.author-card__cta:hover { gap:14px }
+.author-card__cta::after { content:'→' }
+.related { padding:80px 52px;background:var(--bg-page);border-top:1px solid var(--border-subtle) }
+.related__header { display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px }
+.related__title {
+  font-family:var(--font-d);font-size:clamp(20px,2vw,28px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin-top:10px;
+}
+.related__all {
+  font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-500);display:inline-flex;align-items:center;gap:6px;transition:gap .15s;
+  white-space:nowrap;text-decoration:none;
+}
+.related__all:hover { gap:12px }
+.related__all::after { content:'→' }
+.related__grid { display:grid;grid-template-columns:repeat(3,1fr);gap:3px }
+.article-card {
+  background:var(--bg-elevated);border:1px solid var(--border-subtle);
+  display:flex;flex-direction:column;overflow:hidden;transition:border-color .2s;text-decoration:none;
+}
+.article-card:hover { border-color:var(--border-gold) }
+.article-card__image { height:200px;background:var(--bg-card);overflow:hidden;position:relative }
+.article-card__image-inner {
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(138,155,176,.3);transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.article-card:hover .article-card__image-inner { transform:scale(1.04) }
+.article-card__body { padding:28px 28px 32px;flex:1;display:flex;flex-direction:column }
+.article-card__meta { display:flex;align-items:center;gap:14px;margin-bottom:12px }
+.article-card__cat {
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);
+}
+.article-card__date { font-family:var(--font-b);font-size:11px;color:var(--text-muted) }
+.article-card__title {
+  font-family:var(--font-d);font-size:18px;font-weight:700;letter-spacing:-.01em;
+  line-height:1.25;color:var(--text-primary);margin-bottom:10px;
+}
+.article-card__excerpt {
+  font-family:var(--font-b);font-size:13px;color:var(--text-secondary);line-height:1.65;flex:1;margin-bottom:20px;
+}
+.article-card__read {
+  font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-500);display:inline-flex;align-items:center;gap:6px;align-self:flex-start;transition:gap .15s;
+}
+.article-card:hover .article-card__read { gap:12px }
+.article-card__read::after { content:'→' }
+.post-plan-cta {
+  padding:80px 52px;background:var(--bg-surface);border-top:1px solid var(--border-subtle);
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+}
+.post-plan-cta__title {
+  font-family:var(--font-d);font-size:clamp(22px,2.5vw,32px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin-bottom:14px;
+}
+.post-plan-cta__body {
+  font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.75;margin-bottom:28px;max-width:46ch;
+}
+.post-plan-cta__btn {
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--gold-500);color:var(--navy-900);padding:16px 36px;text-decoration:none;transition:all .15s;
+}
+.post-plan-cta__btn:hover { background:var(--gold-400) }
+.post-plan-cta__details { display:flex;flex-direction:column;gap:3px }
+.post-plan-cta__detail-item {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;background:var(--bg-elevated);border:1px solid var(--border-subtle);
+}
+.post-plan-cta__detail-item label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);
+}
+.post-plan-cta__detail-item span { font-family:var(--font-b);font-size:13px;color:var(--text-secondary) }
+.label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);
+}
+@media (max-width:900px) {
+  .post-hero__content { padding:0 28px 56px }
+  .post-layout { padding:52px 0;grid-template-columns:28px 1fr 28px }
+  .breadcrumb { padding:14px 28px }
+  .related { padding:60px 28px }
+  .related__grid { grid-template-columns:1fr }
+  .related__header { flex-direction:column;align-items:flex-start;gap:12px }
+  .post-plan-cta { grid-template-columns:1fr;gap:40px;padding:60px 28px }
+  .author-card { padding:48px 28px }
+  .author-card__inner { grid-template-columns:1fr }
+  .shoulder-row { grid-template-columns:1fr }
+  .shoulder-cell { border-right:none;border-bottom:1px solid var(--border-subtle) }
+  .shoulder-cell:last-child { border-bottom:none }
+}
+@media (max-width:600px) {
+  .post-hero__headline { font-size:clamp(26px,8vw,44px) }
+  .post-byline__share { display:none }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="../HYM Home.html" class="nav__logo">
+    <img src="../assets/logo.png" class="nav__logo-img" alt="Hit Your Mark Travel">
+    <span class="nav__logo-text">Hit Your Mark Travel</span>
+  </a>
+  <div class="nav__links">
+    <a href="../HYM Destinations.html" class="nav__link">Destinations</a>
+    <a href="../HYM Experiences.html" class="nav__link">Experiences</a>
+    <a href="../HYM Journal.html" class="nav__link" style="color:var(--gold-400)">Journal</a>
+    <a href="../HYM About.html" class="nav__link">About</a>
+    <a href="../HYM Plan Your Trip.html" class="nav__cta">Plan Your Trip</a>
+  </div>
+</nav>
+
+<section class="post-hero">
+  <div class="post-hero__bg">
+    <span class="post-hero__bg-ph">Article Photography<br>Travel Season · Shoulder</span>
+  </div>
+  <img src="../assets/logo.png" class="post-hero__watermark" alt="" aria-hidden="true">
+  <div class="post-hero__overlay"></div>
+  <div class="post-hero__content">
+    <div class="post-hero__meta">
+      <span class="post-hero__cat">Season</span>
+      <span class="post-hero__dot"></span>
+      <span class="post-hero__date">May 2026</span>
+      <span class="post-hero__dot"></span>
+      <span class="post-hero__read">8 min read</span>
+    </div>
+    <h1 class="post-hero__headline">The Case for Shoulder Season</h1>
+    <p class="post-hero__deck">Peak season is the most crowded, most expensive version of most destinations. The months on either side almost always produce the better trip — if you know which windows to use and which to avoid.</p>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <a href="../HYM Home.html">Home</a>
+  <span class="breadcrumb__sep">›</span>
+  <a href="../HYM Journal.html">Travel Journal</a>
+  <span class="breadcrumb__sep">›</span>
+  <a href="../HYM Journal.html">Season</a>
+  <span class="breadcrumb__sep">›</span>
+  <span class="breadcrumb__current">The Case for Shoulder Season</span>
+</div>
+
+<article class="post-layout">
+
+  <div class="post-byline">
+    <div class="post-byline__avatar"><span class="post-byline__avatar-ph">MS</span></div>
+    <div class="post-byline__info">
+      <span class="post-byline__name">Mark Sole</span>
+      <span class="post-byline__role">Founder &amp; Travel Director, Hit Your Mark Travel</span>
+    </div>
+    <div class="post-byline__share">
+      <span class="post-byline__share-label">Share</span>
+      <button class="share-btn" aria-label="Copy link" onclick="copyLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="post-body">
+    <p>
+      Peak season exists because someone decided the best time to travel to a place and then told everyone. The Amalfi Coast in July. The Amalfi Coast in July. The Amalfi Coast in July. By the time enough people have read enough articles saying "July is the best time to visit the Amalfi Coast," July is the worst time to visit the Amalfi Coast — gridlocked roads, fully booked restaurants, hotels at maximum rates, and a 35°C heat index that keeps you inside from noon to four. The landscape is identical in May. The coast is 22°C and empty. The restaurant you couldn't book in July has a table.
+    </p>
+    <p>
+      This is not a minor optimization. For most destinations in Europe, Asia, and the Americas, traveling in the shoulder window — the four to six weeks on either side of peak — produces a materially different trip: lower cost, more availability, better service ratios (fewer guests competing for the same staff), and often the same or better weather. The exceptions are real and worth knowing. But they are exceptions.
+    </p>
+  </div>
+
+  <blockquote class="post-pullquote">
+    <p>"The landscape is identical in May. The coast is 22°C and the restaurant you couldn't book in July has a table."</p>
+  </blockquote>
+
+  <div class="post-body">
+
+    <h2>What shoulder season actually delivers</h2>
+
+    <p>
+      The shoulder advantage is three things working together. First, crowd reduction: the difference between July in Positano and late September in Positano is not marginal — it is a different quality of experience. The narrow streets are walkable. The boat you wanted is available. The terrace table at the hotel is yours without a 7am booking sprint. The town feels like the place that inspired the photographs rather than a managed version of them.
+    </p>
+    <p>
+      Second, rate compression. Luxury hotel rates at many European properties are 20 to 40 percent lower in shoulder than peak, and availability opens in room categories that are sold out during the high season. The Four Seasons Firenze in Florence in May — one of the finest hotels in Italy, in a 15th-century convent with extraordinary gardens — has availability and competitive rates. In June through August, it is effectively sold out at peak rates weeks or months in advance.
+    </p>
+    <p>
+      Third, service quality. This is less discussed than cost or availability, but it matters significantly at the high end. A 100-room property operating at 40 percent occupancy in shoulder season can give every guest a level of attention that the same property at 95 percent occupancy in peak season cannot. The staff ratio is the same; the guest load is not.
+    </p>
+
+    <h2>The specific windows by region</h2>
+
+    <p>
+      <strong>Mediterranean and Southern Europe:</strong> The two best shoulder windows are April through mid-June (spring: warm but not hot, wildflowers still out in Tuscany, the tourist infrastructure fully open but not overwhelmed) and late September through October (the heat has broken, the summer crowds are gone, but the sun is still reliable and the water is still warm from four months of summer). October is a specific category — see the separate piece on the Mediterranean in October — but the full shoulder window from April 15 through June 15 and September 15 through October 31 represents the best overall value period for most of Europe.
+    </p>
+    <p>
+      <strong>Japan:</strong> The cherry blossom window in late March through mid-April is technically shoulder — not summer peak — but it has become so heavily visited that it operates at peak dynamics in the main spots (Kyoto, Tokyo). The genuine shoulder for Japan is May (after the cherry blossoms, before summer heat and humidity) and October (after summer, comfortable temperatures, autumn foliage still a few weeks away). Both months offer the full Japan experience without the compression of the most popular travel windows.
+    </p>
+    <p>
+      <strong>Southeast Asia:</strong> The dry season (November through March) is peak in most of Thailand and Vietnam. The genuine shoulder is October/November in the transition between monsoon and dry season — the landscape is still green from the rains, the temperatures are manageable, the hotel rates haven't risen to December levels, and the beaches in the Gulf of Thailand are entering their prime window. April and May are genuinely hot and to be avoided; June begins the rainy season.
+    </p>
+    <p>
+      <strong>Caribbean and Mexico:</strong> The shoulder is May and early June, before hurricane season becomes statistically relevant (late June through October is the official season; the peak risk window is August through October). May is dry, less crowded than winter peak, and 15 to 25 percent cheaper across most of the region. The Riviera Maya in May is a genuinely excellent time — water temperature optimal, relatively quiet, good rates.
+    </p>
+    <p>
+      <strong>East Africa safari:</strong> The two peak windows are July through October (long dry season, the Masai Mara migration river crossings) and late January through February (calving season in the Ndutu plains of the southern Serengeti). The shoulder between those two — November and March through June — offers good game viewing with lower rates and fewer vehicles at sightings. The genuine rainy season in April is the one to avoid in most camps, though some lodge areas remain excellent.
+    </p>
+
+    <h2>A quick reference</h2>
+
+    <div class="shoulder-table">
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--header">Destination</div>
+        <div class="shoulder-cell shoulder-cell--header">Peak (avoid for crowds)</div>
+        <div class="shoulder-cell shoulder-cell--header">Shoulder (use instead)</div>
+      </div>
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--dest">Amalfi / Tuscany</div>
+        <div class="shoulder-cell">Jul–Aug</div>
+        <div class="shoulder-cell">Apr–May and Sep–Oct</div>
+      </div>
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--dest">Paris</div>
+        <div class="shoulder-cell">Jul–Aug and holiday weeks</div>
+        <div class="shoulder-cell">Mar–Apr and Oct–Nov</div>
+      </div>
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--dest">Greek Islands</div>
+        <div class="shoulder-cell">Jul–Aug</div>
+        <div class="shoulder-cell">May–Jun and Sep–Oct</div>
+      </div>
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--dest">Kyoto / Japan</div>
+        <div class="shoulder-cell">Late Mar–Apr (cherry blossom) and Aug</div>
+        <div class="shoulder-cell">May and Oct</div>
+      </div>
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--dest">Bali</div>
+        <div class="shoulder-cell">Jul–Aug</div>
+        <div class="shoulder-cell">Apr–May and Sep–Oct</div>
+      </div>
+      <div class="shoulder-row">
+        <div class="shoulder-cell shoulder-cell--dest">Caribbean / Mexico</div>
+        <div class="shoulder-cell">Dec–Mar and US holiday weeks</div>
+        <div class="shoulder-cell">Apr–Jun (avoid Sep–Oct hurricane risk)</div>
+      </div>
+    </div>
+
+    <h2>The genuine exceptions — shoulder for a reason</h2>
+
+    <p>
+      Shoulder is not always a free upgrade. Some destinations have light seasons because the experience genuinely degrades, and traveling in those windows means accepting real tradeoffs rather than just fewer tourists.
+    </p>
+    <p>
+      The Caribbean hurricane season (late August through October) is the clearest example: the reduced rates come with meaningful weather risk, and some properties close or reduce operations. The rainy season in parts of East Africa closes camps entirely and makes some reserves inaccessible. Iceland in April can still have significant road closures in the highlands. Iceland in November is genuinely dark and cold in ways that are fine for northern lights travel but wrong for the summer-landscape Iceland most travelers are imagining.
+    </p>
+    <p>
+      The test to apply: is the shoulder season light because there are fewer tourists, or because something about the destination is worse? If the answer is the former, shoulder is almost certainly the better choice. If it's the latter, understand specifically what degrades and decide whether that matters for what you're planning.
+    </p>
+
+  </div>
+
+  <div class="post-callout">
+    <span class="post-callout__label">How we use this in planning</span>
+    <p>When we build a client itinerary, the first timing question is whether the peak dates they're considering are peak for a functional reason — wildlife migration, a specific festival, a climate window — or peak because that's when everyone else goes. More often than the second. When we can shift a trip by two or three weeks into shoulder, we almost always recommend it. The destination doesn't change. The trip does.</p>
+  </div>
+
+  <hr class="post-divider">
+
+  <div class="post-footer">
+    <div class="post-footer__tags">
+      <span class="post-footer__tags-label">Filed under</span>
+      <span class="post-tag">Season</span>
+      <span class="post-tag">Planning Advice</span>
+      <span class="post-tag">Europe</span>
+      <span class="post-tag">Asia</span>
+    </div>
+    <div class="post-footer__share">
+      <span class="post-footer__share-label">Share</span>
+      <button class="share-btn" aria-label="Copy link" onclick="copyLink()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+    </div>
+  </div>
+
+</article>
+
+<section class="author-card">
+  <div class="author-card__inner">
+    <div class="author-card__photo"><span class="author-card__photo-ph">Mark<br>Sole</span></div>
+    <div>
+      <div class="label author-card__label">About the Author</div>
+      <h2 class="author-card__name">Mark Sole</h2>
+      <div class="author-card__title">Founder &amp; Travel Director</div>
+      <p class="author-card__bio">Timing is the most consistent variable we can control in trip planning, and the one most clients initially underweight. The shoulder windows in this piece are drawn from twenty years of observing what changes — and what doesn't — when you shift a trip by three weeks in either direction.</p>
+      <a href="../HYM About.html" class="author-card__cta">Learn more about Mark</a>
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="related__header">
+    <div>
+      <div class="label" style="margin-bottom:8px">Keep Reading</div>
+      <h2 class="related__title">More from the Journal</h2>
+    </div>
+    <a href="../HYM Journal.html" class="related__all">All Articles</a>
+  </div>
+  <div class="related__grid">
+    <a class="article-card" href="mediterranean-october.html">
+      <div class="article-card__image"><div class="article-card__image-inner" style="background:#1e1a10">Article Photography · Mediterranean</div></div>
+      <div class="article-card__body">
+        <div class="article-card__meta"><span class="article-card__cat">Season</span><span class="article-card__date">May 2026</span></div>
+        <h3 class="article-card__title">The Mediterranean in October</h3>
+        <p class="article-card__excerpt">The crowds have gone home. The sea is still 24°C. And the light — the specific low, amber light of Mediterranean October — is what every photographer has been trying to capture all year.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </a>
+    <a class="article-card" href="african-safari-calendar.html">
+      <div class="article-card__image"><div class="article-card__image-inner" style="background:#1a1e10">Article Photography · Africa · Safari</div></div>
+      <div class="article-card__body">
+        <div class="article-card__meta"><span class="article-card__cat">Season</span><span class="article-card__date">April 2026</span></div>
+        <h3 class="article-card__title">The African Safari Calendar: When to Go for What</h3>
+        <p class="article-card__excerpt">Africa's safari regions each run on their own seasonal logic. Here's the month-by-month breakdown — migration cycles, dry season windows, and why the green season is more compelling than most travelers realize.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </a>
+    <a class="article-card" href="what-a-travel-advisor-actually-does.html">
+      <div class="article-card__image"><div class="article-card__image-inner" style="background:#1c1e24">Article Photography · Planning</div></div>
+      <div class="article-card__body">
+        <div class="article-card__meta"><span class="article-card__cat">Planning Advice</span><span class="article-card__date">December 2025</span></div>
+        <h3 class="article-card__title">What a Travel Advisor Actually Does (And Why It's Worth It)</h3>
+        <p class="article-card__excerpt">The honest answer is less glamorous than the brochure version. Most of what we do is logistics, relationships, and knowing which questions to ask before you've thought to ask them.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="post-plan-cta">
+  <div>
+    <div class="label" style="margin-bottom:14px">Start the Conversation</div>
+    <h2 class="post-plan-cta__title">Ready to plan a trip the right way?</h2>
+    <p class="post-plan-cta__body">Tell me what you're after — the destination, the timing, the kind of experience you've been thinking about. We'll figure out the rest from there.</p>
+    <a href="../HYM Plan Your Trip.html" class="post-plan-cta__btn">Plan My Trip &nbsp;→</a>
+  </div>
+  <div class="post-plan-cta__details">
+    <div class="post-plan-cta__detail-item"><label>Response Time</label><span>Within 24 hours</span></div>
+    <div class="post-plan-cta__detail-item"><label>First Call</label><span>Complimentary consultation</span></div>
+    <div class="post-plan-cta__detail-item"><label>Destinations</label><span>All six continents</span></div>
+    <div class="post-plan-cta__detail-item"><label>Specialties</label><span>Safari, Luxury, Romance, Family</span></div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div>
+    <h2 class="newsletter__title">New articles,<br>delivered quietly.</h2>
+    <p class="newsletter__body">When a new piece goes up, we'll send it. No digest emails, no promotions. Just the writing.</p>
+  </div>
+  <div>
+    <div class="newsletter__form">
+      <input type="email" class="newsletter__input" placeholder="Your email address">
+      <button class="newsletter__submit" id="newsletterBtn">Subscribe</button>
+    </div>
+    <p class="newsletter__fine">By subscribing you agree to receive occasional emails from Hit Your Mark Travel. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div>
+      <img src="../assets/logo.png" class="footer__brand-logo" alt="Hit Your Mark Travel">
+      <div class="footer__tagline">Hit Your Mark Travel</div>
+      <div class="footer__contact">
+        <a href="tel:14085681404">(408) 568-1404</a><br>
+        <a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a><br>
+        <a href="https://www.hymtravel.com">hymtravel.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-title">Experiences</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="../HYM Experience Safari.html">Safari &amp; Wildlife</a></li>
+        <li><a class="footer__link" href="../HYM Experience Beach.html">Beach &amp; Island Escapes</a></li>
+        <li><a class="footer__link" href="../HYM Experiences.html">Cruises &amp; Yachts</a></li>
+        <li><a class="footer__link" href="../HYM Experience Wellness.html">Wellness &amp; Retreats</a></li>
+        <li><a class="footer__link" href="../HYM Experience Adventure.html">Adventure &amp; Active</a></li>
+        <li><a class="footer__link" href="../HYM Experience Culture.html">Culture &amp; History</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Destinations</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="../HYM Destination Africa.html">Africa</a></li>
+        <li><a class="footer__link" href="../HYM Destination Caribbean Mexico.html">Caribbean &amp; Mexico</a></li>
+        <li><a class="footer__link" href="../HYM Destination Europe.html">Europe</a></li>
+        <li><a class="footer__link" href="../HYM Destination Asia.html">Asia</a></li>
+        <li><a class="footer__link" href="../HYM Destination South Pacific.html">South Pacific</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Plan Your Trip</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="../HYM Plan Your Trip.html">Start Planning</a></li>
+        <li><a class="footer__link" href="../HYM Plan Your Trip.html">Group Travel Inquiry</a></li>
+        <li><a class="footer__link" href="../HYM Plan Your Trip.html">Honeymoon Inquiry</a></li>
+        <li><a class="footer__link" href="../HYM FAQ.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Company</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="../HYM About.html">About Mark</a></li>
+        <li><a class="footer__link" href="#">Travel Planning Process</a></li>
+        <li><a class="footer__link" href="../HYM Journal.html">Travel Journal</a></li>
+        <li><a class="footer__link" href="../HYM Privacy Policy.html">Privacy Policy</a></li>
+        <li><a class="footer__link" href="../HYM Terms and Conditions.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__legal">CA Seller of Travel: 2165910-50 &nbsp;·&nbsp; WA Seller of Travel: 605920581 &nbsp;·&nbsp; FL Seller of Travel: ST46122</div>
+    <div class="footer__copy">Hit Your Mark Travel © 2026</div>
+  </div>
+</footer>
+
+<script>
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+function copyLink() { navigator.clipboard.writeText(window.location.href).catch(()=>{}); }
+document.getElementById('newsletterBtn').addEventListener('click', function() {
+  const input = this.closest('.newsletter__form').querySelector('.newsletter__input');
+  if (!input.value.trim()) { input.focus(); return; }
+  input.value = ''; this.textContent = 'Subscribed ✓'; this.style.background = 'var(--gold-700)'; this.disabled = true;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patagonia — Hit Your Mark Travel</title>
+<meta name="description" content="Torres del Paine, Los Glaciares, El Chaltén, Tierra del Fuego, and the Beagle Channel. The end of the earth — planned around the weather windows, the right lodges, and the trekking that makes the distance worthwhile.">
+<link rel="stylesheet" href="homepage/style.css">
+<style>
+.breadcrumb{background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);padding:14px 52px;margin-top:76px}
+.breadcrumb__inner{display:flex;align-items:center;gap:10px;font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.breadcrumb__link{color:var(--text-muted);text-decoration:none;transition:color .15s}
+.breadcrumb__link:hover{color:var(--gold-400)}
+.breadcrumb__sep{color:var(--text-muted);font-size:10px}
+.breadcrumb__current{color:var(--gold-500)}
+.dest-hero{position:relative;min-height:72vh;background:var(--navy-800);display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center}
+.dest-hero__bg{position:absolute;inset:0;background:var(--navy-800);display:flex;align-items:center;justify-content:center}
+.dest-hero__bg-ph{font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(138,155,176,.2)}
+.dest-hero__watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(500px,62vw);height:min(500px,62vw);object-fit:contain;opacity:.04;pointer-events:none}
+.dest-hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,15,26,.1) 0%,rgba(8,15,26,.4) 40%,rgba(8,15,26,.9) 100%)}
+.dest-hero__content{position:relative;z-index:1;padding:0 52px;max-width:800px}
+.dest-hero__headline{font-family:var(--font-d);font-size:clamp(36px,6vw,72px);font-weight:700;letter-spacing:-.03em;line-height:1.0;color:var(--cream-100);margin-bottom:20px;margin-top:14px}
+.dest-hero__sub{font-family:var(--font-b);font-size:17px;color:var(--silver-300);line-height:1.75;max-width:54ch;margin:0 auto 36px}
+.dest-hero__ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary-gold{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--gold-500);color:var(--navy-900);padding:16px 36px;border:none;cursor:pointer;transition:all .15s;text-decoration:none}
+.btn-primary-gold:hover{background:var(--gold-400);box-shadow:0 0 32px rgba(201,168,76,.25)}
+.btn-ghost-gold{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:transparent;color:var(--cream-100);padding:15px 32px;border:1px solid rgba(255,255,255,.25);cursor:pointer;transition:all .15s;text-decoration:none}
+.btn-ghost-gold:hover{border-color:var(--gold-500);color:var(--gold-400)}
+.intro-section{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-surface);border-bottom:1px solid var(--border-subtle)}
+.intro-content{padding:72px 64px}
+.intro-title{font-family:var(--font-d);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary);margin-bottom:24px}
+.intro-body{font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.8;margin-bottom:18px}
+.intro-image{background:var(--bg-card);position:relative;display:flex;align-items:center;justify-content:center;min-height:480px;font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,155,176,.25)}
+.intro-image-label{position:absolute;bottom:20px;left:24px;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-700)}
+.places-section{padding:72px 52px;background:var(--bg-page)}
+.places-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:3px}
+.place-card{position:relative;overflow:hidden;cursor:pointer;background:var(--bg-card);display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none}
+.place-card--featured{grid-column:span 2}
+.place-card__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(138,155,176,.25);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.place-card:hover .place-card__ph{transform:scale(1.04)}
+.place-card__overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,15,26,.92) 0%,rgba(8,15,26,.2) 50%,transparent 100%);transition:opacity .3s}
+.place-card:hover .place-card__overlay{opacity:.7}
+.place-card__body{position:relative;z-index:1;padding:24px;border-top:1px solid transparent;transition:border-color .3s}
+.place-card:hover .place-card__body{border-color:rgba(201,168,76,.35)}
+.place-card__region{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);margin-bottom:6px}
+.place-card__name{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--cream-100);margin-bottom:8px}
+.place-card--featured .place-card__name{font-size:30px}
+.place-card__desc{font-family:var(--font-b);font-size:13px;color:var(--silver-300);line-height:1.55;margin-bottom:12px}
+.place-card__tags{display:flex;gap:6px;flex-wrap:wrap}
+.place-tag{font-family:var(--font-d);font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);color:var(--gold-400)}
+.place-card__arrow{position:absolute;bottom:24px;right:24px;z-index:2;font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-500);opacity:0;transition:opacity .2s}
+.place-card:hover .place-card__arrow{opacity:1}
+.itineraries-section{padding:72px 52px;background:var(--bg-surface);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+.itineraries-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.itin-card{display:grid;grid-template-columns:1fr 1fr;background:var(--bg-elevated);border:1px solid var(--border-subtle);overflow:hidden;transition:border-color .2s}
+.itin-card:hover{border-color:var(--border-gold)}
+.itin-image{min-height:260px;background:var(--bg-card);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(138,155,176,.25);padding:16px;text-align:center}
+.itin-body{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
+.itin-duration{font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:8px}
+.itin-name{font-family:var(--font-d);font-size:18px;font-weight:700;letter-spacing:-.01em;color:var(--text-primary);line-height:1.2;margin-bottom:10px}
+.itin-desc{font-family:var(--font-b);font-size:13px;color:var(--text-secondary);line-height:1.65;margin-bottom:14px}
+.itin-meta{display:flex;gap:16px;margin-bottom:14px;font-family:var(--font-d);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.itin-cta{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-500);display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;padding:0;transition:gap .15s}
+.itin-cta:hover{gap:12px}
+.itin-cta::after{content:'→'}
+.why-section{padding:72px 52px;background:var(--bg-page);border-bottom:1px solid var(--border-subtle)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.why-item{background:var(--bg-elevated);border:1px solid var(--border-subtle);padding:32px 28px;transition:border-color .2s}
+.why-item:hover{border-color:var(--border-gold)}
+.why-icon{width:44px;height:44px;border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold-500);font-size:18px}
+.why-title{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text-primary);margin-bottom:8px}
+.why-desc{font-family:var(--font-b);font-size:13px;color:var(--text-secondary);line-height:1.6}
+.seasons-strip{background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);padding:64px 52px}
+.seasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.season-item{padding:28px 28px;border:1px solid var(--border-subtle);background:var(--bg-elevated)}
+.season-item--best{border-color:var(--border-gold);background:var(--accent-subtle)}
+.season-name{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:8px}
+.season-item--best .season-name{color:var(--gold-500)}
+.season-months{font-family:var(--font-d);font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:10px}
+.season-desc{font-family:var(--font-b);font-size:13px;color:var(--text-muted);line-height:1.6}
+.season-badge{display:inline-block;margin-top:10px;font-family:var(--font-d);font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;background:var(--gold-500);color:var(--navy-900)}
+.testimonial-section{padding:80px 52px;background:var(--navy-800);border-bottom:1px solid var(--border-subtle);text-align:center}
+.testimonial-mark{font-family:var(--font-d);font-size:80px;font-weight:700;color:var(--gold-500);opacity:.2;line-height:1;margin-bottom:-20px}
+.testimonial-quote{font-family:var(--font-d);font-size:clamp(16px,2.2vw,22px);font-weight:400;font-style:italic;color:var(--cream-100);line-height:1.65;max-width:780px;margin:0 auto 24px}
+.testimonial-attr{font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-500)}
+.mark-note{padding:72px 52px;background:var(--bg-surface);border-bottom:1px solid var(--border-subtle)}
+.mark-note__grid{display:grid;grid-template-columns:auto 1fr;gap:48px;max-width:840px;margin:0 auto;align-items:start}
+.mark-note__photo{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(201,168,76,.2));flex-shrink:0}
+.mark-note__name{font-family:var(--font-d);font-size:16px;font-weight:700;color:var(--gold-500);margin-bottom:2px}
+.mark-note__title{font-family:var(--font-b);font-size:12px;color:var(--text-muted);letter-spacing:.04em;margin-bottom:20px}
+.mark-note__quote{font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.8;font-style:italic}
+.dest-cta{padding:96px 52px;background:var(--bg-page);text-align:center;border-bottom:1px solid var(--border-subtle)}
+.dest-cta__title{font-family:var(--font-d);font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary);margin-bottom:16px}
+.dest-cta__body{font-family:var(--font-b);font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:52ch;margin:0 auto 36px}
+.dest-cta__note{font-family:var(--font-b);font-size:12px;color:var(--text-muted);margin-top:16px;letter-spacing:.04em}
+@media(max-width:900px){
+  .breadcrumb{padding:12px 28px}.intro-section{grid-template-columns:1fr}.intro-content{padding:48px 28px}.intro-image{min-height:280px;aspect-ratio:16/9}.places-grid{grid-template-columns:1fr 1fr}.place-card--featured{grid-column:span 2}.itineraries-grid{grid-template-columns:1fr}.itin-card{grid-template-columns:1fr}.itin-image{min-height:180px}.why-grid{grid-template-columns:repeat(2,1fr)}.seasons-grid{grid-template-columns:1fr}.mark-note__grid{grid-template-columns:1fr;text-align:center}.mark-note__photo{margin:0 auto}.places-section,.itineraries-section,.why-section,.seasons-strip,.testimonial-section,.mark-note,.dest-cta{padding-left:28px;padding-right:28px}.dest-hero__content{padding:0 28px}
+}
+@media(max-width:540px){
+  .places-grid{grid-template-columns:1fr;grid-auto-rows:240px}.place-card--featured{grid-column:span 1}.why-grid{grid-template-columns:1fr}
+}
+.page-faq{padding:80px 52px;background:var(--bg-surface);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+.page-faq__header{max-width:640px;margin-bottom:48px}
+.page-faq__label{font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);margin-bottom:12px}
+.page-faq__title{font-family:var(--font-d);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary);margin-bottom:16px}
+.page-faq__sub{font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.7}
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.pf-item{background:var(--bg-elevated);border:1px solid var(--border-subtle);transition:border-color .2s}
+.pf-item.open{border-color:var(--border-gold)}
+.pf-q{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:24px 28px;cursor:pointer}
+.pf-q__text{font-family:var(--font-d);font-size:14px;font-weight:700;color:var(--text-primary);line-height:1.35}
+.pf-q__icon{width:28px;height:28px;flex-shrink:0;border:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:center;color:var(--gold-500);font-size:18px;line-height:1;transition:transform .2s,border-color .2s;margin-top:2px}
+.pf-item.open .pf-q__icon{transform:rotate(45deg);border-color:var(--border-gold)}
+.pf-a{display:none;padding:0 28px 24px;font-family:var(--font-b);font-size:14px;color:var(--text-secondary);line-height:1.75}
+.pf-item.open .pf-a{display:block}
+.page-faq__more{margin-top:36px;display:flex;align-items:center;gap:12px}
+.page-faq__more-link{font-family:var(--font-d);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-500);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .15s}
+.page-faq__more-link:hover{gap:10px}
+.page-faq__more-link::after{content:'→'}
+@media(max-width:768px){.pf-grid{grid-template-columns:1fr}.page-faq{padding:64px 28px}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="HYM Homepage.html"><img src="assets/logo.png" class="nav__logo" alt="Hit Your Mark Travel"></a>
+  <ul class="nav__links">
+    <li><a class="nav__link" href="HYM Experiences.html">Experiences</a></li>
+    <li><a class="nav__link" href="HYM Destinations.html" style="color:var(--gold-400);border-bottom-color:var(--gold-500)">Destinations</a></li>
+    <li><a class="nav__link" href="HYM About.html">About</a></li>
+    <li><a class="nav__link" href="HYM Journal.html">Travel Journal</a></li>
+    <li><a class="nav__link" href="HYM Contact.html">Contact</a></li>
+  </ul>
+  <a href="HYM Plan Your Trip.html" class="nav__cta">Plan My Trip</a>
+  <div class="nav__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a class="breadcrumb__link" href="HYM Homepage.html">Home</a>
+    <span class="breadcrumb__sep">›</span>
+    <a class="breadcrumb__link" href="HYM Destinations.html">Destinations</a>
+    <span class="breadcrumb__sep">›</span>
+    <a class="breadcrumb__link" href="HYM Destination South America.html">South America</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Patagonia</span>
+  </div>
+</div>
+
+<section class="dest-hero">
+  <div class="dest-hero__bg"><span class="dest-hero__bg-ph">Hero Photography · Patagonia</span></div>
+  <img src="assets/logo.png" class="dest-hero__watermark" alt="" aria-hidden="true">
+  <div class="dest-hero__overlay"></div>
+  <div class="dest-hero__content">
+    <div class="label">South America</div>
+    <h1 class="dest-hero__headline">The End of the Earth,<br>Worth Every Mile.</h1>
+    <p class="dest-hero__sub">Patagonia is the landscape that travelers consistently describe as having no reference point — the granite spires of Torres del Paine, the Perito Moreno glacier advancing six feet a day into Lago Argentino, the constant wind that makes the steppe feel actively alive. The planning work here is choosing the lodge-supported trek over the tent, the right week against weather variability, and the Chilean and Argentine sides as a combined circuit rather than separate trips.</p>
+    <div class="dest-hero__ctas">
+      <a href="HYM Plan Your Trip.html" class="btn-primary-gold">Plan a Patagonia Trip</a>
+      <a href="#places" class="btn-ghost-gold">Explore Patagonia ↓</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro-section">
+  <div class="intro-content">
+    <div class="label" style="margin-bottom:14px">The Region</div>
+    <h2 class="intro-title">Weather Is the Point,<br>Not the Problem.</h2>
+    <p class="intro-body">
+      Patagonia's weather is famously unpredictable — four seasons in a day is the cliché and it is accurate. The wind that scrapes the Torres del Paine valleys can reach 100 km/h in mid-summer; the same valley two hours later can be glass-still under sunshine. The mistake travelers make is to treat the variability as something to overcome. It isn't. It's what makes Patagonia feel genuinely wild rather than packaged. The planning work is positioning yourself in lodges close enough to the trailheads that you can move when the window opens and rest when it doesn't.
+    </p>
+    <p class="intro-body">
+      The lodge-supported trek (sleeping in mountain refuges along the W-circuit, hot showers, wine with dinner, no tent) is not a compromise version of Patagonia. The refuges inside Torres del Paine National Park are well-built, well-staffed, and the difference between sleeping in one and sleeping in a tent is significant in comfort but not in wilderness exposure — the trail by day is identical. For approximately 80% of travelers, the lodge-supported W-trek is the correct format. The tent version adds physical hardship without adding meaningful wilderness value for travelers who aren't already serious backcountry hikers.
+    </p>
+    <p class="intro-body">
+      The Chilean and Argentine sides of Patagonia are different countries with different geographies. Chile holds the Torres del Paine massif and the southern fjord-and-channel coastline. Argentina holds the Perito Moreno glacier, the Fitz Roy and Cerro Torre spires above El Chaltén, and Tierra del Fuego with the southernmost city in the world at Ushuaia. The combined circuit — Chilean Torres del Paine plus Argentine Perito Moreno plus Fitz Roy — is the comprehensive Patagonia experience. Doing only one side is a common compromise that loses half the landscape.
+    </p>
+  </div>
+  <div class="intro-image">
+    <span>Destination Photography<br>Torres del Paine · Chilean Patagonia</span>
+    <div class="intro-image-label">Torres del Paine · Chile</div>
+  </div>
+</section>
+
+<section class="places-section" id="places">
+  <div style="margin-bottom:40px">
+    <div class="label" style="margin-bottom:12px">Where We Send Clients</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary);margin-bottom:10px">Six Patagonian Landscapes Worth Planning Around</h2>
+    <p style="font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:54ch">Patagonia is divided unevenly between Chile and Argentina, with the genuinely extraordinary sites concentrated across a 500-mile corridor in the south. Each has a specific season, a specific lodge, and a version of the experience worth flying south for.</p>
+  </div>
+  <div class="places-grid">
+
+    <a class="place-card place-card--featured" href="HYM Plan Your Trip.html">
+      <div class="place-card__ph" style="background:#0a1018">Destination Photography · Torres del Paine</div>
+      <div class="place-card__overlay"></div>
+      <div class="place-card__body">
+        <div class="place-card__region">Chilean Patagonia</div>
+        <div class="place-card__name">Torres del Paine</div>
+        <div class="place-card__desc">The W-Trek and the full circuit (the O-Trek, 8–9 days around the Paine massif): lodge-supported options that eliminate the tent exist and produce a categorically different experience from camping. The Torres themselves at dawn from the refuge at the base of the ascent — the granite towers turn from black to amber in twenty minutes as the sun crests the eastern ridges and lights the west face. Los Cuernos (the Horns), the French Valley with its hanging glacier above the valley floor, Grey Glacier viewable by kayak across the lake from a lodge on its eastern shore. The signature Patagonia destination and the one that anchors most first-visit itineraries.</div>
+        <div class="place-card__tags">
+          <span class="place-tag">W-Trek</span>
+          <span class="place-tag">Towers at Dawn</span>
+          <span class="place-tag">Lodge Trek</span>
+          <span class="place-tag">November–March</span>
+        </div>
+      </div>
+      <div class="place-card__arrow">Explore →</div>
+    </a>
+
+    <a class="place-card" href="HYM Plan Your Trip.html">
+      <div class="place-card__ph" style="background:#14100a">Destination Photography · Perito Moreno</div>
+      <div class="place-card__overlay"></div>
+      <div class="place-card__body">
+        <div class="place-card__region">Argentine Patagonia</div>
+        <div class="place-card__name">Perito Moreno Glacier</div>
+        <div class="place-card__desc">One of the few glaciers in Patagonia that isn't retreating — it advances approximately six feet per day into Lago Argentino, where it calves dramatically off a face that stretches three miles wide and stands 250 feet above the water. Ice trekking on the glacier surface with crampons (one-hour and full-day options exist; the full-day is significantly more rewarding). The calving face is visible from a series of boardwalks at close range — masses of ice the size of buildings break off and crash into the lake with a delay between the visual and the sound that travelers consistently underestimate. Based out of El Calafate, an hour's drive from the glacier entrance.</div>
+        <div class="place-card__tags">
+          <span class="place-tag">Glacier Trek</span>
+          <span class="place-tag">Calving Face</span>
+          <span class="place-tag">Crampons</span>
+          <span class="place-tag">El Calafate</span>
+        </div>
+      </div>
+      <div class="place-card__arrow">Explore →</div>
+    </a>
+
+    <a class="place-card" href="HYM Plan Your Trip.html">
+      <div class="place-card__ph" style="background:#0e1018">Destination Photography · El Chaltén</div>
+      <div class="place-card__overlay"></div>
+      <div class="place-card__body">
+        <div class="place-card__region">Argentine Patagonia</div>
+        <div class="place-card__name">El Chaltén &amp; Fitz Roy</div>
+        <div class="place-card__desc">Argentina's trekking capital and the gateway to the Fitz Roy massif. Laguna de los Tres trail for the iconic Fitz Roy reflection at dawn — an 8-hour round trip that ascends 1,100 meters and ends at a glacial lake mirroring the granite spires. Laguna Torre for the Cerro Torre spire (a more technical climbing objective, but the trail to the viewpoint is more moderate). A village whose entire infrastructure — restaurants, gear shops, lodges, transport — is oriented toward trekkers rather than package tourists. Three to four nights here pairs naturally with three nights in El Calafate for the Perito Moreno glacier visit, connected by a 3-hour drive on Ruta 40.</div>
+        <div class="place-card__tags">
+          <span class="place-tag">Fitz Roy</span>
+          <span class="place-tag">Laguna de los Tres</span>
+          <span class="place-tag">Cerro Torre</span>
+          <span class="place-tag">El Chaltén</span>
+        </div>
+      </div>
+      <div class="place-card__arrow">Explore →</div>
+    </a>
+
+    <a class="place-card" href="HYM Plan Your Trip.html">
+      <div class="place-card__ph" style="background:#100e18">Destination Photography · Ushuaia</div>
+      <div class="place-card__overlay"></div>
+      <div class="place-card__body">
+        <div class="place-card__region">Tierra del Fuego</div>
+        <div class="place-card__name">Tierra del Fuego &amp; Ushuaia</div>
+        <div class="place-card__desc">The southernmost city in the world (54.8° S), and the embarkation point for Antarctic expedition cruises. The Beagle Channel by zodiac with a Magellanic penguin colony visible from the water (October to March). The Martial Glacier above the city, reached by chairlift to the base and a half-day hike to the snout. The Tren del Fin del Mundo — the End of the World train — through the forested approach to Tierra del Fuego National Park. Ushuaia adds two nights to a Patagonia itinerary and shifts the geographic feeling of the trip; for travelers planning to combine with an Antarctic cruise, this is the boarding port.</div>
+        <div class="place-card__tags">
+          <span class="place-tag">Beagle Channel</span>
+          <span class="place-tag">Penguin Colony</span>
+          <span class="place-tag">Southernmost City</span>
+          <span class="place-tag">End of World Train</span>
+        </div>
+      </div>
+      <div class="place-card__arrow">Explore →</div>
+    </a>
+
+    <a class="place-card" href="HYM Plan Your Trip.html">
+      <div class="place-card__ph" style="background:#14100a">Destination Photography · Peninsula Valdés</div>
+      <div class="place-card__overlay"></div>
+      <div class="place-card__body">
+        <div class="place-card__region">Atlantic Patagonia</div>
+        <div class="place-card__name">Peninsula Valdés</div>
+        <div class="place-card__desc">Right whale watching from September through November — southern right whales calve in the sheltered Gulf of San José and the Gulf Nuevo, and the boats from Puerto Pirámides regularly approach within a few meters of mothers and calves. Orca hunting sea lions at Punta Norte from October through November — a behavior unique to this stretch of coast, where the orcas have learned to beach themselves intentionally to grab pinniped pups, then ride the receding wave back into deep water. Magellanic penguin colony at Punta Tombo (the largest in continental South America). A standalone Atlantic Patagonia destination, accessible by flight from Buenos Aires to Trelew.</div>
+        <div class="place-card__tags">
+          <span class="place-tag">Right Whales</span>
+          <span class="place-tag">Orca Hunting</span>
+          <span class="place-tag">Penguin Colony</span>
+          <span class="place-tag">September–November</span>
+        </div>
+      </div>
+      <div class="place-card__arrow">Explore →</div>
+    </a>
+
+    <a class="place-card" href="HYM Plan Your Trip.html">
+      <div class="place-card__ph" style="background:#0a1410">Destination Photography · Carretera Austral</div>
+      <div class="place-card__overlay"></div>
+      <div class="place-card__body">
+        <div class="place-card__region">Chilean Fjords</div>
+        <div class="place-card__name">Chilean Fjords &amp; Carretera Austral</div>
+        <div class="place-card__desc">The Navimag ferry route between Puerto Montt and Puerto Natales through the Chilean fjord channels — a 4-day passage that is among the world's great slow-travel experiences, passing glaciers calving into the sea and uninhabited fjord coast for hundreds of kilometers. The Carretera Austral by 4WD for the least-visited Chile — Patagonian Andes mountain villages, the Marble Caves of Lago General Carrera (turquoise water-carved chambers in calcium carbonate cliffs), Cerro Castillo National Park as a quieter, equally dramatic alternative to Torres del Paine. For travelers who have done the standard Patagonia circuit and want to go deeper.</div>
+        <div class="place-card__tags">
+          <span class="place-tag">Navimag Ferry</span>
+          <span class="place-tag">Fjord Channels</span>
+          <span class="place-tag">Carretera Austral</span>
+          <span class="place-tag">Slow Travel</span>
+        </div>
+      </div>
+      <div class="place-card__arrow">Explore →</div>
+    </a>
+
+  </div>
+</section>
+
+<section class="itineraries-section">
+  <div style="margin-bottom:48px">
+    <div class="label" style="margin-bottom:12px">Featured Itineraries</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary);margin-bottom:10px">Trips We Plan Often</h2>
+    <p style="font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:54ch">Patagonia itineraries built around the lodge-supported W-trek format, the Argentine glacier circuit, and the seasonal weather windows that maximize the time the towers and the spires are actually visible.</p>
+  </div>
+  <div class="itineraries-grid">
+
+    <div class="itin-card">
+      <div class="itin-image" style="background:#0a1018">Itinerary Photography<br>Torres del Paine W-Trek</div>
+      <div class="itin-body">
+        <div class="itin-duration">November – March · 10–12 Days</div>
+        <div class="itin-name">Patagonia Essential: Torres del Paine &amp; Perito Moreno</div>
+        <div class="itin-desc">Santiago overnight, connect to Punta Arenas, transfer to Puerto Natales. Five days lodge-supported W-Trek through Torres del Paine: night one at Refugio Paine Grande on Lake Pehoé, day two to French Valley and Refugio Cuernos, day three to Refugio Chileno and the dawn ascent to the base of the Towers on day four. Cross the border to El Calafate, two nights for the Perito Moreno glacier (ice trek on day two, boardwalk circuit on day three). Fly to Buenos Aires for one final night before the international flight home. The most efficient introduction to both sides of Patagonia.</div>
+        <div class="itin-meta"><span>Chile · Argentina</span><span>10–12 Days</span></div>
+        <button class="itin-cta" onclick="window.location='HYM Plan Your Trip.html'">Plan This Trip</button>
+      </div>
+    </div>
+
+    <div class="itin-card">
+      <div class="itin-image" style="background:#0e1018">Itinerary Photography<br>Patagonia Combined Circuit</div>
+      <div class="itin-body">
+        <div class="itin-duration">November – March · 14–16 Days</div>
+        <div class="itin-name">Chilean &amp; Argentine Patagonia Combined</div>
+        <div class="itin-desc">The comprehensive Patagonia circuit. Begin in Santiago, fly south to Punta Arenas. Five days Torres del Paine lodge-supported trek. Cross to El Calafate for three days (Perito Moreno glacier, ice trek, the smaller Upsala glacier by boat). Drive Ruta 40 to El Chaltén for three days (Laguna de los Tres trail to the Fitz Roy reflection, Laguna Torre for Cerro Torre). Fly to Ushuaia for two nights (Beagle Channel zodiac, Tierra del Fuego National Park). Return through Buenos Aires for two nights to decompress in Palermo, eat at a parrilla, see a tango show worth the night. The most complete Patagonia available in a single trip.</div>
+        <div class="itin-meta"><span>Chile · Argentina</span><span>14–16 Days</span></div>
+        <button class="itin-cta" onclick="window.location='HYM Plan Your Trip.html'">Plan This Trip</button>
+      </div>
+    </div>
+
+    <div class="itin-card">
+      <div class="itin-image" style="background:#14100a">Itinerary Photography<br>Patagonia Wildlife</div>
+      <div class="itin-body">
+        <div class="itin-duration">September – November · 12–14 Days</div>
+        <div class="itin-name">Patagonia Wildlife: Peninsula Valdés &amp; Torres del Paine</div>
+        <div class="itin-desc">Built around the southern right whale calving season at Peninsula Valdés. Buenos Aires for two nights, fly to Trelew for Peninsula Valdés (three nights at an estancia overlooking the Gulf of San José): right whales by boat from Puerto Pirámides, the Punta Tombo penguin colony, Punta Norte for the orca-beaching window in October–November. Fly south to El Calafate for the Perito Moreno glacier (two nights), then transfer to Torres del Paine for four nights of the lodge-supported W-Trek. Return through Santiago. Combines two of South America's great wildlife events with the classic Patagonia landscape.</div>
+        <div class="itin-meta"><span>Chile · Argentina</span><span>12–14 Days</span></div>
+        <button class="itin-cta" onclick="window.location='HYM Plan Your Trip.html'">Plan This Trip</button>
+      </div>
+    </div>
+
+    <div class="itin-card">
+      <div class="itin-image" style="background:#101418">Itinerary Photography<br>Patagonia Lodge Trek</div>
+      <div class="itin-body">
+        <div class="itin-duration">November / December · 10 Days</div>
+        <div class="itin-name">Patagonia Lodge Trek</div>
+        <div class="itin-desc">The full lodge-supported W-Trek without compromises — six nights inside Torres del Paine National Park at the upgraded mountain lodges, hot showers, wine with dinner, all gear and luggage transferred between refuges. Day-by-day: arrival in Puerto Natales, transfer into the park to a lake lodge for acclimatization; W-Trek section one to Refugio Grey for Grey Glacier kayak; section two through French Valley; section three to Refugio Chileno and the 4am dawn hike to the base of the Towers; section four out via the Laguna Amarga gate. Two final nights in a lodge inside the park for rest before the return to Santiago. Genuine wilderness during the day, genuine comfort at night.</div>
+        <div class="itin-meta"><span>Chile</span><span>10 Days</span></div>
+        <button class="itin-cta" onclick="window.location='HYM Plan Your Trip.html'">Plan This Trip</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="why-section">
+  <div style="margin-bottom:48px">
+    <div class="label" style="margin-bottom:12px">Why Plan With Us</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(22px,2.8vw,32px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary);margin-bottom:10px">What We Add to Patagonia Planning</h2>
+    <p style="font-family:var(--font-b);font-size:15px;color:var(--text-secondary);line-height:1.65;max-width:52ch">Patagonia is the destination where weather management, lodge positioning, and Chilean–Argentine logistics combine to produce a trip that either flows or constantly fights itself. Getting the structure right is most of the work.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">⬡</div>
+      <div class="why-title">Weather Window Management</div>
+      <div class="why-desc">Patagonia's weather is famously unpredictable. A four-day Torres del Paine trek can include sun, rain, snow, and 100 km/h wind in the same window. The right lodge selection matters enormously because the trekker who can wake up at a refuge inside the park can move when the weather window opens, while the day-tripper from Puerto Natales can lose a day to road delays. We build itineraries with weather buffer baked in and choose lodges that maximize trail flexibility.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⬡</div>
+      <div class="why-title">Chilean vs Argentine Entry Logic</div>
+      <div class="why-desc">Most travelers fly into Santiago and out of Buenos Aires (or reverse), which determines the most efficient direction through the Patagonia circuit. Chile's Torres del Paine pairs with Argentina's El Calafate and El Chaltén via a single border crossing — but the order matters for the lodge availability calendar and for how the trip's emotional arc progresses. We sequence the order to match each client's specific arc and the lodge calendar.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⬡</div>
+      <div class="why-title">Lodge Trek vs Camping</div>
+      <div class="why-desc">The lodge-supported W-Trek is not a compromise version of Patagonia trekking. The quality of the refuges inside Torres del Paine has improved dramatically over the past decade — hot showers, three-course dinners, wine with the meal, well-built mountain dormitory rooms with proper bedding. The trail experience by day is identical to the camping version. For approximately 80% of travelers, the lodge version is the correct format. We're honest with the remaining 20% about when tent-camping adds something real.</div>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⬡</div>
+      <div class="why-title">Torres at Dawn Logistics</div>
+      <div class="why-desc">The classic photograph of the Torres del Paine spires at first light requires a hike that begins at 2:30am from Refugio Chileno, ascends a steep boulder field in the dark, and arrives at the lake at the base of the Towers approximately 30 minutes before dawn. The lodge selection at the base of this trail matters more than at any other point in the circuit — staying at Chileno cuts the pre-dawn approach from 3 hours to 90 minutes and dramatically increases the probability of being at the lake when the light hits.</div>
+    </div>
+  </div>
+</section>
+
+<section class="seasons-strip">
+  <div style="margin-bottom:32px">
+    <div class="label" style="margin-bottom:10px">When to Go</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(20px,2.5vw,28px);font-weight:700;letter-spacing:-.01em;color:var(--text-primary)">Patagonia by Season</h2>
+  </div>
+  <div class="seasons-grid">
+    <div class="season-item season-item--best">
+      <div class="season-name">Southern Summer</div>
+      <div class="season-months">November – March</div>
+      <div class="season-desc">The only realistic window for the full Patagonia trekking circuit. Daylight extends 18+ hours at the southern latitudes, all trails are open, all lodges are operating, and the temperature in the valleys runs 10–18°C — cool but workable. Wind remains the dominant weather variable throughout, but rain frequency drops compared to the shoulder months. December and January are peak season for international tourism; book the W-Trek lodges 6+ months in advance for these months. November is excellent and noticeably less crowded. March offers the autumn-color version of the landscape (lenga and ñire trees turn red and gold) and trails that are still open.</div>
+      <span class="season-badge">Best Overall Window</span>
+    </div>
+    <div class="season-item">
+      <div class="season-name">Shoulder &amp; Peak Edge</div>
+      <div class="season-months">November / Late March</div>
+      <div class="season-desc">November is the shoulder window before the December–January peak — wildflowers across the steppe, snow still on the higher trails of Torres del Paine in early November (which limits the full O-Trek but keeps the standard W-Trek accessible), and lodge availability significantly better than peak. Late March into early April produces the autumn colors of the southern beech (lenga) forests — a particularly photogenic version of the landscape. The first half of April is the practical end of the trekking season as lodges begin closing for winter.</div>
+    </div>
+    <div class="season-item">
+      <div class="season-name">Off Season</div>
+      <div class="season-months">April – October</div>
+      <div class="season-desc">Most Patagonia lodges close from late April through early October. The trekking infrastructure is largely seasonal — refuges close, trails are buried under snow, and the high passes of the O-Trek are dangerous or impassable. The exception: winter Patagonia for serious adventure travelers interested in ski mountaineering, ice climbing, or the dramatic light conditions of the short winter days. Most travelers should not consider Patagonia outside the November–March window. Ushuaia and Buenos Aires remain accessible year-round; the trekking heart of Patagonia is not.</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="testimonial-mark">"</div>
+  <p class="testimonial-quote">
+    The dawn hike to the Torres base started at 2am from the lodge. The light hit the towers at 6:15am while we were eating breakfast from a thermos at the lake. The photograph is on my wall. The experience is in a different category.
+  </p>
+  <div class="testimonial-attr">Andrew B. &nbsp;·&nbsp; Torres del Paine, December 2024</div>
+</section>
+
+<section class="mark-note">
+  <div style="margin-bottom:40px">
+    <div class="label" style="margin-bottom:12px">A Note from Mark</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(22px,2.5vw,30px);font-weight:700;letter-spacing:-.02em;color:var(--text-primary)">On Patagonia Weather</h2>
+  </div>
+  <div class="mark-note__grid">
+    <img src="assets/logo.png" class="mark-note__photo" alt="Hit Your Mark Travel">
+    <div>
+      <div class="mark-note__name">Mark Sole</div>
+      <div class="mark-note__title">Founder &amp; Travel Director · Hit Your Mark Travel</div>
+      <p class="mark-note__quote">
+        "The weather variability in Patagonia is the point, not the problem. Travelers who arrive expecting predictable conditions and a forecast they can plan around are setting themselves up for disappointment when the towers are obscured for a day, or the wind is genuinely difficult, or the rain runs for a morning. Travelers who arrive expecting whatever the landscape delivers — and have positioned themselves in lodges close enough to move when the window opens — get the version of Patagonia that makes the long flight south worthwhile. The trip we sell isn't the trip where the weather cooperates every day. It's the trip where the lodge positioning, the trek format, and the schedule flexibility produce the best possible outcome regardless of what the weather does."
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="dest-cta">
+  <div class="label" style="margin-bottom:14px">Ready When You Are</div>
+  <h2 class="dest-cta__title">Plan a Patagonia Trip<br>Built Around the Full Circuit</h2>
+  <p class="dest-cta__body">Tell me whether you want the Chilean side, the Argentine side, or both, whether you prefer lodge-supported trekking or camping, and when you can travel within the November–March window. I'll come back with a specific itinerary within one business day.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+    <a href="HYM Plan Your Trip.html" class="btn-primary-gold">Plan a Patagonia Trip</a>
+    <a href="HYM Destination South America.html" class="btn-ghost-gold" style="border-color:rgba(138,155,176,.35)">All South America</a>
+  </div>
+  <p class="dest-cta__note">No booking fees &nbsp;·&nbsp; Response within 24 hours &nbsp;·&nbsp; Fully bespoke</p>
+</section>
+
+<section class="page-faq">
+  <div class="page-faq__header">
+    <div class="page-faq__label">Common Questions</div>
+    <h2 class="page-faq__title">Patagonia — FAQ</h2>
+    <p class="page-faq__sub">Questions we hear most when planning Patagonia — from W-Trek fitness requirements to the Chilean–Argentine debate, the lodge vs. camping format, and weather management.</p>
+  </div>
+  <div class="pf-grid">
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">What is the fitness requirement for the W-Trek?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">The lodge-supported W-Trek is moderate-to-challenging — 5 days of hiking with 12–18 km per day and elevation gain of 500–1,100m on the longer days. Any traveler comfortable with full-day hiking on uneven terrain in variable weather will manage it without difficulty. The dawn ascent to the base of the Towers on the trek's signature day is the hardest single hike — a 4-hour round trip from Chileno with a steep boulder field at the top. We can advise on training in the months leading up to the trip and on modified routes for travelers who want the lodge experience without the most demanding sections.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">What is the best time to visit Patagonia?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">November through March, with November being the under-recognized sweet spot. December and January are peak — best weather odds, longest daylight, and the most reliable lodge operation, but most crowded and requiring earliest bookings. November offers excellent conditions with significantly fewer trekkers and easier lodge availability. February and March remain excellent, with March adding autumn color to the landscape. Outside this window, most of the infrastructure is closed and the trekking circuit is genuinely not accessible.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">Lodge-supported W-Trek versus camping — which is right?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">For approximately 80% of travelers, the lodge-supported version is unambiguously the correct format. The mountain refuges inside Torres del Paine National Park have improved dramatically and offer hot showers, comfortable bedding, three-course dinners, and wine with the meal. The trail experience during the day is identical to the tent version. The case for camping is exclusively for travelers who specifically want the backcountry-sleeping experience or who have a strong preference for tent life. The lodges do not feel commercial — they are well-positioned, well-staffed, and embedded in the wilderness in a way that adds rather than subtracts.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">Chilean versus Argentine Patagonia — which should I prioritize?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">If forced to choose one for a single-region trip: Chile for Torres del Paine, which is the most iconic Patagonia landscape and the destination most travelers fly south for. But the combined circuit (Torres del Paine + Perito Moreno + Fitz Roy) is dramatically more comprehensive than either side alone, and the additional logistics of the cross-border journey are well-managed. For a first Patagonia trip with 12+ days available, the combined circuit is the right structure. For shorter trips of 7–10 days, focus on one side.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">Is Buenos Aires worth adding to a Patagonia trip?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">Yes — two or three nights before or after the wilderness portion adds significant value and provides natural decompression. Buenos Aires has a genuinely world-class restaurant scene (the parrilla tradition at its peak, the modern Argentine cooking at restaurants like Don Julio or Tegui, the Italian-Argentine heritage at the cantinas), an excellent tango scene if approached with the right guide rather than a tourist show, and a city-walk culture that pairs well as a rest before or after a strenuous trekking trip. Most Patagonia clients who add Buenos Aires comment that it was a stronger part of the trip than expected.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">How far in advance should I book the W-Trek lodges?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">For November and March travel: 4–6 months ahead is typically sufficient. For December and January (peak): 8–12 months ahead, particularly for Refugio Chileno (which is the smallest of the W-Trek lodges and the most important for the dawn-of-the-Towers hike). The lodges open booking calendars roughly a year in advance and the most popular nights at Chileno specifically can sell out within weeks of the calendar opening. We track this for clients planning more than a year ahead.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">Is altitude a concern in Patagonia?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">No — Patagonia is at low elevation throughout the trekking circuit. Torres del Paine valleys are 200–900m, and even the high passes on the O-Trek don't exceed 1,200m. This is dramatically different from the Andes in Peru, where Cusco at 3,400m and Machu Picchu at 2,400m require active altitude acclimatization. Patagonia has no altitude planning component — the demanding factor is weather, wind, and trail length, not thin air.</div>
+    </div>
+    <div class="pf-item">
+      <div class="pf-q"><span class="pf-q__text">Can I combine Patagonia with Peru?</span><span class="pf-q__icon">+</span></div>
+      <div class="pf-a">Yes, and it's a frequent combination — South America's two most iconic landscapes paired into a single 3-week trip. The logical structure is Peru first (Machu Picchu, Sacred Valley, Lima), then south to Patagonia. The flight connections through Santiago or Lima are efficient. The seasonality lines up — Peru's dry season (May–October) overlaps modestly with the beginning of Patagonia's summer season (November–March), so the most efficient combined window is October–November for travelers who want both with minimum compromise on either.</div>
+    </div>
+  </div>
+  <div class="page-faq__more">
+    <span style="font-family:var(--font-b);font-size:14px;color:var(--text-muted);text-transform:none;letter-spacing:0;font-weight:400">More questions answered on the</span>
+    <a href="HYM FAQ.html" class="page-faq__more-link">Full FAQ Page</a>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div>
+    <h2 class="newsletter__title">Travel insights.<br>Delivered quietly.</h2>
+    <p class="newsletter__body">Patagonia lodge calendar openings, W-Trek availability updates, and the occasional new property worth knowing about before the booking window closes. No spam, no urgency.</p>
+  </div>
+  <div>
+    <div class="newsletter__form">
+      <input type="email" class="newsletter__input" placeholder="Your email address">
+      <button class="newsletter__submit">Subscribe</button>
+    </div>
+    <p class="newsletter__fine">By subscribing you agree to receive occasional emails from Hit Your Mark Travel.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div>
+      <img src="assets/logo.png" class="footer__brand-logo" alt="Hit Your Mark Travel">
+      <div class="footer__tagline">Hit Your Mark Travel</div>
+      <div class="footer__contact">
+        <a href="tel:14085681404">(408) 568-1404</a><br>
+        <a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a><br>
+        <a href="https://www.hymtravel.com">hymtravel.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-title">Experiences</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Experience Beach.html">Beach &amp; Island Escapes</a></li>
+        <li><a class="footer__link" href="HYM Experience All-Inclusive.html">All-Inclusive Vacations</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Cruises &amp; Yachts</a></li>
+        <li><a class="footer__link" href="HYM Experience Wellness.html">Wellness &amp; Retreats</a></li>
+        <li><a class="footer__link" href="HYM Experience Safari.html">Safari &amp; Wildlife</a></li>
+        <li><a class="footer__link" href="HYM Experience Adventure.html">Adventure &amp; Active Travel</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Destinations</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Destination Caribbean Mexico.html">Caribbean &amp; Mexico</a></li>
+        <li><a class="footer__link" href="HYM Destination Europe.html">Europe</a></li>
+        <li><a class="footer__link" href="HYM Destination Africa.html">Africa</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Asia</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">South Pacific</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Middle East</a></li>
+        <li><a class="footer__link" href="HYM Destination North America.html">North America</a></li>
+        <li><a class="footer__link" href="HYM Destination South America.html" style="color:var(--gold-500)">South America</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Polar Regions</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Plan Your Trip</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Plan Your Trip.html">Start Planning</a></li>
+        <li><a class="footer__link" href="HYM Plan Your Trip.html">Group Travel Inquiry</a></li>
+        <li><a class="footer__link" href="HYM Plan Your Trip.html">Honeymoon Inquiry</a></li>
+        <li><a class="footer__link" href="HYM FAQ.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Company</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM About.html">About Mark</a></li>
+        <li><a class="footer__link" href="#">Travel Planning Process</a></li>
+        <li><a class="footer__link" href="HYM Journal.html">Travel Journal</a></li>
+        <li><a class="footer__link" href="HYM Privacy Policy.html">Privacy Policy</a></li>
+        <li><a class="footer__link" href="HYM Terms and Conditions.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__legal">CA Seller of Travel: 2165910-50 &nbsp;·&nbsp; WA Seller of Travel: 605920581 &nbsp;·&nbsp; FL Seller of Travel: ST46122</div>
+    <div class="footer__copy">Hit Your Mark Travel © 2026</div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+document.getElementById('mobileToggle').addEventListener('click', () => {
+  const links = document.querySelector('.nav__links');
+  if (!links) return;
+  const isOpen = links.style.display === 'flex';
+  links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--nav-bg-solid);padding:24px 28px;gap:18px;border-bottom:1px solid var(--border-subtle);z-index:99;';
+});
+document.querySelectorAll('.pf-q').forEach(q=>{q.addEventListener('click',()=>{const item=q.parentElement;document.querySelectorAll('.pf-item.open').forEach(o=>{if(o!==item)o.classList.remove('open')});item.classList.toggle('open')})});
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
+</body>
+</html>

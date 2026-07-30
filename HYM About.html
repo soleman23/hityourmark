@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mark Sole — Hit Your Mark Travel</title>
+<meta name="description" content="Mark Sole is the founder and Travel Director of Hit Your Mark Travel. A lifetime of experience, a global network, and someone who actually picks up the phone.">
+<link rel="stylesheet" href="homepage/style.css">
+<style>
+/* ── ABOUT PAGE EXTRAS ── */
+
+/* PAGE HERO */
+.page-hero {
+  position:relative;min-height:60vh;margin-top:76px;
+  background:var(--navy-800);display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.page-hero__bg {
+  position:absolute;inset:0;background:var(--navy-800);
+  display:flex;align-items:center;justify-content:center;
+}
+.page-hero__watermark {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(480px,60vw);height:min(480px,60vw);object-fit:contain;
+  opacity:.04;pointer-events:none;
+}
+.page-hero__overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,15,26,0) 0%,rgba(8,15,26,.6) 60%,rgba(8,15,26,.95) 100%);
+}
+.page-hero__content {
+  position:relative;z-index:1;width:100%;
+  padding:0 52px 72px;max-width:800px;
+}
+.page-hero__eyebrow { margin-bottom:16px }
+.page-hero__headline {
+  font-family:var(--font-d);font-size:clamp(32px,5vw,60px);font-weight:700;
+  letter-spacing:-.03em;line-height:1.0;color:var(--cream-100);margin-bottom:18px;
+}
+.page-hero__sub {
+  font-family:var(--font-b);font-size:17px;color:var(--silver-300);
+  line-height:1.7;max-width:52ch;
+}
+
+/* STORY SECTION */
+.story {
+  display:grid;grid-template-columns:5fr 7fr;min-height:680px;
+  background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);
+}
+.story__photo {
+  position:relative;background:var(--bg-card);min-height:500px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.story__photo-ph {
+  font-family:var(--font-d);font-size:10px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(138,155,176,.3);
+  text-align:center;padding:20px;
+}
+.story__photo-caption {
+  position:absolute;bottom:24px;left:24px;right:24px;
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold-700);
+}
+.story__content {
+  padding:72px 64px;display:flex;flex-direction:column;justify-content:center;
+}
+.story__name {
+  font-family:var(--font-d);font-size:clamp(24px,2.5vw,32px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin-bottom:4px;
+}
+.story__title {
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);
+  margin-bottom:32px;
+}
+.story__body {
+  font-family:var(--font-b);font-size:16px;color:var(--text-secondary);
+  line-height:1.8;max-width:54ch;margin-bottom:20px;
+}
+.story__body:last-of-type { margin-bottom:0 }
+.story__divider {
+  width:40px;height:1px;background:var(--border-gold);margin:28px 0;
+}
+
+/* CREDENTIALS STRIP */
+.credentials {
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--bg-page);border-bottom:1px solid var(--border-subtle);
+}
+.credential {
+  padding:40px 40px;border-right:1px solid var(--border-subtle);
+}
+.credential:last-child { border-right:none }
+.credential__num {
+  font-family:var(--font-d);font-size:40px;font-weight:700;
+  letter-spacing:-.02em;color:var(--gold-500);line-height:1;margin-bottom:8px;
+}
+.credential__label {
+  font-family:var(--font-b);font-size:13px;color:var(--text-secondary);
+  line-height:1.5;
+}
+
+/* PHILOSOPHY */
+.philosophy {
+  padding:96px 52px;background:var(--bg-surface);
+  border-bottom:1px solid var(--border-subtle);
+}
+.philosophy__header { margin-bottom:56px;max-width:640px }
+.philosophy__title {
+  font-family:var(--font-d);font-size:clamp(26px,3vw,38px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin-bottom:14px;
+}
+.philosophy__sub {
+  font-family:var(--font-b);font-size:16px;color:var(--text-secondary);line-height:1.7;
+}
+.philosophy__grid { display:grid;grid-template-columns:repeat(2,1fr);gap:3px }
+.philosophy__item {
+  padding:40px 44px;background:var(--bg-elevated);
+  border:1px solid var(--border-subtle);
+}
+.philosophy__item:hover { border-color:var(--border-gold) }
+.philosophy__num {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-700);
+  margin-bottom:16px;display:block;
+}
+.philosophy__item-title {
+  font-family:var(--font-d);font-size:22px;font-weight:700;
+  letter-spacing:-.01em;color:var(--text-primary);margin-bottom:12px;
+}
+.philosophy__item-body {
+  font-family:var(--font-b);font-size:14px;color:var(--text-secondary);
+  line-height:1.75;
+}
+
+/* LETTER */
+.letter {
+  padding:96px 52px;background:var(--bg-page);
+  border-bottom:1px solid var(--border-subtle);
+  display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;
+}
+.letter__aside {}
+.letter__aside-title {
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);
+  margin-bottom:20px;display:block;
+}
+.letter__aside-logo { width:80px;height:80px;object-fit:contain;margin-bottom:20px;
+  filter:drop-shadow(0 4px 16px rgba(201,168,76,.2)) }
+.letter__aside-sig {
+  font-family:var(--font-d);font-size:28px;font-weight:300;
+  font-style:italic;color:var(--cream-100);line-height:1.2;
+}
+.letter__aside-sig strong { font-weight:700;font-style:normal }
+.letter__aside-role {
+  font-family:var(--font-b);font-size:12px;color:var(--silver-400);
+  margin-top:6px;
+}
+.letter__body {}
+.letter__opening {
+  font-family:var(--font-d);font-size:clamp(18px,2vw,22px);font-weight:400;
+  font-style:italic;letter-spacing:-.01em;color:var(--text-primary);
+  line-height:1.55;margin-bottom:28px;
+}
+.letter__para {
+  font-family:var(--font-b);font-size:16px;color:var(--text-secondary);
+  line-height:1.8;max-width:60ch;margin-bottom:20px;
+}
+.letter__close {
+  font-family:var(--font-d);font-size:16px;font-style:italic;
+  color:var(--text-primary);margin-top:32px;
+}
+.letter__name {
+  font-family:var(--font-d);font-size:13px;font-weight:700;
+  letter-spacing:.08em;color:var(--gold-400);margin-top:8px;
+}
+
+/* TESTIMONIAL PULL */
+.pull-quote {
+  padding:80px 52px;background:var(--navy-800);
+  border-bottom:1px solid var(--border-subtle);
+  display:flex;align-items:center;gap:48px;
+}
+body.theme-light .pull-quote { background:var(--cream-100) }
+.pull-quote__mark {
+  font-family:var(--font-d);font-size:120px;font-weight:700;
+  color:var(--gold-500);opacity:.2;line-height:1;flex-shrink:0;margin-top:-24px;
+}
+.pull-quote__content {}
+.pull-quote__text {
+  font-family:var(--font-d);font-size:clamp(18px,2.2vw,26px);font-weight:400;
+  font-style:italic;color:var(--cream-100);line-height:1.55;margin-bottom:20px;
+}
+body.theme-light .pull-quote__text { color:var(--navy-800) }
+.pull-quote__attr {
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold-500);
+}
+
+/* CTA SECTION */
+.about-cta {
+  padding:96px 52px;background:var(--bg-surface);
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.about-cta__title {
+  font-family:var(--font-d);font-size:clamp(28px,3.5vw,44px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin-bottom:16px;
+}
+.about-cta__body {
+  font-family:var(--font-b);font-size:16px;color:var(--text-secondary);
+  line-height:1.7;max-width:48ch;margin-bottom:32px;
+}
+.about-cta__details {
+  display:flex;flex-direction:column;gap:14px;
+}
+.about-cta__detail {
+  display:flex;align-items:flex-start;gap:16px;
+}
+.about-cta__detail-label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);
+  width:52px;flex-shrink:0;margin-top:2px;
+}
+.about-cta__detail-val {
+  font-family:var(--font-b);font-size:14px;color:var(--text-secondary);
+  line-height:1.5;
+}
+.about-cta__detail-val a {
+  color:var(--text-secondary);transition:color .15s;
+}
+.about-cta__detail-val a:hover { color:var(--gold-400) }
+.about-cta__cta {
+  display:inline-flex;align-items:center;gap:10px;margin-top:36px;
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  background:var(--gold-500);color:var(--navy-900);
+  padding:16px 36px;border:none;cursor:pointer;transition:all .15s;
+}
+.about-cta__cta:hover { background:var(--gold-400);box-shadow:0 0 32px rgba(201,168,76,.25) }
+.about-cta__license {
+  margin-top:20px;font-family:var(--font-b);font-size:11px;
+  color:var(--text-muted);line-height:1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+  .story { grid-template-columns:1fr }
+  .story__photo { min-height:340px }
+  .story__content { padding:48px 28px }
+  .credentials { grid-template-columns:repeat(2,1fr) }
+  .credential { border-right:none;border-bottom:1px solid var(--border-subtle) }
+  .philosophy__grid { grid-template-columns:1fr }
+  .letter { grid-template-columns:1fr;gap:40px;padding:64px 28px }
+  .pull-quote { flex-direction:column;gap:0;padding:64px 28px }
+  .pull-quote__mark { font-size:72px;margin-top:0 }
+  .about-cta { grid-template-columns:1fr;gap:48px;padding:64px 28px }
+  .page-hero__content { padding:0 28px 56px }
+  .philosophy { padding:64px 28px }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="HYM Homepage.html"><img src="assets/logo.png" class="nav__logo" alt="Hit Your Mark Travel"></a>
+  <ul class="nav__links">
+    <li><a class="nav__link" href="HYM Experiences.html">Experiences</a></li>
+    <li><a class="nav__link" href="HYM Destinations.html">Destinations</a></li>
+    <li><a class="nav__link nav__link--active" href="HYM About.html" style="color:var(--gold-400);border-bottom-color:var(--gold-500)">About</a></li>
+    <li><a class="nav__link" href="HYM Journal.html">Travel Journal</a></li>
+    <li><a class="nav__link" href="HYM Contact.html">Contact</a></li>
+  </ul>
+  <a href="HYM Plan Your Trip.html" class="nav__cta">Plan My Trip</a>
+  <div class="nav__mobile-toggle" id="mobileToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="page-hero__bg"></div>
+  <img src="assets/logo.png" class="page-hero__watermark" alt="" aria-hidden="true">
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content">
+    <div class="page-hero__eyebrow label">About</div>
+    <h1 class="page-hero__headline">The Person Behind<br>the Journey</h1>
+    <p class="page-hero__sub">A lifetime of traveling the world, and the conviction that the difference between a good trip and an exceptional one is almost always the person who planned it.</p>
+  </div>
+</section>
+
+
+<!-- ══ STORY ══ -->
+<section class="story">
+  <div class="story__photo">
+    <span class="story__photo-ph">Portrait Photography<br>Mark Sole</span>
+    <div class="story__photo-caption">Mark Sole — Founder &amp; Travel Director</div>
+  </div>
+  <div class="story__content">
+    <h2 class="story__name">Mark Sole</h2>
+    <div class="story__title">Founder &amp; Travel Director — Hit Your Mark Travel</div>
+
+    <p class="story__body">
+      Placeholder: Mark's origin story goes here. Where did the love of travel begin? 
+      A first trip abroad, a formative experience, a destination that changed his perspective. 
+      Write in first-person brand voice — warm, direct, specific. Name the place, the moment, the realization.
+    </p>
+
+    <div class="story__divider"></div>
+
+    <p class="story__body">
+      Placeholder: How did Hit Your Mark Travel come to be? What was wrong with the 
+      existing options — the big agencies, the booking sites, the cookie-cutter itineraries — 
+      and what did Mark set out to do differently? Be specific about the problem and the solution.
+    </p>
+
+    <p class="story__body">
+      Placeholder: What does Mark personally love about this work? What keeps him doing it? 
+      A sentence or two about the clients, the relationships, the moment when someone comes back 
+      and says it was the best trip of their life. Keep it honest and human — not a sales pitch.
+    </p>
+
+    <div class="story__divider"></div>
+
+    <p class="story__body" style="font-family:var(--font-d);font-size:14px;font-style:italic;color:var(--text-muted)">
+      Based in Bend, Oregon &nbsp;·&nbsp; Available by phone, email, and in person
+    </p>
+  </div>
+</section>
+
+
+<!-- ══ CREDENTIALS ══ -->
+<div class="credentials">
+  <div class="credential">
+    <div class="credential__num">20+</div>
+    <div class="credential__label">Years designing<br>bespoke journeys</div>
+  </div>
+  <div class="credential">
+    <div class="credential__num">6</div>
+    <div class="credential__label">Continents traveled —<br>and every one revisited</div>
+  </div>
+  <div class="credential">
+    <div class="credential__num">60+</div>
+    <div class="credential__label">Destinations personally<br>visited and vetted</div>
+  </div>
+  <div class="credential">
+    <div class="credential__num">100%</div>
+    <div class="credential__label">Of itineraries built<br>from scratch, for you</div>
+  </div>
+</div>
+
+
+<!-- ══ PHILOSOPHY ══ -->
+<section class="philosophy">
+  <div class="philosophy__header">
+    <div class="label" style="margin-bottom:14px">The Approach</div>
+    <h2 class="philosophy__title">How I think about travel — and why it matters</h2>
+    <p class="philosophy__sub">Four things I believe about luxury travel that most agencies won't tell you.</p>
+  </div>
+  <div class="philosophy__grid">
+    <div class="philosophy__item">
+      <span class="philosophy__num">01 — Warm</span>
+      <div class="philosophy__item-title">Travel is personal. It should feel that way.</div>
+      <p class="philosophy__item-body">
+        The best trips don't come from an algorithm or a template. They come from a real conversation 
+        about what you actually want — the feeling you're after, not just the destination. 
+        I ask questions most agents don't think to ask, and I listen to the answers.
+      </p>
+    </div>
+    <div class="philosophy__item">
+      <span class="philosophy__num">02 — Confident</span>
+      <div class="philosophy__item-title">You don't need to be sold to. You need to be guided.</div>
+      <p class="philosophy__item-body">
+        Luxury travelers are intelligent people making considered decisions. I don't pitch, 
+        I don't oversell, and I don't manufacture urgency. I tell you what I know, 
+        what I'd recommend, and why — and I let you decide.
+      </p>
+    </div>
+    <div class="philosophy__item">
+      <span class="philosophy__num">03 — Editorial</span>
+      <div class="philosophy__item-title">The details are the trip.</div>
+      <p class="philosophy__item-body">
+        Which side of the caldera. Which villa on which cliff. Which guide has been here thirty years 
+        versus which one just got certified. These are not small details — they are the difference 
+        between a trip you remember and one you merely completed.
+      </p>
+    </div>
+    <div class="philosophy__item">
+      <span class="philosophy__num">04 — Never Salesy</span>
+      <div class="philosophy__item-title">The invitation stands. There's no deadline.</div>
+      <p class="philosophy__item-body">
+        There is no "limited availability." There is no "book before Friday." When you're ready 
+        to plan something exceptional, I'm here. The right trip is worth taking the time to get right. 
+        That's not a sales tactic — it's just the truth.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ LETTER FROM MARK ══ -->
+<section class="letter">
+  <div class="letter__aside">
+    <span class="letter__aside-title">A Note from Mark</span>
+    <img src="assets/logo.png" class="letter__aside-logo" alt="Hit Your Mark Travel">
+    <div class="letter__aside-sig"><strong>Mark</strong> Sole</div>
+    <div class="letter__aside-role">Founder &amp; Travel Director<br>Hit Your Mark Travel</div>
+  </div>
+  <div class="letter__body">
+    <p class="letter__opening">
+      "If your first question to me is 'what do you charge?' — I'm probably not the right fit for you. 
+      And that's fine. But if your question is 'can you get me somewhere truly exceptional?' — 
+      then we should talk."
+    </p>
+    <p class="letter__para">
+      Placeholder: A direct, personal note from Mark about his philosophy and approach. 
+      This is the most human section of the page — write it in first person, 
+      conversational and specific. What does he want clients to know before they reach out? 
+      What kind of working relationship does he want to have?
+    </p>
+    <p class="letter__para">
+      Placeholder: A second paragraph about what makes a great client relationship. 
+      What does he need from clients to do his best work? Honesty about what they want, 
+      trust in his recommendations, a willingness to go somewhere they haven't considered yet?
+    </p>
+    <p class="letter__para">
+      Placeholder: A closing line that invites the reader to reach out. 
+      Not a call to action — a genuine invitation. In the brand voice: warm, confident, 
+      direct. No exclamation points.
+    </p>
+    <div class="letter__close">With regards,</div>
+    <div class="letter__name">Mark Sole — mark@hymtravel.com</div>
+  </div>
+</section>
+
+
+<!-- ══ PULL QUOTE ══ -->
+<section class="pull-quote">
+  <div class="pull-quote__mark">"</div>
+  <div class="pull-quote__content">
+    <p class="pull-quote__text">
+      Mark's bookings were completely accurate, made promptly and well-communicated. 
+      He provided all the information we needed and had wonderful recommendations 
+      for our time in the Willamette Valley. We would not hesitate to book through Mark again.
+    </p>
+    <div class="pull-quote__attr">Brian S. &nbsp;·&nbsp; Oregon Wine Country</div>
+  </div>
+</section>
+
+
+<!-- ══ CTA ══ -->
+<section class="about-cta">
+  <div>
+    <div class="label" style="margin-bottom:16px">Let's Talk</div>
+    <h2 class="about-cta__title">Ready to start planning something worth the trip?</h2>
+    <p class="about-cta__body">
+      The first conversation costs nothing and takes fifteen minutes. 
+      Tell me where you want to go — or tell me what you want to feel — 
+      and I'll tell you honestly whether I can make it exceptional.
+    </p>
+    <a href="HYM Homepage.html#contact" class="about-cta__cta">Plan My Trip &nbsp;→</a>
+    <p class="about-cta__license">
+      CA Seller of Travel: 2165910-50 &nbsp;·&nbsp; WA Seller of Travel: 605920581 &nbsp;·&nbsp; FL Seller of Travel: ST46122
+    </p>
+  </div>
+  <div class="about-cta__details">
+    <div class="about-cta__detail">
+      <span class="about-cta__detail-label">Phone</span>
+      <span class="about-cta__detail-val"><a href="tel:14085681404">(408) 568-1404</a></span>
+    </div>
+    <div class="about-cta__detail">
+      <span class="about-cta__detail-label">Email</span>
+      <span class="about-cta__detail-val"><a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a></span>
+    </div>
+    <div class="about-cta__detail">
+      <span class="about-cta__detail-label">Web</span>
+      <span class="about-cta__detail-val"><a href="https://www.hymtravel.com">hymtravel.com</a></span>
+    </div>
+    <div class="about-cta__detail">
+      <span class="about-cta__detail-label">Instagram</span>
+      <span class="about-cta__detail-val"><a href="https://www.instagram.com/travelwithsoleman/" target="_blank">@travelwithsoleman</a></span>
+    </div>
+    <div class="about-cta__detail">
+      <span class="about-cta__detail-label">Location</span>
+      <span class="about-cta__detail-val">Based in Bend, Oregon<br>Available anywhere</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+    <div class="footer__top">
+    <div>
+      <img src="assets/logo.png" class="footer__brand-logo" alt="Hit Your Mark Travel">
+      <div class="footer__tagline">Hit Your Mark Travel</div>
+      <div class="footer__contact">
+        <a href="tel:14085681404">(408) 568-1404</a><br>
+        <a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a><br>
+        <a href="https://www.hymtravel.com">hymtravel.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-title">Experiences</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Experiences.html">Beach &amp; Island Escapes</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">All-Inclusive Vacations</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Cruises &amp; Yachts</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Wellness &amp; Retreats</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Safari &amp; Wildlife</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Romance &amp; Celebration</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Destinations</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Destinations.html">Caribbean &amp; Mexico</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Europe</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Africa</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Asia</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">South Pacific</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Plan Your Trip</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="#">Start Planning</a></li>
+        <li><a class="footer__link" href="#">Group Travel Inquiry</a></li>
+        <li><a class="footer__link" href="#">Honeymoon Inquiry</a></li>
+        <li><a class="footer__link" href="HYM FAQ.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Company</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM About.html">About Mark</a></li>
+        <li><a class="footer__link" href="#">Travel Planning Process</a></li>
+        <li><a class="footer__link" href="#">Travel Journal</a></li>
+        <li><a class="footer__link" href="HYM Privacy Policy.html">Privacy Policy</a></li>
+        <li><a class="footer__link" href="HYM Terms and Conditions.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__legal">
+      CA Seller of Travel: 2165910-50 &nbsp;·&nbsp; WA Seller of Travel: 605920581 &nbsp;·&nbsp; FL Seller of Travel: ST46122
+    </div>
+    <div class="footer__copy">Hit Your Mark Travel © 2026</div>
+  </div>
+    <div class="footer__copy">Hit Your Mark Travel © 2026</div>
+  </div>
+</footer>
+
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+// Mobile nav
+document.getElementById('mobileToggle').addEventListener('click', () => {
+  const links = document.querySelector('.nav__links');
+  if (!links) return;
+  const isOpen = links.style.display === 'flex';
+  links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--nav-bg-solid);padding:24px 28px;gap:18px;border-bottom:1px solid var(--border-subtle);z-index:99;';
+});
+
+// Tweaks protocol (honor homepage theme if set)
+const saved = {};
+try { Object.assign(saved, JSON.parse(localStorage.getItem('hym-tweaks') || '{}')); } catch(e) {}
+if (saved.theme === 'light') document.body.classList.add('theme-light');
+
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') {}
+  if (e.data?.type === '__deactivate_edit_mode') {}
+});
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
+</body>
+</html>

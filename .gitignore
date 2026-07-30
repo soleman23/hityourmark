@@ -1,0 +1,10 @@
+.cursor/
+*.log
+debug-*.log
+.DS_Store
+Thumbs.db
+node_modules/
+Photos To Use/
+uploads/
+Travel/
+*.pdf

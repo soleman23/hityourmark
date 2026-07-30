@@ -1,0 +1,1065 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Journal — Hit Your Mark Travel</title>
+<meta name="description" content="The Hit Your Mark Travel Journal — destination notes, shoulder-season guides, and considered opinions on how to travel exceptionally well.">
+<link rel="stylesheet" href="homepage/style.css">
+<style>
+/* ── JOURNAL PAGE ── */
+
+.page-hero {
+  position:relative;min-height:48vh;margin-top:76px;
+  background:var(--navy-800);display:flex;align-items:flex-end;overflow:hidden;
+}
+.page-hero__watermark {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:min(440px,55vw);height:min(440px,55vw);object-fit:contain;
+  opacity:.04;pointer-events:none;
+}
+.page-hero__overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,15,26,0) 0%,rgba(8,15,26,.55) 55%,rgba(8,15,26,.94) 100%);
+}
+.page-hero__content {
+  position:relative;z-index:1;width:100%;padding:0 52px 64px;
+}
+.page-hero__headline {
+  font-family:var(--font-d);font-size:clamp(32px,5vw,60px);font-weight:700;
+  letter-spacing:-.03em;line-height:1.0;color:var(--cream-100);margin-bottom:14px;margin-top:12px;
+}
+.page-hero__sub {
+  font-family:var(--font-b);font-size:17px;color:var(--silver-300);
+  line-height:1.7;max-width:54ch;
+}
+
+/* FILTER */
+.filter-bar {
+  position:sticky;top:76px;z-index:90;
+  background:var(--bg-surface);border-bottom:1px solid var(--border-gold);
+  overflow-x:auto;scrollbar-width:none;
+}
+.filter-bar::-webkit-scrollbar{display:none}
+.filter-bar__inner { display:flex;padding:0 52px;white-space:nowrap }
+.filter-pill {
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-muted);background:transparent;border:none;
+  padding:18px 18px;cursor:pointer;transition:all .15s;
+  border-bottom:2px solid transparent;white-space:nowrap;
+}
+.filter-pill:hover { color:var(--gold-400) }
+.filter-pill.active { color:var(--gold-400);border-bottom-color:var(--gold-500) }
+
+/* FEATURED ARTICLE */
+.journal-featured {
+  background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);
+}
+.journal-featured__grid {
+  display:grid;grid-template-columns:1fr 1fr;min-height:520px;
+}
+.journal-featured__image {
+  background:var(--bg-card);position:relative;
+  display:flex;align-items:center;justify-content:center;min-height:400px;overflow:hidden;
+}
+.journal-featured__image-ph {
+  font-family:var(--font-d);font-size:10px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(138,155,176,.3);
+  text-align:center;padding:24px;position:relative;z-index:1;
+}
+.journal-featured__content {
+  padding:64px 60px;display:flex;flex-direction:column;justify-content:center;
+}
+.journal-featured__meta {
+  display:flex;align-items:center;gap:16px;margin-bottom:20px;
+}
+.journal-featured__cat {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--gold-500);
+}
+.journal-featured__date {
+  font-family:var(--font-b);font-size:12px;color:var(--text-muted);
+}
+.journal-featured__title {
+  font-family:var(--font-d);font-size:clamp(24px,3vw,36px);font-weight:700;
+  letter-spacing:-.02em;line-height:1.15;color:var(--text-primary);margin-bottom:18px;
+}
+.journal-featured__excerpt {
+  font-family:var(--font-b);font-size:15px;color:var(--text-secondary);
+  line-height:1.8;max-width:50ch;margin-bottom:28px;
+}
+.journal-featured__cta {
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold-500);
+  transition:gap .15s;
+}
+.journal-featured__cta:hover { gap:14px }
+.journal-featured__cta::after { content:'→' }
+
+/* ARTICLE GRID */
+.journal-section { padding:72px 52px;background:var(--bg-page) }
+.journal-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
+}
+.article-card {
+  background:var(--bg-elevated);border:1px solid var(--border-subtle);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:border-color .2s;cursor:pointer;
+}
+.article-card:hover { border-color:var(--border-gold) }
+.article-card.hidden { display:none }
+.article-card__image {
+  height:200px;background:var(--bg-card);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-d);font-size:9px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(138,155,176,.3);
+  overflow:hidden;position:relative;
+}
+.article-card__image-inner {
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.article-card:hover .article-card__image-inner { transform:scale(1.04) }
+.article-card__body { padding:28px 28px 32px;flex:1;display:flex;flex-direction:column }
+.article-card__meta {
+  display:flex;align-items:center;gap:14px;margin-bottom:12px;
+}
+.article-card__cat {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);
+}
+.article-card__date {
+  font-family:var(--font-b);font-size:11px;color:var(--text-muted);
+}
+.article-card__title {
+  font-family:var(--font-d);font-size:18px;font-weight:700;
+  letter-spacing:-.01em;line-height:1.25;color:var(--text-primary);
+  margin-bottom:10px;
+}
+.article-card__excerpt {
+  font-family:var(--font-b);font-size:13px;color:var(--text-secondary);
+  line-height:1.65;flex:1;margin-bottom:20px;
+}
+.article-card__read {
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold-500);
+  display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  transition:gap .15s;
+}
+.article-card:hover .article-card__read { gap:12px }
+.article-card__read::after { content:'→' }
+
+/* LOAD MORE */
+.journal-more {
+  text-align:center;padding:0 52px 72px;background:var(--bg-page);
+  border-top:1px solid var(--border-subtle);padding-top:48px;
+}
+.journal-more__btn {
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--border-mid);color:var(--text-secondary);
+  background:transparent;padding:14px 32px;cursor:pointer;transition:all .15s;
+}
+.journal-more__btn:hover { border-color:var(--gold-500);color:var(--gold-400) }
+.journal-more__count {
+  font-family:var(--font-b);font-size:13px;color:var(--text-muted);
+  margin-top:16px;
+}
+
+/* ABOUT STRIP */
+.journal-about {
+  padding:72px 52px;background:var(--bg-surface);
+  border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.journal-about__title {
+  font-family:var(--font-d);font-size:clamp(22px,2.5vw,32px);font-weight:700;
+  letter-spacing:-.02em;color:var(--text-primary);margin-bottom:14px;
+}
+.journal-about__body {
+  font-family:var(--font-b);font-size:15px;color:var(--text-secondary);
+  line-height:1.75;margin-bottom:24px;
+}
+.journal-about__cta {
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-d);font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;
+  background:var(--gold-500);color:var(--navy-900);
+  padding:15px 32px;border:none;cursor:pointer;transition:all .15s;
+}
+.journal-about__cta:hover { background:var(--gold-400) }
+.journal-about__categories { display:flex;flex-direction:column;gap:3px }
+.journal-about__cat-item {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;background:var(--bg-elevated);border:1px solid var(--border-subtle);
+  font-family:var(--font-d);font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--text-secondary);cursor:pointer;transition:all .15s;
+}
+.journal-about__cat-item:hover { border-color:var(--border-gold);color:var(--gold-400) }
+.journal-about__cat-item::after { content:'→';color:var(--gold-700) }
+
+@media(max-width:900px){
+  .journal-featured__grid { grid-template-columns:1fr }
+  .journal-grid { grid-template-columns:1fr }
+  .journal-about { grid-template-columns:1fr;gap:40px }
+  .page-hero__content,.journal-section,.journal-more,.journal-about,.newsletter { padding-left:28px;padding-right:28px }
+  .filter-bar__inner { padding:0 20px }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="HYM Homepage.html"><img src="assets/logo.png" class="nav__logo" alt="Hit Your Mark Travel"></a>
+  <ul class="nav__links">
+    <li><a class="nav__link" href="HYM Experiences.html">Experiences</a></li>
+    <li><a class="nav__link" href="HYM Destinations.html">Destinations</a></li>
+    <li><a class="nav__link" href="HYM About.html">About</a></li>
+    <li><a class="nav__link" href="HYM Journal.html" style="color:var(--gold-400);border-bottom-color:var(--gold-500)">Travel Journal</a></li>
+    <li><a class="nav__link" href="HYM Contact.html">Contact</a></li>
+  </ul>
+  <a href="HYM Plan Your Trip.html" class="nav__cta">Plan My Trip</a>
+  <div class="nav__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div style="position:absolute;inset:0;background:var(--navy-800)"></div>
+  <img src="assets/logo.png" class="page-hero__watermark" alt="" aria-hidden="true">
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content">
+    <div class="label">Editorial</div>
+    <h1 class="page-hero__headline">Travel Journal</h1>
+    <p class="page-hero__sub">Destination notes, shoulder-season guides, and considered opinions on how to travel exceptionally well. Written by someone who's actually been there.</p>
+  </div>
+</section>
+
+
+<!-- ══ FILTER BAR ══ -->
+<div class="filter-bar">
+  <div class="filter-bar__inner">
+    <button class="filter-pill active" data-filter="all">All</button>
+    <button class="filter-pill" data-filter="africa">Africa &amp; Safari</button>
+    <button class="filter-pill" data-filter="beach">Beach &amp; Islands</button>
+    <button class="filter-pill" data-filter="europe">Europe</button>
+    <button class="filter-pill" data-filter="family">Family</button>
+    <button class="filter-pill" data-filter="food-wine">Food &amp; Wine</button>
+    <button class="filter-pill" data-filter="adventure">Adventure</button>
+    <button class="filter-pill" data-filter="romance">Romance</button>
+    <button class="filter-pill" data-filter="planning">Planning Advice</button>
+    <button class="filter-pill" data-filter="insider-tips">Insider Tips</button>
+    <button class="filter-pill" data-filter="season">Season</button>
+    <button class="filter-pill" data-filter="experience-report">Experience Reports</button>
+    <button class="filter-pill" data-filter="opinion">Opinion</button>
+    <button class="filter-pill" data-filter="destination-guide">Destination Guides</button>
+  </div>
+</div>
+
+
+<!-- ══ FEATURED ARTICLE ══ -->
+<section class="journal-featured">
+  <div class="journal-featured__grid">
+    <div class="journal-featured__image">
+      <div class="journal-featured__image-inner">
+        <span class="journal-featured__image-ph">Article Photography<br>Botswana · Moremi Game Reserve</span>
+      </div>
+    </div>
+    <div class="journal-featured__content">
+      <div class="journal-featured__meta">
+        <span class="journal-featured__cat">Africa &amp; Safari</span>
+        <span class="journal-featured__date">May 2026</span>
+      </div>
+      <h2 class="journal-featured__title">Botswana Before the Crowd: Why Shoulder Season Changes Everything</h2>
+      <p class="journal-featured__excerpt">
+        The advice you'll find online is almost always the same: go during peak season, book well in advance, stay near the Okavango Delta. It's not wrong. But it's not complete, either.
+      </p>
+      <p class="journal-featured__excerpt">
+        Moremi in May and June — before the crowds arrive and while the water levels are still high — is a different kind of experience. The camps are quieter, the guides have more time, and the animals are where the water is. That's the version worth knowing about.
+      </p>
+      <a href="journal/botswana-shoulder-season.html" class="journal-featured__cta">Read the full piece</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ARTICLE GRID ══ -->
+<section class="journal-section">
+  <div class="journal-grid" id="articleGrid">
+
+    <div class="article-card" data-filter="experience-report" onclick="window.location.href='journal/heli-ski-field-report.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#101820">
+          <span>Article Photography · Heli-Skiing · Canadian Rockies</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Experience Report</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">A Week of Heli-Skiing: What the Experience Actually Is</h3>
+        <p class="article-card__excerpt">No lifts, no groomers, no other tracks in the snow. A helicopter drops you at a peak in the Canadian Rockies and you ski back to the valley floor. Here is what a week of heli-skiing actually looks like — and what you need to be able to ski before you go.</p>
+        <a href="journal/heli-ski-field-report.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="experience-report" onclick="window.location.href='journal/masters-field-report.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#0f1a0f">
+          <span>Article Photography · The Masters · Augusta National</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Experience Report</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Masters: What Augusta National Actually Is to Attend</h3>
+        <p class="article-card__excerpt">The badge waiting list closed in 1978. There are no visible sponsors anywhere on the grounds. The pimento cheese sandwich costs $1.50. Here is what The Masters experience actually is — and how access works in practice.</p>
+        <a href="journal/masters-field-report.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="experience-report" onclick="window.location.href='journal/kentucky-derby-field-report.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1410">
+          <span>Article Photography · Kentucky Derby · Churchill Downs</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Experience Report</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Kentucky Derby: What the Race Actually Is to Attend</h3>
+        <p class="article-card__excerpt">A two-minute race that takes twelve hours to attend. Here is what the experience actually is — the tiers that matter, the buildup, the moment itself, and how to do Louisville properly before and after.</p>
+        <a href="journal/kentucky-derby-field-report.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="opinion" onclick="window.location.href='journal/five-star-problem.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e1c2a">
+          <span>Article Photography · Luxury Hotels</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Opinion</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Five-Star Problem</h3>
+        <p class="article-card__excerpt">The rating once meant something specific. It no longer does. Here's what actually separates an exceptional hotel from a technically five-star one — and why anyone planning a high-end trip should stop leading with the category.</p>
+        <a href="journal/five-star-problem.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="opinion" onclick="window.location.href='journal/european-grand-tour-mistake.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e1e18">
+          <span>Article Photography · Europe · Itinerary</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Opinion</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The European Grand Tour Is Usually the Wrong Trip</h3>
+        <p class="article-card__excerpt">London, Paris, Rome, Florence, Barcelona in two weeks — the most common European itinerary and one of the least satisfying experiences available. Here is why the logic is flawed and what to build instead.</p>
+        <a href="journal/european-grand-tour-mistake.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="opinion" onclick="window.location.href='journal/in-defense-of-slow-travel.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#121e20">
+          <span>Article Photography · Slow Travel</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Opinion</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">In Defense of Slow Travel</h3>
+        <p class="article-card__excerpt">The case for staying longer, covering less ground, and returning with something more than a list of places visited. Why slower travel almost always produces the better experience — and costs less than most people assume.</p>
+        <a href="journal/in-defense-of-slow-travel.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="experience-report" onclick="window.location.href='journal/singita-grumeti-field-report.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1c10">
+          <span>Article Photography · Singita Grumeti</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Experience Report</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">Four Nights at Singita Grumeti: A Field Report from the Central Serengeti</h3>
+        <p class="article-card__excerpt">The migration crosses the Western Corridor in July. Here's what that looks like from the camp — the private concession, the guiding, the specific encounters, and what separates Grumeti from the rest of the ecosystem.</p>
+        <a href="journal/singita-grumeti-field-report.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="experience-report" onclick="window.location.href='journal/amanjiwo-field-report.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1410">
+          <span>Article Photography · Amanjiwo · Borobudur</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Experience Report</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">Three Nights at Amanjiwo: What Aman Actually Delivers in Practice</h3>
+        <p class="article-card__excerpt">Borobudur at dawn with private access. A private pool facing two volcanoes. A staff-to-guest ratio that makes "dedicated service" finally mean something specific. Here is what the experience actually is.</p>
+        <a href="journal/amanjiwo-field-report.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="experience-report" onclick="window.location.href='journal/glacier-express-field-report.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#101824">
+          <span>Article Photography · Glacier Express · Swiss Alps</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Experience Report</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Glacier Express, End to End: What the Train Actually Is</h3>
+        <p class="article-card__excerpt">Zermatt to St. Moritz in eight hours. 291 bridges, 91 tunnels, and one of the most deliberate rail journeys on earth. Here is what it is — and why direction and class both matter more than most travelers realize.</p>
+        <a href="journal/glacier-express-field-report.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="insider-tips" onclick="window.location.href='journal/private-guide-advantage.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a2024">
+          <span>Article Photography · Private Guides</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Insider Tips</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Private Guide Advantage: What Separates Great Guides from Good Ones</h3>
+        <p class="article-card__excerpt">A great guide has made a single place the organizing project of their professional life. Here's how to identify them, the three questions worth asking, and when a private guide isn't actually the right call.</p>
+        <a href="journal/private-guide-advantage.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="season" onclick="window.location.href='journal/the-case-for-shoulder-season.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e2c28">
+          <span>Article Photography · Travel Season</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Season</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Case for Shoulder Season</h3>
+        <p class="article-card__excerpt">Peak season is the most crowded, most expensive version of most destinations. The months on either side almost always produce the better trip — if you know which windows to use and which to avoid.</p>
+        <a href="journal/the-case-for-shoulder-season.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="season" onclick="window.location.href='journal/mediterranean-october.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e1a10">
+          <span>Article Photography · Mediterranean</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Season</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Mediterranean in October</h3>
+        <p class="article-card__excerpt">The crowds have gone home. The sea is still 24°C. And the light — the specific low, amber light of Mediterranean October — is what every photographer has been trying to capture all year.</p>
+        <a href="journal/mediterranean-october.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="season" onclick="window.location.href='journal/african-safari-calendar.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1e10">
+          <span>Article Photography · Africa · Safari</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Season</span>
+          <span class="article-card__date">April 2026</span>
+        </div>
+        <h3 class="article-card__title">The African Safari Calendar: When to Go for What</h3>
+        <p class="article-card__excerpt">Africa's safari regions each run on their own seasonal logic. Here's the month-by-month breakdown — migration cycles, dry season windows, and why the green season is more compelling than most travelers realize.</p>
+        <a href="journal/african-safari-calendar.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="insider-tips" onclick="window.location.href='journal/how-hotel-upgrades-work.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1e2c">
+          <span>Article Photography · Hotels</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Insider Tips</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">How Hotel Upgrades Actually Work — and Why Most Travelers Get Them Wrong</h3>
+        <p class="article-card__excerpt">The anniversary email almost never works. Here's what actually drives complimentary upgrade decisions — and how to position yourself to receive one without asking.</p>
+        <a href="journal/how-hotel-upgrades-work.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="insider-tips" onclick="window.location.href='journal/what-hotel-descriptions-actually-mean.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1e28">
+          <span>Article Photography · Hotels</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Insider Tips</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">What Hotel Descriptions Actually Mean</h3>
+        <p class="article-card__excerpt">"Partial ocean view," "garden view," "newly renovated," "intimate property" — a translation guide for the language hotels use, what it signals, and the three questions worth asking before you book any room.</p>
+        <a href="journal/what-hotel-descriptions-actually-mean.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="africa" onclick="window.location.href='journal/botswana-shoulder-season.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a2010">
+          <span>Article Photography · Botswana · Moremi</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Africa &amp; Safari</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">Botswana Before the Crowd: Why Shoulder Season Changes Everything</h3>
+        <p class="article-card__excerpt">Moremi in May and June — before the crowds arrive and while the water levels are still high — is a different kind of experience. The camps are quieter, the guides have more time, and the animals are where the water is.</p>
+        <a href="journal/botswana-shoulder-season.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="beach">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#132e3e">
+          <span>Article Photography · Maldives</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Beach &amp; Islands</span>
+          <span class="article-card__date">April 2026</span>
+        </div>
+        <h3 class="article-card__title">The Maldives Question: Overwater Villa or Beach Villa?</h3>
+        <p class="article-card__excerpt">Everyone wants the overwater villa. It's the image. But after planning hundreds of Maldives trips, the answer is more nuanced than the Instagram feed suggests.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="europe">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1c2632">
+          <span>Article Photography · French Riviera</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Europe</span>
+          <span class="article-card__date">April 2026</span>
+        </div>
+        <h3 class="article-card__title">How to Book the French Riviera Without the Crowds</h3>
+        <p class="article-card__excerpt">Cap Ferrat in August is one of the most congested places in Europe. Cap Ferrat in late September is something else entirely. The same hotels, the same water, a completely different experience.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="planning" onclick="window.location.href='journal/safari-planning-12-questions.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1c2024">
+          <span>Article Photography · Safari Planning</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Planning Advice</span>
+          <span class="article-card__date">March 2026</span>
+        </div>
+        <h3 class="article-card__title">Safari Planning: The 12 Questions Worth Asking Before You Book</h3>
+        <p class="article-card__excerpt">Most people ask about price and availability. The questions that actually matter — camp size, guide tenure, vehicle policy, wet vs. dry season — rarely come up until it's too late to change anything.</p>
+        <a href="journal/safari-planning-12-questions.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="romance">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e2832">
+          <span>Article Photography · St. Barth's</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Romance</span>
+          <span class="article-card__date">March 2026</span>
+        </div>
+        <h3 class="article-card__title">St. Barth's in January: What the Magazine Doesn't Tell You</h3>
+        <p class="article-card__excerpt">The photos are accurate. The vibe is real. What the editorial coverage tends to leave out is the noise, the waiting, and the sheer volume of people all trying to experience the same exclusive paradise simultaneously.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="europe">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#182230">
+          <span>Article Photography · Kyoto</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Asia</span>
+          <span class="article-card__date">February 2026</span>
+        </div>
+        <h3 class="article-card__title">Kyoto in April vs. November: An Honest Comparison</h3>
+        <p class="article-card__excerpt">Cherry blossom season is extraordinary. It is also among the most crowded travel experiences on earth. November — the autumn color season — is quieter, equally beautiful, and considerably easier to navigate.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="family">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a2822">
+          <span>Article Photography · Costa Rica</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Family</span>
+          <span class="article-card__date">February 2026</span>
+        </div>
+        <h3 class="article-card__title">The Case for Costa Rica with Teenagers</h3>
+        <p class="article-card__excerpt">There's a version of Costa Rica for every kind of traveler. The version worth booking with teenagers involves zip lines, surf lessons, a private wildlife guide, and a lodge where the animals come to you at breakfast.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="food-wine">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1c2638">
+          <span>Article Photography · Burgundy</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Food &amp; Wine</span>
+          <span class="article-card__date">January 2026</span>
+        </div>
+        <h3 class="article-card__title">A Week in Burgundy: Why Harvest Season Is the Only Time to Go</h3>
+        <p class="article-card__excerpt">In late September, the cellars open, the vines turn gold, and the restaurants in Beaune operate at a pitch they can't maintain any other time of year. The logistics are harder. The experience is incomparable.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="adventure">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a2030">
+          <span>Article Photography · Aspen</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Adventure</span>
+          <span class="article-card__date">January 2026</span>
+        </div>
+        <h3 class="article-card__title">Why We Always Book Aspen Early — and What That Actually Gets You</h3>
+        <p class="article-card__excerpt">The mountain is the same whether you book three months out or three weeks out. The chalet, the restaurant table, and the private ski instructor are not. Here's what's worth reserving and what isn't.</p>
+        <span class="article-card__read">Read more</span>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="planning" onclick="window.location.href='journal/what-a-travel-advisor-actually-does.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e2226">
+          <span>Article Photography · Travel Planning</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Planning Advice</span>
+          <span class="article-card__date">December 2025</span>
+        </div>
+        <h3 class="article-card__title">What a Travel Advisor Actually Does (And Why It's Worth It)</h3>
+        <p class="article-card__excerpt">The honest answer is less glamorous than the brochure version: most of what we do is logistics, relationships, and knowing which questions to ask before you've thought to ask them. Here's what that looks like in practice.</p>
+        <a href="journal/what-a-travel-advisor-actually-does.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/europe-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e1c28">
+          <span>Article Photography · Europe</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Europe Guide: Choosing the Right Version of the Continent</h3>
+        <p class="article-card__excerpt">Six regions, the honest character of each, and why season changes the trip as much as destination. Why one region in ten days almost always outperforms six cities in two weeks.</p>
+        <a href="journal/europe-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/polar-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#0d1824">
+          <span>Article Photography · Polar Regions</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Polar Regions Guide: Antarctica, the Arctic, and the Case for the Ends of the Earth</h3>
+        <p class="article-card__excerpt">Antarctica, Svalbard, Greenland, Iceland, South Georgia, and Alaska — why polar travel operates on a completely different planning logic than anywhere else, and the expedition vessels and lodges worth building the trip around.</p>
+        <a href="journal/polar-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/south-america-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#0f1a12">
+          <span>Article Photography · South America</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The South America Guide: Six Regions Beyond the Marquee Images</h3>
+        <p class="article-card__excerpt">Argentina, Chile, Peru, the Galápagos, Colombia, and Brazil — why the continent's luxury travel product is underused almost entirely because of a perception gap, and the six regions worth understanding before it closes.</p>
+        <a href="journal/south-america-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/middle-east-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1e1710">
+          <span>Article Photography · Middle East</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Middle East Guide: Ancient History and the World's Newest Hospitality Infrastructure</h3>
+        <p class="article-card__excerpt">The UAE, Jordan, Oman, Saudi Arabia, Egypt, and Turkey — six destinations that share a geography but almost nothing else, and why the region is the most consistently underestimated in luxury travel.</p>
+        <a href="journal/middle-east-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/south-pacific-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#0f1e24">
+          <span>Article Photography · South Pacific</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The South Pacific Guide: Six Regions and the Case for the Long Flight</h3>
+        <p class="article-card__excerpt">French Polynesia, Fiji, New Zealand, Australia, the Cook Islands, and Melanesia — why the distance is the product, and what justifies every hour of the journey out here.</p>
+        <a href="journal/south-pacific-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/asia-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#181e1a">
+          <span>Article Photography · Asia</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Asia Guide: Six Regions That Require Six Different Planning Frameworks</h3>
+        <p class="article-card__excerpt">Japan, Bhutan, Southeast Asia, Indonesia, India, and the Maldives — why Asia can't be planned as a single category, and what the right season does to each destination.</p>
+        <a href="journal/asia-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/africa-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a1810">
+          <span>Article Photography · Africa</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Africa Guide: Camp Selection, Safari Seasons, and Six Regions That Don't Overlap</h3>
+        <p class="article-card__excerpt">Why the camp you choose matters more than the country — and what separates six regions, from the Okavango Delta to gorilla country to Morocco's medinas.</p>
+        <a href="journal/africa-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/north-america-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a2218">
+          <span>Article Photography · North America</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The North America Guide: Six Regions Worth Booking With Intention</h3>
+        <p class="article-card__excerpt">From Alaskan wilderness lodges to Utah's canyon country to Hawaii's most exclusive island — why the continent closest to home deserves the same planning you'd bring to a trip abroad.</p>
+        <a href="journal/north-america-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="destination-guide" onclick="window.location.href='journal/caribbean-mexico-destination-guide.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#0e2530">
+          <span>Article Photography · Caribbean &amp; Mexico</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Destination Guide</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Caribbean &amp; Mexico Guide: How to Choose the Right Island for the Right Trip</h3>
+        <p class="article-card__excerpt">The Caribbean looks identical in photographs. On the ground, the difference between Turks &amp; Caicos and Jamaica isn't subtle — it's the entire experience. Here's how to match the destination to the trip.</p>
+        <a href="journal/caribbean-mexico-destination-guide.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="food-wine" onclick="window.location.href='journal/napa-sonoma-winery-route.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#2a1e14">
+          <span>Article Photography · Napa &amp; Sonoma</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Food &amp; Wine</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Napa &amp; Sonoma Winery Route: How to Actually Drink Well in Wine Country</h3>
+        <p class="article-card__excerpt">Everyone does Napa. Far fewer people do it well. The wineries worth visiting don't advertise, the best dining isn't in the concierge's book, and the optimal time to go isn't what you'd expect.</p>
+        <a href="journal/napa-sonoma-winery-route.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+    <div class="article-card" data-filter="food-wine" onclick="window.location.href='journal/willamette-valley-winery-route.html'">
+      <div class="article-card__image">
+        <div class="article-card__image-inner" style="background:#1a2014">
+          <span>Article Photography · Willamette Valley</span>
+        </div>
+      </div>
+      <div class="article-card__body">
+        <div class="article-card__meta">
+          <span class="article-card__cat">Food &amp; Wine</span>
+          <span class="article-card__date">May 2026</span>
+        </div>
+        <h3 class="article-card__title">The Willamette Valley Winery Route: Oregon's Answer to Burgundy</h3>
+        <p class="article-card__excerpt">Burgundy lovers call it the Pacific Northwest's answer to their favorite region. Oregon Pinot Noir specialists call it something you can still discover before everyone else does. Both are right.</p>
+        <a href="journal/willamette-valley-winery-route.html" class="article-card__read">Read more</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ LOAD MORE ══ -->
+<div class="journal-more">
+  <button class="journal-more__btn" id="loadMore">Load More Articles</button>
+  <p class="journal-more__count">Showing 36 of 39 articles</p>
+</div>
+
+
+<!-- ══ ABOUT THE JOURNAL ══ -->
+<section class="journal-about">
+  <div>
+    <div class="label" style="margin-bottom:14px">About This Journal</div>
+    <h2 class="journal-about__title">Written from experience, not research</h2>
+    <p class="journal-about__body">
+      Every piece in this journal is based on time actually spent in the places we're writing about — not press trips, not aggregated research, not AI-generated summaries of destinations we've never visited. If it's in here, someone from Hit Your Mark has been there.
+    </p>
+    <p class="journal-about__body">
+      We write about timing, access, what the mainstream coverage gets wrong, and which experiences are worth the premium. The goal is to help you travel more intelligently — whether you book with us or not.
+    </p>
+    <a href="HYM Homepage.html#contact" class="journal-about__cta">Plan Your Next Trip &nbsp;→</a>
+  </div>
+  <div>
+    <div class="label" style="margin-bottom:16px">Browse by Category</div>
+    <div class="journal-about__categories">
+      <div class="journal-about__cat-item" onclick="filterArticles('africa')">Africa &amp; Safari Travel</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('beach')">Beach &amp; Island Travel</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('europe')">Europe</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('family')">Family Travel</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('food-wine')">Food &amp; Wine Travel</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('adventure')">Adventure Travel</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('romance')">Romantic Getaways</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('planning')">Planning Advice</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('insider-tips')">Insider Tips</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('season')">Season</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('experience-report')">Experience Reports</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('opinion')">Opinion</div>
+      <div class="journal-about__cat-item" onclick="filterArticles('destination-guide')">Destination Guides</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ NEWSLETTER ══ -->
+<section class="newsletter">
+  <div>
+    <h2 class="newsletter__title">New articles,<br>delivered quietly.</h2>
+    <p class="newsletter__body">When a new piece goes up, we'll send it. No digest emails, no promotions. Just the writing.</p>
+  </div>
+  <div>
+    <div class="newsletter__form">
+      <input type="email" class="newsletter__input" placeholder="Your email address">
+      <button class="newsletter__submit">Subscribe</button>
+    </div>
+    <p class="newsletter__fine">By subscribing you agree to receive occasional emails from Hit Your Mark Travel.</p>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div>
+      <img src="assets/logo.png" class="footer__brand-logo" alt="Hit Your Mark Travel">
+      <div class="footer__tagline">Hit Your Mark Travel</div>
+      <div class="footer__contact">
+        <a href="tel:14085681404">(408) 568-1404</a><br>
+        <a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a><br>
+        <a href="https://www.hymtravel.com">hymtravel.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-title">Experiences</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Experiences.html">Beach &amp; Island Escapes</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">All-Inclusive Vacations</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Cruises &amp; Yachts</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Wellness &amp; Retreats</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Safari &amp; Wildlife</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Romance &amp; Celebration</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Destinations</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Destinations.html">Caribbean &amp; Mexico</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Europe</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Africa</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">Asia</a></li>
+        <li><a class="footer__link" href="HYM Destinations.html">South Pacific</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Plan Your Trip</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="#">Start Planning</a></li>
+        <li><a class="footer__link" href="#">Group Travel Inquiry</a></li>
+        <li><a class="footer__link" href="#">Honeymoon Inquiry</a></li>
+        <li><a class="footer__link" href="HYM FAQ.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Company</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM About.html">About Mark</a></li>
+        <li><a class="footer__link" href="#">Travel Planning Process</a></li>
+        <li><a class="footer__link" href="HYM Journal.html">Travel Journal</a></li>
+        <li><a class="footer__link" href="HYM Privacy Policy.html">Privacy Policy</a></li>
+        <li><a class="footer__link" href="HYM Terms and Conditions.html">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__legal">CA Seller of Travel: 2165910-50 &nbsp;·&nbsp; WA Seller of Travel: 605920581 &nbsp;·&nbsp; FL Seller of Travel: ST46122</div>
+    <div class="footer__copy">Hit Your Mark Travel © 2026</div>
+  </div>
+</footer>
+
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+// Mobile nav
+document.getElementById('mobileToggle').addEventListener('click', () => {
+  const links = document.querySelector('.nav__links');
+  if (!links) return;
+  const isOpen = links.style.display === 'flex';
+  links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--nav-bg-solid);padding:24px 28px;gap:18px;border-bottom:1px solid var(--border-subtle);z-index:99;';
+});
+
+// Filter
+function filterArticles(cat) {
+  const pills = document.querySelectorAll('.filter-pill');
+  pills.forEach(p => p.classList.toggle('active', p.dataset.filter === cat));
+  document.querySelectorAll('.article-card').forEach(c => {
+    c.classList.toggle('hidden', cat !== 'all' && c.dataset.filter !== cat);
+  });
+  document.getElementById('articleGrid').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => filterArticles(pill.dataset.filter));
+});
+
+// Load More (placeholder)
+document.getElementById('loadMore').addEventListener('click', function() {
+  this.textContent = 'More articles coming soon';
+  this.style.opacity = '.5';
+  this.style.cursor = 'default';
+});
+
+// Tweaks protocol
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
+</body>
+</html>

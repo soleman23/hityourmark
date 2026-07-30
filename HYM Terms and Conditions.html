@@ -1,0 +1,672 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — Hit Your Mark Travel</title>
+<meta name="description" content="Terms and conditions for travel planning services provided by Hit Your Mark Travel, a licensed California seller of travel.">
+<link rel="stylesheet" href="homepage/style.css">
+<style>
+
+.breadcrumb {
+  background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);
+  padding:14px 52px;margin-top:76px;
+}
+.breadcrumb__inner {
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-d);font-size:10px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+}
+.breadcrumb__link { color:var(--text-muted);text-decoration:none;transition:color .15s }
+.breadcrumb__link:hover { color:var(--gold-400) }
+.breadcrumb__sep { color:var(--text-muted);font-size:10px }
+.breadcrumb__current { color:var(--gold-500) }
+
+/* ── PAGE HEADER ── */
+.tc-header {
+  background:var(--bg-surface);border-bottom:1px solid var(--border-subtle);
+  padding:72px 52px 64px;
+}
+.tc-header__label {
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:16px;
+}
+.tc-header__title {
+  font-family:var(--font-d);font-size:clamp(32px,4.5vw,52px);font-weight:700;
+  letter-spacing:-.03em;color:var(--text-primary);line-height:1.05;margin-bottom:20px;
+}
+.tc-header__meta {
+  font-family:var(--font-b);font-size:13px;color:var(--text-muted);
+  line-height:1.6;
+}
+.tc-header__meta strong { color:var(--text-secondary) }
+
+/* ── TWO-COLUMN LAYOUT ── */
+.tc-layout {
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:0;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 52px;
+  align-items:start;
+}
+
+/* ── STICKY TOC ── */
+.tc-toc {
+  position:sticky;
+  top:96px;
+  padding:52px 0 52px 0;
+  padding-right:48px;
+}
+.tc-toc__title {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);
+  margin-bottom:20px;
+}
+.tc-toc__list {
+  list-style:none;padding:0;margin:0;
+  border-left:1px solid var(--border-subtle);
+}
+.tc-toc__item { }
+.tc-toc__link {
+  display:block;padding:7px 0 7px 18px;
+  font-family:var(--font-b);font-size:12px;color:var(--text-muted);
+  text-decoration:none;line-height:1.4;
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:color .15s,border-color .15s;
+}
+.tc-toc__link:hover { color:var(--gold-400);border-left-color:var(--gold-500) }
+.tc-toc__link.active { color:var(--gold-500);border-left-color:var(--gold-500) }
+.tc-toc__num {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.1em;color:var(--text-muted);margin-right:6px;
+}
+
+/* ── CONTENT COLUMN ── */
+.tc-content {
+  padding:52px 0 96px;
+  border-left:1px solid var(--border-subtle);
+  padding-left:52px;
+}
+
+.tc-section {
+  padding-bottom:56px;
+  margin-bottom:56px;
+  border-bottom:1px solid var(--border-subtle);
+}
+.tc-section:last-child {
+  border-bottom:none;
+  padding-bottom:0;
+  margin-bottom:0;
+}
+
+.tc-section__num {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold-500);margin-bottom:10px;
+}
+.tc-section__title {
+  font-family:var(--font-d);font-size:clamp(18px,2.2vw,24px);font-weight:700;
+  letter-spacing:-.01em;color:var(--text-primary);margin-bottom:20px;line-height:1.2;
+}
+.tc-body {
+  font-family:var(--font-b);font-size:14px;color:var(--text-secondary);
+  line-height:1.85;margin-bottom:16px;
+}
+.tc-body:last-child { margin-bottom:0 }
+.tc-body a {
+  color:var(--gold-400);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.3);
+  transition:border-color .15s;
+}
+.tc-body a:hover { border-bottom-color:var(--gold-400) }
+
+.tc-list {
+  list-style:none;padding:0;margin:0 0 16px;
+}
+.tc-list li {
+  font-family:var(--font-b);font-size:14px;color:var(--text-secondary);
+  line-height:1.8;padding:8px 0 8px 20px;position:relative;
+  border-bottom:1px solid var(--border-subtle);
+}
+.tc-list li:last-child { border-bottom:none }
+.tc-list li::before {
+  content:'—';position:absolute;left:0;
+  color:var(--gold-500);font-size:11px;top:10px;
+}
+
+.tc-callout {
+  background:var(--accent-subtle);border:1px solid var(--border-gold);
+  border-left:3px solid var(--gold-500);
+  padding:20px 24px;margin:24px 0;
+}
+.tc-callout p {
+  font-family:var(--font-b);font-size:13px;color:var(--text-secondary);
+  line-height:1.75;margin:0;
+}
+.tc-callout strong { color:var(--text-primary) }
+
+.tc-sublabel {
+  font-family:var(--font-d);font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);
+  margin:28px 0 10px;
+}
+
+/* ── CONTACT BLOCK ── */
+.tc-contact-block {
+  background:var(--bg-elevated);border:1px solid var(--border-subtle);
+  padding:28px 32px;display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  margin-top:24px;
+}
+.tc-contact-item__label {
+  font-family:var(--font-d);font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold-500);margin-bottom:6px;
+}
+.tc-contact-item__val {
+  font-family:var(--font-b);font-size:14px;color:var(--text-secondary);line-height:1.65;
+}
+.tc-contact-item__val a { color:var(--text-secondary);text-decoration:none }
+.tc-contact-item__val a:hover { color:var(--gold-400) }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .breadcrumb { padding:12px 28px }
+  .tc-header { padding:52px 28px 48px }
+  .tc-layout { grid-template-columns:1fr;padding:0 28px }
+  .tc-toc { display:none }
+  .tc-content { border-left:none;padding-left:0;padding-top:40px }
+  .tc-contact-block { grid-template-columns:1fr }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="HYM Homepage.html"><img src="assets/logo.png" class="nav__logo" alt="Hit Your Mark Travel"></a>
+  <ul class="nav__links">
+    <li><a class="nav__link" href="HYM Experiences.html">Experiences</a></li>
+    <li><a class="nav__link" href="HYM Destinations.html">Destinations</a></li>
+    <li><a class="nav__link" href="HYM About.html">About</a></li>
+    <li><a class="nav__link" href="HYM Journal.html">Travel Journal</a></li>
+    <li><a class="nav__link" href="HYM Contact.html">Contact</a></li>
+  </ul>
+  <a href="HYM Plan Your Trip.html" class="nav__cta">Plan My Trip</a>
+  <div class="nav__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+</nav>
+
+
+<!-- ══ BREADCRUMB ══ -->
+<div class="breadcrumb">
+  <div class="breadcrumb__inner">
+    <a class="breadcrumb__link" href="HYM Homepage.html">Home</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Terms &amp; Conditions</span>
+  </div>
+</div>
+
+
+<!-- ══ PAGE HEADER ══ -->
+<div style="background:var(--bg-page);border-bottom:1px solid var(--border-subtle);padding:72px 52px 64px">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="tc-header__label">Legal</div>
+    <h1 class="tc-header__title">Terms &amp; Conditions</h1>
+    <p class="tc-header__meta">
+      <strong>Effective Date:</strong> January 1, 2026 &nbsp;&nbsp;|&nbsp;&nbsp;
+      <strong>Last Updated:</strong> January 1, 2026 &nbsp;&nbsp;|&nbsp;&nbsp;
+      <strong>Governing Law:</strong> State of California
+    </p>
+    <p style="font-family:var(--font-b);font-size:14px;color:var(--text-muted);line-height:1.7;max-width:72ch;margin-top:16px">
+      Please read these terms carefully before engaging our services. By booking a trip through Hit Your Mark Travel, you agree to the terms set out below. If you have questions about anything here, contact us before booking — we're happy to explain anything.
+    </p>
+  </div>
+</div>
+
+
+<!-- ══ TWO-COLUMN CONTENT ══ -->
+<div style="background:var(--bg-page)">
+<div class="tc-layout">
+
+  <!-- Sticky Table of Contents -->
+  <aside class="tc-toc">
+    <div class="tc-toc__title">Contents</div>
+    <ul class="tc-toc__list">
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s1"><span class="tc-toc__num">01</span>Acceptance of Terms</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s2"><span class="tc-toc__num">02</span>Who We Are</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s3"><span class="tc-toc__num">03</span>Our Services</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s4"><span class="tc-toc__num">04</span>Booking Process &amp; Deposits</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s5"><span class="tc-toc__num">05</span>Payment Terms</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s6"><span class="tc-toc__num">06</span>Cancellation &amp; Refunds</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s7"><span class="tc-toc__num">07</span>Supplier Terms</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s8"><span class="tc-toc__num">08</span>Travel Insurance</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s9"><span class="tc-toc__num">09</span>Limitation of Liability</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s10"><span class="tc-toc__num">10</span>Traveler Responsibilities</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s11"><span class="tc-toc__num">11</span>Force Majeure</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s12"><span class="tc-toc__num">12</span>Intellectual Property</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s13"><span class="tc-toc__num">13</span>Privacy</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s14"><span class="tc-toc__num">14</span>Governing Law</a></li>
+      <li class="tc-toc__item"><a class="tc-toc__link" href="#s15"><span class="tc-toc__num">15</span>Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="tc-content">
+
+    <!-- 01 -->
+    <section class="tc-section" id="s1">
+      <div class="tc-section__num">Section 01</div>
+      <h2 class="tc-section__title">Acceptance of Terms</h2>
+      <p class="tc-body">
+        These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("Traveler," "Client," or "you") and Hit Your Mark Travel ("HYM Travel," "we," "us," or "our") governing your use of our travel planning services, website at hymtravel.com, and all related communications.
+      </p>
+      <p class="tc-body">
+        By submitting a trip inquiry, paying a planning fee or deposit, or otherwise engaging our services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are booking on behalf of other travelers, you represent and warrant that you have the authority to bind them to these Terms as well, and that all travelers in your party have been made aware of and agree to them.
+      </p>
+      <p class="tc-body">
+        We reserve the right to update or modify these Terms at any time. The version in effect at the time of your booking governs your trip. We encourage you to review these Terms before each engagement.
+      </p>
+    </section>
+
+    <!-- 02 -->
+    <section class="tc-section" id="s2">
+      <div class="tc-section__num">Section 02</div>
+      <h2 class="tc-section__title">Who We Are</h2>
+      <p class="tc-body">
+        Hit Your Mark Travel is a licensed travel advisory firm operating as an independent travel advisor. We are registered sellers of travel in the following states:
+      </p>
+      <ul class="tc-list">
+        <li>California Seller of Travel License No. 2165910-50</li>
+        <li>Washington Seller of Travel License No. 605920581</li>
+        <li>Florida Seller of Travel License No. ST46122</li>
+      </ul>
+      <p class="tc-body">
+        We act as your agent in arranging travel services provided by third-party suppliers — airlines, hotels, resorts, tour operators, cruise lines, car rental companies, ground transportation providers, and others (collectively, "Suppliers"). We are not a Supplier ourselves. We do not own, operate, or control any transportation vehicle, hotel, vessel, tour product, or other travel service.
+      </p>
+      <p class="tc-body">
+        Our role is to advise, plan, book, and coordinate on your behalf. The actual delivery of travel services is the sole responsibility of the respective Suppliers.
+      </p>
+    </section>
+
+    <!-- 03 -->
+    <section class="tc-section" id="s3">
+      <div class="tc-section__num">Section 03</div>
+      <h2 class="tc-section__title">Our Services</h2>
+      <p class="tc-body">
+        Hit Your Mark Travel provides full-service travel planning and advisory services, which may include:
+      </p>
+      <ul class="tc-list">
+        <li>Destination consultation and itinerary design</li>
+        <li>Hotel, resort, villa, and lodge research and booking</li>
+        <li>Airline and private aviation arrangements</li>
+        <li>Ground transportation, transfers, and driver coordination</li>
+        <li>Activity, tour, and experience booking</li>
+        <li>Cruise and expedition vessel reservations</li>
+        <li>Restaurant and dining reservations</li>
+        <li>Group travel coordination</li>
+        <li>Ongoing trip support and in-destination assistance</li>
+      </ul>
+      <p class="tc-body">
+        The specific scope of services for your trip will be confirmed at the time of engagement. Services are tailored to each client's itinerary and budget parameters as discussed during the planning process.
+      </p>
+      <div class="tc-callout">
+        <p><strong>Advisory relationship:</strong> Our recommendations are based on firsthand knowledge, supplier relationships, and professional judgment. We do not accept undisclosed commissions that conflict with your best interests. Our goal is always to plan the trip that's right for you — not the one that pays us the most.</p>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="tc-section" id="s4">
+      <div class="tc-section__num">Section 04</div>
+      <h2 class="tc-section__title">Booking Process &amp; Deposits</h2>
+      <div class="tc-sublabel">Planning Fees</div>
+      <p class="tc-body">
+        Depending on the scope of your trip, a non-refundable planning fee may be required before we begin detailed research and itinerary development. Planning fees will be disclosed and agreed upon in writing before any work begins. Planning fees are earned upon commencement of planning services and are not credited toward trip costs unless specifically agreed to in writing.
+      </p>
+      <div class="tc-sublabel">Supplier Deposits</div>
+      <p class="tc-body">
+        Most travel bookings require a deposit at the time of reservation. Deposit amounts, deadlines, and refundability vary by Supplier and will be clearly communicated to you before any deposit is collected. Deposits are held and remitted to Suppliers per their individual terms. By authorizing a deposit payment, you agree to the Supplier's deposit and cancellation policies as communicated to you.
+      </p>
+      <div class="tc-sublabel">Booking Confirmation</div>
+      <p class="tc-body">
+        A booking is confirmed only when we have received full deposit payment, all required traveler information, and written authorization from you. We will provide written booking confirmations for all confirmed reservations. It is your responsibility to review all confirmations promptly and notify us immediately of any errors or discrepancies.
+      </p>
+    </section>
+
+    <!-- 05 -->
+    <section class="tc-section" id="s5">
+      <div class="tc-section__num">Section 05</div>
+      <h2 class="tc-section__title">Payment Terms</h2>
+      <div class="tc-sublabel">Final Payment</div>
+      <p class="tc-body">
+        Final payment deadlines are determined by each Supplier and will be communicated to you in writing with sufficient advance notice. It is your responsibility to ensure funds are available and authorizations are in place by the stated deadline. We will send reminders in advance of final payment due dates, but ultimate responsibility for timely payment rests with you.
+      </p>
+      <div class="tc-sublabel">Accepted Payment Methods</div>
+      <p class="tc-body">
+        We accept major credit cards (Visa, Mastercard, American Express) and other methods as communicated at the time of booking. Credit card payments may be subject to processing fees where applicable and permitted by law. Some Suppliers may require specific payment methods — these will be disclosed in advance.
+      </p>
+      <div class="tc-sublabel">Currency &amp; Exchange Rates</div>
+      <p class="tc-body">
+        All quoted prices are in U.S. dollars unless otherwise stated. International bookings may be subject to currency exchange fluctuations between quote and final payment. We are not responsible for exchange rate changes after a quote is issued. To lock in a price, final payment must be made by the Supplier's stated deadline.
+      </p>
+      <div class="tc-sublabel">Price Changes</div>
+      <p class="tc-body">
+        Quoted prices are based on availability and rates at the time of inquiry. Prices are not guaranteed until full payment or deposit has been received and booking is confirmed in writing. Airfare prices in particular are subject to change until ticketing is complete.
+      </p>
+    </section>
+
+    <!-- 06 -->
+    <section class="tc-section" id="s6">
+      <div class="tc-section__num">Section 06</div>
+      <h2 class="tc-section__title">Cancellation &amp; Refund Policy</h2>
+      <div class="tc-sublabel">Supplier Cancellation Policies</div>
+      <p class="tc-body">
+        Each Supplier maintains its own cancellation and refund policy. These policies vary significantly — some bookings are fully refundable within a window, others are non-refundable from the date of deposit. Cancellation policies will be communicated clearly in writing before any booking is made. By authorizing a reservation, you accept the applicable Supplier cancellation terms.
+      </p>
+      <div class="tc-sublabel">HYM Travel Planning Fees</div>
+      <p class="tc-body">
+        Planning fees are non-refundable once planning services have commenced, regardless of whether a booking is ultimately made or whether a trip is cancelled. Planning fees compensate for the professional time and expertise invested in research, itinerary design, and supplier coordination.
+      </p>
+      <div class="tc-sublabel">Cancellation Process</div>
+      <p class="tc-body">
+        All cancellations must be submitted to us in writing via email to <a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a>. Cancellations are effective on the date we receive your written notice. Verbal cancellations are not accepted. We will confirm receipt and process the cancellation with relevant Suppliers according to their policies.
+      </p>
+      <div class="tc-sublabel">HYM Travel-Initiated Cancellations</div>
+      <p class="tc-body">
+        In the rare event that we must cancel your trip on our end (not due to Supplier or force majeure), we will refund all amounts paid to us directly. We are not responsible for refunding amounts held by Suppliers — those are governed by individual Supplier policies.
+      </p>
+      <div class="tc-callout">
+        <p><strong>Important:</strong> Travel insurance with trip cancellation coverage is strongly recommended. Without it, cancelling a trip for any reason — including illness, family emergency, or work — may result in the loss of all non-refundable deposits and payments. See Section 08.</p>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="tc-section" id="s7">
+      <div class="tc-section__num">Section 07</div>
+      <h2 class="tc-section__title">Supplier Terms &amp; Third-Party Responsibility</h2>
+      <p class="tc-body">
+        When you book travel through Hit Your Mark Travel, you are also entering into agreements directly with the Suppliers providing those services. Suppliers have their own terms and conditions governing their products — including booking terms, conduct policies, health and safety requirements, and liability limitations. By booking, you agree to abide by all applicable Supplier terms.
+      </p>
+      <p class="tc-body">
+        We act as your agent in arranging Supplier services, not as a principal. We are not responsible for the acts, omissions, errors, failures, insolvency, or bankruptcy of any Supplier. Should a Supplier fail to deliver services — whether due to operational issues, bankruptcy, weather, or any other cause — your recourse is with the Supplier directly, and with your travel insurance if applicable.
+      </p>
+      <p class="tc-body">
+        We take Supplier quality seriously and work exclusively with partners we have vetted and trust. If a Supplier fails to deliver the experience promised, we will advocate on your behalf to seek resolution — but our ability to compel a Supplier to act is limited by the terms of our agency relationship.
+      </p>
+      <ul class="tc-list">
+        <li>Airlines are governed by their own conditions of carriage and applicable aviation law</li>
+        <li>Hotels and resorts are governed by their individual booking terms and property policies</li>
+        <li>Tour operators and activity providers maintain their own liability waivers and safety policies</li>
+        <li>Cruise lines are governed by their passenger ticket contracts</li>
+      </ul>
+      <p class="tc-body">
+        Supplier terms will be made available to you at the time of booking. You are responsible for reading and accepting all applicable terms.
+      </p>
+    </section>
+
+    <!-- 08 -->
+    <section class="tc-section" id="s8">
+      <div class="tc-section__num">Section 08</div>
+      <h2 class="tc-section__title">Travel Insurance</h2>
+      <p class="tc-body">
+        We strongly recommend that all travelers purchase comprehensive travel insurance for every trip. This is one of the most important pieces of advice we can give you, and we say it with conviction: the question is never whether something can go wrong — it's whether you're protected when it does.
+      </p>
+      <div class="tc-sublabel">What to Look For</div>
+      <ul class="tc-list">
+        <li>Trip cancellation and interruption coverage (for illness, injury, family emergency, and "cancel for any reason" if available)</li>
+        <li>Medical expense coverage, including emergency evacuation and repatriation</li>
+        <li>Baggage loss, delay, and theft coverage</li>
+        <li>Travel delay coverage</li>
+        <li>Coverage adequate for the total non-refundable trip cost</li>
+      </ul>
+      <div class="tc-sublabel">Important Notes on Coverage</div>
+      <p class="tc-body">
+        Pre-existing condition waivers typically require purchasing coverage within a short window of your initial deposit — often 10 to 21 days. We recommend purchasing insurance promptly after your first deposit. Policy terms and coverage details vary significantly between providers. We are not licensed insurance agents and cannot advise on the specific suitability of any policy for your circumstances. Read your policy documents carefully and contact your insurer directly with coverage questions.
+      </p>
+      <div class="tc-callout">
+        <p>Declining travel insurance is your right. If you choose to travel without it, you accept full financial responsibility for any losses not covered by Supplier refund policies.</p>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="tc-section" id="s9">
+      <div class="tc-section__num">Section 09</div>
+      <h2 class="tc-section__title">Limitation of Liability</h2>
+      <p class="tc-body">
+        Hit Your Mark Travel's liability to you is limited to the fees paid directly to us for planning services. We are not liable for:
+      </p>
+      <ul class="tc-list">
+        <li>Any loss, damage, injury, illness, death, or expense resulting from the acts or omissions of any Supplier</li>
+        <li>Any loss resulting from transportation delays, cancellations, or schedule changes by airlines, rail operators, or other carriers</li>
+        <li>Any loss resulting from natural disasters, weather events, civil unrest, terrorism, pandemics, or other events beyond our control</li>
+        <li>Any loss of or damage to baggage or personal property</li>
+        <li>Medical expenses incurred during travel</li>
+        <li>Any incidental, consequential, special, or indirect damages of any kind</li>
+      </ul>
+      <p class="tc-body">
+        To the maximum extent permitted by applicable law, our total liability to you arising from or related to our services shall not exceed the total planning fees paid to Hit Your Mark Travel in connection with the trip in question.
+      </p>
+      <p class="tc-body">
+        Nothing in these Terms limits our liability for fraud, gross negligence, or intentional misconduct, or for any liability that cannot be excluded by law.
+      </p>
+    </section>
+
+    <!-- 10 -->
+    <section class="tc-section" id="s10">
+      <div class="tc-section__num">Section 10</div>
+      <h2 class="tc-section__title">Traveler Responsibilities</h2>
+      <div class="tc-sublabel">Travel Documents</div>
+      <p class="tc-body">
+        You are solely responsible for ensuring that all travelers in your party hold valid travel documents required for your trip. This includes:
+      </p>
+      <ul class="tc-list">
+        <li>Valid passports — most international destinations require at least 6 months of validity beyond your travel dates</li>
+        <li>All required visas, entry permits, and electronic travel authorizations (ETAs, EVISAs, etc.)</li>
+        <li>Required vaccination certificates (e.g., yellow fever certificate for certain destinations)</li>
+        <li>Any country-specific entry requirements, including health declarations or testing documentation</li>
+      </ul>
+      <p class="tc-body">
+        Entry requirements change frequently and are ultimately determined by destination governments, airlines, and border authorities — not by us. We will provide general guidance based on our knowledge and publicly available sources, but we recommend verifying all entry requirements directly with the relevant embassy, consulate, or official government source close to your travel date. We are not responsible for denied boarding or denied entry resulting from inadequate or incorrect documentation.
+      </p>
+      <div class="tc-sublabel">Health &amp; Vaccinations</div>
+      <p class="tc-body">
+        You are responsible for consulting with a healthcare provider or travel medicine specialist regarding health precautions, recommended or required vaccinations, and any personal health considerations relevant to your destinations. We can provide general destination health guidance, but we are not medical professionals and our guidance does not constitute medical advice.
+      </p>
+      <div class="tc-sublabel">Accurate Information</div>
+      <p class="tc-body">
+        You are responsible for providing accurate and complete information for all travelers at the time of booking, including legal names exactly as they appear on passports, dates of birth, nationality, and any special requirements. Errors in traveler information can result in booking complications, denied boarding, or additional costs, for which we are not responsible.
+      </p>
+      <div class="tc-sublabel">Conduct</div>
+      <p class="tc-body">
+        You agree to conduct yourself in accordance with all applicable laws, as well as the rules and policies of all Suppliers used during your trip. We reserve the right to terminate our planning relationship with any traveler whose conduct is abusive, threatening, or otherwise inappropriate.
+      </p>
+    </section>
+
+    <!-- 11 -->
+    <section class="tc-section" id="s11">
+      <div class="tc-section__num">Section 11</div>
+      <h2 class="tc-section__title">Force Majeure</h2>
+      <p class="tc-body">
+        Neither Hit Your Mark Travel nor our Suppliers are liable for any failure to perform, delay, cancellation, or modification of travel services caused by events beyond reasonable control. Force majeure events include but are not limited to:
+      </p>
+      <ul class="tc-list">
+        <li>Acts of God, including earthquakes, floods, hurricanes, fires, and volcanic eruptions</li>
+        <li>War, armed conflict, terrorism, civil unrest, or government travel advisories</li>
+        <li>Pandemics, epidemics, or public health emergencies</li>
+        <li>Government actions, border closures, or airspace restrictions</li>
+        <li>Labor disputes, strikes, or industrial action affecting transportation or hospitality</li>
+        <li>Infrastructure failures including power outages and transportation network disruptions</li>
+      </ul>
+      <p class="tc-body">
+        In the event of a force majeure disruption, we will use our best efforts to assist you in rescheduling, rerouting, or recovering value from existing bookings. Refunds from Suppliers in force majeure situations are governed by each Supplier's policy — not all will issue refunds. This is a primary reason we strongly recommend comprehensive travel insurance.
+      </p>
+    </section>
+
+    <!-- 12 -->
+    <section class="tc-section" id="s12">
+      <div class="tc-section__num">Section 12</div>
+      <h2 class="tc-section__title">Intellectual Property</h2>
+      <p class="tc-body">
+        All content on the Hit Your Mark Travel website — including itineraries, destination guides, copy, photography, graphics, and design elements — is the intellectual property of Hit Your Mark Travel or is used with permission. You may not reproduce, distribute, republish, or sell any content from our website without prior written permission.
+      </p>
+      <p class="tc-body">
+        Custom itineraries and travel plans we create for you are provided for your personal use only. They may not be shared with or sold to other travel agencies, tour operators, or individuals for commercial use.
+      </p>
+    </section>
+
+    <!-- 13 -->
+    <section class="tc-section" id="s13">
+      <div class="tc-section__num">Section 13</div>
+      <h2 class="tc-section__title">Privacy</h2>
+      <p class="tc-body">
+        We collect, store, and use your personal information to provide planning services, process bookings, communicate with you, and comply with legal obligations. We do not sell your personal information to third parties. Supplier bookings require sharing relevant traveler information with those Suppliers to complete reservations.
+      </p>
+      <p class="tc-body">
+        Our full Privacy Policy governs the collection and use of your personal data and is incorporated into these Terms by reference. Please review it at <a href="#">hymtravel.com/privacy</a>.
+      </p>
+      <p class="tc-body">
+        By using our services, you consent to the collection and use of your information as described in our Privacy Policy.
+      </p>
+    </section>
+
+    <!-- 14 -->
+    <section class="tc-section" id="s14">
+      <div class="tc-section__num">Section 14</div>
+      <h2 class="tc-section__title">Governing Law &amp; Disputes</h2>
+      <p class="tc-body">
+        These Terms and any dispute arising from them shall be governed by the laws of the State of California, without regard to conflict of law principles. You agree that any dispute with Hit Your Mark Travel shall be resolved in the courts of Santa Clara County, California, or through binding arbitration as set forth below.
+      </p>
+      <div class="tc-sublabel">Dispute Resolution</div>
+      <p class="tc-body">
+        Before initiating any formal proceeding, you agree to contact us directly to attempt to resolve the dispute informally. Most issues can be resolved quickly with direct communication. If informal resolution fails, disputes shall be resolved by binding arbitration in Santa Clara County, California, under the rules of the American Arbitration Association, except that either party may seek injunctive relief in a court of competent jurisdiction.
+      </p>
+      <p class="tc-body">
+        You agree to bring any claim within one (1) year of the event giving rise to the claim, to the fullest extent permitted by applicable law.
+      </p>
+      <div class="tc-sublabel">California Consumer Rights</div>
+      <p class="tc-body">
+        Hit Your Mark Travel is registered with the California Travel Consumer Restitution Corporation (TCRC). If you are a California resident and a qualifying transaction was purchased through us, you may file a claim with the TCRC if you are owed a refund that we are unable to pay. Visit <a href="https://www.tcrcinfo.org" target="_blank" rel="noopener">tcrcinfo.org</a> for more information.
+      </p>
+    </section>
+
+    <!-- 15 -->
+    <section class="tc-section" id="s15">
+      <div class="tc-section__num">Section 15</div>
+      <h2 class="tc-section__title">Contact Us</h2>
+      <p class="tc-body">
+        If you have questions about these Terms, please reach out before engaging our services. We believe in clear, direct communication and are happy to explain any provision in plain language.
+      </p>
+      <div class="tc-contact-block">
+        <div>
+          <div class="tc-contact-item__label">Email</div>
+          <div class="tc-contact-item__val"><a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a></div>
+        </div>
+        <div>
+          <div class="tc-contact-item__label">Phone</div>
+          <div class="tc-contact-item__val"><a href="tel:14085681404">(408) 568-1404</a></div>
+        </div>
+        <div>
+          <div class="tc-contact-item__label">Website</div>
+          <div class="tc-contact-item__val"><a href="https://www.hymtravel.com" target="_blank" rel="noopener">hymtravel.com</a></div>
+        </div>
+        <div>
+          <div class="tc-contact-item__label">Licenses</div>
+          <div class="tc-contact-item__val">CA 2165910-50 · WA 605920581 · FL ST46122</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div>
+      <img src="assets/logo.png" class="footer__brand-logo" alt="Hit Your Mark Travel">
+      <div class="footer__tagline">Hit Your Mark Travel</div>
+      <div class="footer__contact">
+        <a href="tel:14085681404">(408) 568-1404</a><br>
+        <a href="mailto:mark@hymtravel.com">mark@hymtravel.com</a><br>
+        <a href="https://www.hymtravel.com">hymtravel.com</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer__col-title">Experiences</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Experience Beach.html">Beach &amp; Island Escapes</a></li>
+        <li><a class="footer__link" href="HYM Experience All-Inclusive.html">All-Inclusive Vacations</a></li>
+        <li><a class="footer__link" href="HYM Experiences.html">Cruises &amp; Yachts</a></li>
+        <li><a class="footer__link" href="HYM Experience Wellness.html">Wellness &amp; Retreats</a></li>
+        <li><a class="footer__link" href="HYM Experience Safari.html">Safari &amp; Wildlife</a></li>
+        <li><a class="footer__link" href="HYM Experience Adventure.html">Adventure &amp; Active Travel</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Destinations</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Destination Caribbean Mexico.html">Caribbean &amp; Mexico</a></li>
+        <li><a class="footer__link" href="HYM Destination Europe.html">Europe</a></li>
+        <li><a class="footer__link" href="HYM Destination Africa.html">Africa</a></li>
+        <li><a class="footer__link" href="HYM Destination Asia.html">Asia</a></li>
+        <li><a class="footer__link" href="HYM Destination South Pacific.html">South Pacific</a></li>
+        <li><a class="footer__link" href="HYM Destination Middle East.html">Middle East</a></li>
+        <li><a class="footer__link" href="HYM Destination North America.html">North America</a></li>
+        <li><a class="footer__link" href="HYM Destination South America.html">South America</a></li>
+        <li><a class="footer__link" href="HYM Destination Polar Regions.html">Polar Regions</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Plan Your Trip</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM Plan Your Trip.html">Start Planning</a></li>
+        <li><a class="footer__link" href="HYM Plan Your Trip.html">Group Travel Inquiry</a></li>
+        <li><a class="footer__link" href="HYM Plan Your Trip.html">Honeymoon Inquiry</a></li>
+        <li><a class="footer__link" href="HYM FAQ.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__col-title">Company</div>
+      <ul class="footer__links">
+        <li><a class="footer__link" href="HYM About.html">About Mark</a></li>
+        <li><a class="footer__link" href="#">Travel Planning Process</a></li>
+        <li><a class="footer__link" href="HYM Journal.html">Travel Journal</a></li>
+        <li><a class="footer__link" href="HYM Privacy Policy.html">Privacy Policy</a></li>
+        <li><a class="footer__link" href="HYM Terms and Conditions.html" style="color:var(--gold-500)">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="footer__legal">CA Seller of Travel: 2165910-50 &nbsp;·&nbsp; WA Seller of Travel: 605920581 &nbsp;·&nbsp; FL Seller of Travel: ST46122</div>
+    <div class="footer__copy">Hit Your Mark Travel © 2026</div>
+  </div>
+</footer>
+
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+document.getElementById('mobileToggle').addEventListener('click', () => {
+  const links = document.querySelector('.nav__links');
+  if (!links) return;
+  const isOpen = links.style.display === 'flex';
+  links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:var(--nav-bg-solid);padding:24px 28px;gap:18px;border-bottom:1px solid var(--border-subtle);z-index:99;';
+});
+
+// TOC active state on scroll
+const sections = document.querySelectorAll('.tc-section[id]');
+const tocLinks = document.querySelectorAll('.tc-toc__link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.tc-toc__link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+
+window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
+</body>
+</html>
