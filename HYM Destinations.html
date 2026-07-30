@@ -72,7 +72,6 @@
   transition:none;
 }
 .dest-card.hidden { display:none }
-.dest-card--featured { grid-column:span 2;grid-row:span 1 }
 .dest-card__ph {
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
@@ -101,7 +100,6 @@
   font-family:var(--font-d);font-size:18px;font-weight:700;
   color:var(--cream-100);line-height:1.15;margin-bottom:6px;
 }
-.dest-card--featured .dest-card__name { font-size:26px }
 .dest-card__desc {
   font-family:var(--font-b);font-size:12px;color:var(--silver-300);
   line-height:1.5;margin-bottom:10px;
@@ -198,7 +196,6 @@
 }
 @media(max-width:900px){
   .dest-grid{grid-template-columns:repeat(2,1fr)}
-  .dest-card--featured{grid-column:span 2}
   .compare-grid{grid-template-columns:1fr}
   .final-cta{grid-template-columns:1fr;gap:40px}
   .final-cta__aside{padding-left:0;border-left:none;flex-direction:row;flex-wrap:wrap;gap:28px;border-top:1px solid var(--border-gold);padding-top:28px}
@@ -206,7 +203,6 @@
 }
 @media(max-width:540px){
   .dest-grid{grid-template-columns:1fr;grid-auto-rows:260px}
-  .dest-card--featured{grid-column:span 1}
 }
 </style>
 </head>
@@ -260,7 +256,7 @@
   <div class="dest-grid" id="destGrid">
 
     <!-- MALDIVES — Featured -->
-    <div class="dest-card dest-card--featured" data-filter="asia">
+    <div class="dest-card" data-filter="asia">
       <div class="dest-card__ph" style="background:#132e3e">Destination Photography · The Maldives</div>
       <div class="dest-card__overlay"></div>
       <div class="dest-card__body">
@@ -322,7 +318,7 @@
     </div>
 
     <!-- BOTSWANA — Featured -->
-    <div class="dest-card dest-card--featured" data-filter="africa">
+    <div class="dest-card" data-filter="africa">
       <div class="dest-card__ph" style="background:#1e2226">Destination Photography · Botswana · Moremi</div>
       <div class="dest-card__overlay"></div>
       <div class="dest-card__body">
@@ -368,7 +364,7 @@
     </div>
 
     <!-- FRENCH RIVIERA — Featured -->
-    <div class="dest-card dest-card--featured" data-filter="europe">
+    <div class="dest-card" data-filter="europe">
       <div class="dest-card__ph" style="background:#1c2632">Destination Photography · French Riviera</div>
       <div class="dest-card__overlay"></div>
       <div class="dest-card__body">
@@ -520,7 +516,7 @@
 
 
     <!-- OMAN — Featured -->
-    <div class="dest-card dest-card--featured" data-filter="middle-east">
+    <div class="dest-card" data-filter="middle-east">
       <div class="dest-card__ph" style="background:#1e2830">Destination Photography · Oman · Musandam</div>
       <div class="dest-card__overlay"></div>
       <div class="dest-card__body">

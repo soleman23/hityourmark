@@ -117,6 +117,7 @@
   cursor:pointer;transition:all .15s;margin-top:8px;
 }
 .cf-submit:hover { background:var(--gold-400);box-shadow:0 0 24px rgba(201,168,76,.2) }
+.cf-submit:disabled { opacity:.55;cursor:not-allowed;box-shadow:none }
 .cf-note {
   font-family:var(--font-b);font-size:11px;color:var(--text-muted);
   margin-top:12px;line-height:1.5;
@@ -319,28 +320,31 @@
     <h2 class="form-title">Send a message</h2>
     <p class="form-sub">If you'd prefer to plan your trip in detail, use the <a href="HYM Plan Your Trip.html" style="color:var(--gold-500)">Plan Your Trip form</a> — it takes about five minutes and gives Mark everything he needs to put together a proposal.</p>
 
-    <div id="contactForm">
+    <form id="contactForm" class="cf-form" novalidate>
+      <input type="hidden" name="access_key" value="94312057-04b8-44d8-a7a8-7cb083d999b8">
+      <input type="hidden" name="subject" id="cfSubjectField" value="New message from HYM Contact">
+      <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
       <div class="cf-row">
         <div class="cf">
           <label for="cfname">First name</label>
-          <input type="text" id="cfname" placeholder="First name">
+          <input type="text" id="cfname" name="first_name" placeholder="First name" required>
         </div>
         <div class="cf">
           <label for="cflname">Last name</label>
-          <input type="text" id="cflname" placeholder="Last name">
+          <input type="text" id="cflname" name="last_name" placeholder="Last name">
         </div>
       </div>
       <div class="cf">
         <label for="cfemail">Email</label>
-        <input type="email" id="cfemail" placeholder="your@email.com">
+        <input type="email" id="cfemail" name="email" placeholder="your@email.com" required>
       </div>
       <div class="cf">
         <label for="cfphone">Phone (optional)</label>
-        <input type="tel" id="cfphone" placeholder="+1 (___) ___-____">
+        <input type="tel" id="cfphone" name="phone" placeholder="+1 (___) ___-____">
       </div>
       <div class="cf">
         <label for="cfsubject">What's this about?</label>
-        <select id="cfsubject">
+        <select id="cfsubject" name="topic">
           <option value="">Select an option</option>
           <option>I want to start planning a trip</option>
           <option>I have a quick question</option>
@@ -352,11 +356,12 @@
       </div>
       <div class="cf">
         <label for="cfmsg">Message</label>
-        <textarea id="cfmsg" placeholder="Tell me what's on your mind — a destination, a timing question, or just an idea you're working through."></textarea>
+        <textarea id="cfmsg" name="message" placeholder="Tell me what's on your mind — a destination, a timing question, or just an idea you're working through." required></textarea>
       </div>
-      <button class="cf-submit" onclick="submitContact()">Send Message</button>
+      <button type="submit" class="cf-submit" id="cfSubmitBtn">Send Message</button>
       <p class="cf-note">By submitting you agree to be contacted by Hit Your Mark Travel. No spam, no sharing. Just a reply from Mark.</p>
-    </div>
+      <p class="cf-error" id="cfError" style="display:none;font-family:var(--font-b);font-size:13px;color:#c45c5c;margin-top:12px"></p>
+    </form>
     <div class="cf-success" id="cfSuccess">
       <div class="cf-success-title">Message received.</div>
       <div class="cf-success-body">Mark will reply within one business day. If it's urgent, call directly at (408) 568-1404.</div>
@@ -523,18 +528,84 @@ function toggleFaq(el) {
   if (!isOpen) el.classList.add('open');
 }
 
-// Contact form submit
-function submitContact() {
-  const name = document.getElementById('cfname').value.trim();
-  const email = document.getElementById('cfemail').value.trim();
-  if (!name || !email) {
-    if (!name) document.getElementById('cfname').style.borderColor = 'var(--gold-500)';
-    if (!email) document.getElementById('cfemail').style.borderColor = 'var(--gold-500)';
+// Contact form submit via Web3Forms
+const contactForm = document.getElementById('contactForm');
+const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+let contactSubmitting = false;
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (contactSubmitting) return;
+
+  const nameEl = document.getElementById('cfname');
+  const emailEl = document.getElementById('cfemail');
+  const msgEl = document.getElementById('cfmsg');
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
+  const message = msgEl.value.trim();
+  const errorEl = document.getElementById('cfError');
+  const submitBtn = document.getElementById('cfSubmitBtn');
+
+  errorEl.style.display = 'none';
+  errorEl.textContent = '';
+  nameEl.style.borderColor = 'var(--border-subtle)';
+  emailEl.style.borderColor = 'var(--border-subtle)';
+  msgEl.style.borderColor = 'var(--border-subtle)';
+
+  let valid = true;
+  if (!name) { nameEl.style.borderColor = 'var(--gold-500)'; valid = false; }
+  if (!email || !emailOk(email)) { emailEl.style.borderColor = 'var(--gold-500)'; valid = false; }
+  if (!message) { msgEl.style.borderColor = 'var(--gold-500)'; valid = false; }
+  if (!valid) {
+    if (!email && !name && !message) return;
+    if (email && !emailOk(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+    }
     return;
   }
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('cfSuccess').classList.add('show');
-}
+
+  const last = document.getElementById('cflname').value.trim();
+  const topic = document.getElementById('cfsubject').value;
+  document.getElementById('cfSubjectField').value = topic
+    ? 'HYM Contact — ' + topic
+    : 'New message from HYM Contact';
+
+  const formData = new FormData(contactForm);
+  formData.set('name', [name, last].filter(Boolean).join(' '));
+  formData.set('email', email);
+  formData.set('message', message);
+  formData.set('from_name', 'Hit Your Mark Travel');
+  formData.set('replyto', email);
+
+  const originalText = submitBtn.textContent;
+  contactSubmitting = true;
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    let data = {};
+    try { data = await response.json(); } catch (_) {}
+    if (response.ok && data.success) {
+      contactForm.style.display = 'none';
+      document.getElementById('cfSuccess').classList.add('show');
+      return;
+    }
+    errorEl.textContent = data.message || 'Something went wrong. Please try again or email mark@hymtravel.com.';
+    errorEl.style.display = 'block';
+  } catch (err) {
+    errorEl.textContent = 'Something went wrong. Please try again or call (408) 568-1404.';
+    errorEl.style.display = 'block';
+  } finally {
+    contactSubmitting = false;
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+});
 
 // Wire Contact link on this page's nav
 window.parent.postMessage({type:'__edit_mode_available'}, '*');

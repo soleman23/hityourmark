@@ -98,11 +98,16 @@
 .exp-featured__image {
   background:var(--bg-card);position:relative;
   display:flex;align-items:center;justify-content:center;min-height:420px;
+  overflow:hidden;
+}
+.exp-featured__image img {
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
 }
 .exp-featured__image-ph {
   font-family:var(--font-d);font-size:10px;font-weight:600;
   letter-spacing:.16em;text-transform:uppercase;color:rgba(138,155,176,.3);
-  text-align:center;padding:24px;
+  text-align:center;padding:24px;position:relative;z-index:1;
 }
 .exp-featured__content {
   padding:64px 60px;display:flex;flex-direction:column;justify-content:center;
@@ -304,20 +309,20 @@
 <section class="exp-featured">
   <div class="exp-featured__grid">
     <div class="exp-featured__image">
-      <span class="exp-featured__image-ph">Destination Photography<br>Botswana · Moremi Game Reserve</span>
+      <img src="assets/napa-vineyard-dining.jpg" alt="Al fresco dining in a Napa Valley vineyard at golden hour">
     </div>
     <div class="exp-featured__content">
       <div class="label" style="margin-bottom:16px">Currently Featured</div>
-      <h2 class="exp-featured__title">Safari &amp; Wildlife —<br>Africa Done Right</h2>
-      <p class="exp-featured__body">The difference between a good safari and an exceptional one is almost entirely the camp and the guide. We've visited every property we recommend — many of them repeatedly — in Botswana, Kenya, Tanzania, South Africa, and Rwanda.</p>
-      <p class="exp-featured__body">Shoulder season. Smaller camps. Guides who've been doing this for decades. That's the brief we work from.</p>
+      <h2 class="exp-featured__title">Napa &amp; Sonoma —<br>The Winery Route</h2>
+      <p class="exp-featured__body">The difference between a great wine country trip and a mediocre one isn't the wine. It's which doors you walk through — and which ones you even knew to knock on.</p>
+      <p class="exp-featured__body">A 2 and 3-day route through Napa and Sonoma: the appointments worth making, the properties worth staying at, and the mistakes most trips make before they start.</p>
       <div class="exp-featured__tags">
-        <span class="exp-tag">Botswana</span>
-        <span class="exp-tag">Kenya</span>
-        <span class="exp-tag">Tanzania</span>
-        <span class="exp-tag">South Africa</span>
+        <span class="exp-tag">Napa Valley</span>
+        <span class="exp-tag">Sonoma</span>
+        <span class="exp-tag">California</span>
+        <span class="exp-tag">Food &amp; Wine</span>
       </div>
-      <a href="HYM Homepage.html#contact" class="exp-featured__cta">Plan My Safari &nbsp;→</a>
+      <a href="journal/napa-sonoma-winery-route.html" class="exp-featured__cta">Read the Route &nbsp;→</a>
     </div>
   </div>
 </section>
